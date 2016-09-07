@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">energy management</string>
+	<string name="personal">Personal information</string>
+	<string name="warning">Reminder settings</string>
+	<string name="language">Choose language</string>
+	<string name="mecp">Modify control password</string>
+	<string name="suggestion">Feedback</string>
+	<string name="about">About</string>
+	<string name="logout">Logout</string>
+	<string name="mine">Mine</string>
+	<string name="site">Site</string>
+	<string name="news">News</string>
+	<string name="monitor">Monitor</string>
+	<string name="cn">Chinese</string>
+	<string name="en">English</string>
+	<string name="confirm">Confirm</string>
+	<string name="textcn">Chinese</string>
+	<string name="personalInfo">Personal Information</string>
+	<string name="loginName">Login Name</string>
+	<string name="name">Name</string>
+	<string name="sex">Sex：</string>
+	<string name="sex1">Sex</string>
+	<string name="company">Company</string>
+	<string name="job">Job：</string>
+	<string name="job1">Job</string>
+	<string name="phone">Phone</string>
+	<string name="email">E-mail</string>
+	<string name="prempt">Prempt</string>
+	<string name="SMSAlert">SMSAlert</string>
+	<string name="EmailAlert">EmailAlert</string>
+	<string name="commit">Commit</string>
+	<string name="cpw">Change Password</string>
+	<string name="PEP"> Please enter old password</string>
+	<string name="PINP">Please enter new password</string>
+	<string name="PIN">Please enter new password again</string>
+	<string name="vn">Version No:1.0</string>
+	<string name="ilv">Latest version</string>
+	<string name="vu"> Version updates</string>
+	<string name="ui">Update info</string>
+	<string name="h">Help</string>
+	<string name="sitemap">Sites map</string>
+	<string name="sitelist">Sites list</string>
+	<string name="offlinelist">Offline list</string>
+	<string name="sumofsites">Sum of sites</string>
+	<string name="totalstorage">Total storage</string>
+	<string name="currentstorage">Current storage</string>
+	<string name="summary">Summary</string>
+	<string name="focus">Focus</string>
+	<string name="politics">Politics</string>
+	<string name="industry">Industry</string>
+	<string name="sitesnews">Sites News</string>
+
+	<string name="siteoverview">Site overview</string>
+	<string name="csp">Current storage/power</string>
+	<string name="tdpr">Total/daily power reduction</string>
+	<string name="tdmr">Total/daily money reduction</string>
+	<string name="tdcr">Total/daily carbon reduction</string>
+	<string name="bi">Basic information</string>
+	<string name="sn">Site name</string>
+	<string name="dd">Deployment date</string>
+	<string name="s">Storage</string>
+	<string name="pp">Power Price</string>
+
+
+
+	<string name="keydata">Key data</string>
+	<string name="dpot">Daily data</string>
+	<string name="apot">Annual data</string>
+	<string name="mpot">Monthly data </string>
+	<string name="usoy">Annual UPS supply(Kwh)</string>
+
+
+
+	<string name="historicaldata">History data</string>
+	<string name="doth">Offline times Histogram</string>
+	<string name="dodh">Offline duration Histogram</string>
+	<string name="dusd">Offline supply duration Histogram</string>
+	<string name="ol">Offline list</string>
+
+	<string name="clu">Clusters</string>
+	<string name="dl">Devices list</string>
+	<string name="bai">Basic information</string>
+	<string name="ds">Device status</string>
+	<string name="bp">Basic paramet</string>
+	<string name="w">Warnings</string>
+	<string name="hi">History infomation</string>
+	<string name="b">Batteries</string>
+	<string name="o">Operations</string>
+	<string name="al">Alarm list</string>
+	<string name="sl">Status list</string>
+	<string name="pl">Parameter list</string>
+	<string name="pc">Curve</string>
+	<string name="dhd">Device history data</string>
+	<string name="message">Message</string>
+	<string name="all">All</string>
+	<string name="iwi">Important warning information</string>
+	<string name="sc">Select city</string>
+	<string name="ne">News Express</string>
+
+	<string name="ss">Statistics</string>
+	<string name="mt">Mobile traffic</string>
+	<string name="db">Database</string>
+	<string name="Ol">Operation log</string>
+	<string name="ar">APP reports</string>
+	<string name="cj">Super </string>
+	<string name="zd">Site</string>
+	<string name="yj">level1</string>
+	<string name="ej">level2</string>
+	<string name="sj">level3</string>
+	<string name="sij">level4</string>
+	<string name="nan">Male</string>
+	<string name="nv">female</string>
+	<string name="sz">Current status</string>
+	<string name="dc">Storage</string>
+	<string name="dg">Power</string>
+	<string name="dt">Totol power reduction</string>
+	<string name="pj">Daily power reduction</string>
+	<string name="zq">Totol money reduction</string>
+	<string name="pq">Daily money reduction</string>
+	<string name="zt">Totol carbon reduction</string>
+	<string name="pt">Daily carbon reduction</string>
+	<string name="rt">Offline times</string>
+	<string name="dz">Offline duration</string>
+	<string name="ud">UPS power duration</string>
+	<string name="yt">Offline times</string>
+	<string name="nt">Offline times</string>
+	<string name="ul">Unit list</string>
+	<string name="ml">Module list</string>
+	<string name="bl">Battery list</string>
+	<string name="dca">Battery</string>
+	<string name="mka">Module</string>
+	<string name="dya">Unit</string>
+	<string name="lb">list</string>
+	<string name="lba">History data</string>
+	<string name="cp">Chang Password</string>
+
+</resources>

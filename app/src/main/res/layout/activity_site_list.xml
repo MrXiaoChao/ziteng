@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/blue">
+
+        <ImageView
+            android:id="@+id/sitelist_fanhui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:background="@mipmap/fanhui"
+            android:padding="9dp" />
+
+        <TextView
+            android:id="@+id/sitelist_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="站点全列表"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_big" />
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/search"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ProgressBar
+            android:id="@+id/progress_horizontal"
+            android:layout_centerInParent="true"
+            style="progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/progress_horizontal"
+            android:text="正在加载中..."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:visibility="gone"
+        android:background="@color/blue"
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="48dp">
+
+        <TextView
+            android:background="@null"
+            android:id="@+id/tvSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text="搜索"/>
+
+        <RelativeLayout
+            android:layout_marginRight="5dp"
+            android:id="@+id/rlSearchFrameDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:layout_toLeftOf="@id/tvSearch">
+
+            <EditText
+                android:textColor="@color/white"
+                android:background="@drawable/btn_search"
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:drawableLeft="@mipmap/search1"
+                android:layout_marginRight="10dp"
+                android:drawablePadding="10dp"
+                android:textSize="14dp"
+                android:paddingLeft="3dp"
+                android:hint="请输入你要查询的地区"/>
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/ivDeleteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/quxiao"
+                android:layout_centerInParent="true"
+                android:paddingRight="15dp"
+                />
+
+        </RelativeLayout>
+    </RelativeLayout>
+    <View
+        android:background="@color/gray_dan"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/sitelist_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@color/white"
+            android:divider="@color/gray"
+            android:dividerHeight="0dp"
+            android:scrollbars="none" />
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/sitelist_info"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/blue"
+            android:orientation="horizontal"
+            android:padding="10dp"
+           >
+
+            <ImageView
+                android:id="@+id/sitelist_img"
+                android:layout_width="107dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/sitelist_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="站点名称"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_big2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:text="已关注"
+                        android:id="@+id/tv_guanzhu"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_sitelist2"
+                        android:gravity="center"
+                        android:textColor="@color/blue"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:id="@+id/tv_site_info"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_sitelist"
+                        android:gravity="center"
+                        android:text="站点概况"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

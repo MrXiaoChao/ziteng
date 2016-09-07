@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/blue">
+
+        <ImageView
+            android:padding="9dp"
+            android:layout_marginLeft="12dp"
+            android:id="@+id/mima_fanhui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@mipmap/fanhui"
+             />
+
+        <TextView
+            android:id="@+id/personal_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="修改手机号码"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_big" />
+    </RelativeLayout>
+    <View
+        android:background="@color/gray_dan"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+    <View
+        android:background="@color/gray"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <EditText
+        android:inputType="phone"
+        android:maxLength="11"
+        android:id="@+id/et_chang_password"
+        android:hint="新手机号码"
+        android:textSize="@dimen/text_mid_2"
+        android:paddingLeft="10dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+    <View
+        android:background="@color/gray"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <View
+        android:background="@color/gray_dan"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+    <View
+        android:background="@color/gray"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <EditText
+        android:inputType="phone"
+        android:maxLength="11"
+        android:id="@+id/et_queren_password"
+        android:hint="确认新手机号码"
+        android:textSize="@dimen/text_mid_2"
+        android:paddingLeft="10dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+    <View
+        android:background="@color/gray"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <View
+        android:background="@color/gray_dan"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+    <View
+        android:background="@color/gray"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+
+
+    <Button
+        android:id="@+id/btn_chang"
+        android:background="@drawable/login1"
+        android:textSize="@dimen/text_big"
+        android:textColor="@color/white"
+        android:text="确认修改"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

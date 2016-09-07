@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <FrameLayout
+        android:id="@+id/ll_layout"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </FrameLayout>
+    <View
+        android:background="@color/blue"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <LinearLayout
+        android:gravity="bottom"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+        <Button
+            android:drawableTop="@drawable/btn_battery"
+            android:layout_marginTop="2dp"
+            android:id="@+id/btn_battery"
+            android:textColor="@drawable/btn_barrty_list"
+            android:text="@string/dca"
+            style="@style/btn_main" />
+
+        <Button
+            android:drawableTop="@drawable/btn_moudle"
+            android:layout_marginTop="2dp"
+            android:id="@+id/btn_moudle"
+            android:textColor="@drawable/btn_barrty_list"
+            android:text="@string/mka"
+            style="@style/btn_main" />
+        <Button
+            android:layout_marginTop="2dp"
+            android:id="@+id/btn_unit"
+            android:drawableTop="@drawable/btn_unit"
+            android:textColor="@drawable/btn_barrty_list"
+            android:text="@string/dya"
+            style="@style/btn_main" />
+        <Button
+            android:layout_marginTop="2dp"
+            android:id="@+id/btn_list"
+            android:drawableTop="@drawable/btn_list"
+            android:textColor="@drawable/btn_barrty_list"
+            android:text="@string/lb"
+            style="@style/btn_main" />
+    </LinearLayout>
+</LinearLayout>

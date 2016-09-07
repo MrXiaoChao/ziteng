@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/blue">
+
+        <ImageView
+            android:padding="9dp"
+            android:layout_marginLeft="12dp"
+            android:id="@+id/dianliu_fanhui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@mipmap/fanhui"
+            />
+
+        <TextView
+            android:id="@+id/warn_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="修改电流"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_big" />
+
+        <TextView
+            android:id="@+id/tv_commit"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="提交"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_mid_2" />
+    </RelativeLayout>
+    <View
+        android:background="@color/gray_dan"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+    <EditText
+        android:id="@+id/et_dianliu"
+        android:numeric="decimal"
+        android:textSize="@dimen/text_mid"
+        android:paddingLeft="8dp"
+        android:background="@null"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+    <View
+        android:background="@color/gray_dan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

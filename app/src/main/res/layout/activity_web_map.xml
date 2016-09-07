@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/blue">
+
+        <ImageView
+            android:id="@+id/map_fanhui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:background="@mipmap/fanhui"
+            android:padding="9dp" />
+
+        <TextView
+            android:id="@+id/personal_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/sitemap"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_big" />
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/search"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:background="@color/blue"
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="48dp">
+
+        <TextView
+            android:background="@null"
+            android:id="@+id/tvSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text="搜索"/>
+
+        <RelativeLayout
+            android:layout_marginRight="5dp"
+            android:id="@+id/rlSearchFrameDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:layout_toLeftOf="@id/tvSearch">
+
+            <EditText
+                android:textColor="@color/white"
+                android:background="@drawable/btn_search"
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:drawableLeft="@mipmap/search1"
+                android:layout_marginRight="10dp"
+                android:drawablePadding="10dp"
+                android:textSize="14dp"
+                android:paddingLeft="3dp"
+                android:hint="请输入你要查询的地区"/>
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/ivDeleteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/quxiao"
+                android:layout_centerInParent="true"
+                android:paddingRight="15dp"
+                />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/id_bmapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true" />
+
+        <LinearLayout
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:background="@color/white"
+            android:id="@+id/id_marker_info"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <ImageView
+                android:scaleType="centerCrop"
+                android:id="@+id/info_img"
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="107dp"
+                android:layout_height="match_parent" />
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_alignParentRight="true"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:textSize="@dimen/text_big2"
+                    android:textColor="@color/blue"
+                    android:id="@+id/info_name"
+                    android:layout_weight="1"
+                    android:text="站点名称"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tv_guanzhu"
+                        android:gravity="center"
+                        android:textSize="10dp"
+                        android:textColor="@color/blue"
+                        android:background="@drawable/btn_map2"
+                        android:layout_weight="1"
+                        android:layout_marginRight="5dp"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent" />
+                    <TextView
+                        android:id="@+id/tv_site_info"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_map"
+                        android:layout_marginLeft="5dp"
+                        android:text="站点概况"
+                        android:textSize="12dp"
+                        android:textColor="@color/white"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

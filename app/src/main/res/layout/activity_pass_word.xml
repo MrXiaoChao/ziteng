@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/blue">
+
+        <ImageView
+            android:padding="9dp"
+            android:layout_marginLeft="12dp"
+            android:id="@+id/mima_fanhui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@mipmap/fanhui"
+            />
+
+        <TextView
+            android:id="@+id/warn_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="修改密码"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_big" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/ll_password"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <View
+            android:background="@color/gray_dan"
+            android:layout_width="match_parent"
+            android:layout_height="13dp"/>
+        <View
+            android:background="@color/gray_bian"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <EditText
+            android:paddingLeft="13dp"
+            android:id="@+id/et_password1"
+            android:maxLength="30"
+            android:singleLine="true"
+            android:background="@null"
+            android:textSize="14dp"
+            android:hint="设置密码"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+        <View
+            android:background="@color/gray_bian"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <View
+            android:background="@color/gray_dan"
+            android:layout_width="match_parent"
+            android:layout_height="13dp"/>
+        <View
+            android:background="@color/gray_bian"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <EditText
+            android:paddingLeft="13dp"
+            android:id="@+id/et_Qpassword1"
+            android:maxLength="30"
+            android:singleLine="true"
+            android:background="@null"
+            android:textSize="14dp"
+            android:hint="确认密码"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+        <View
+            android:background="@color/gray_bian"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:background="@color/gray_dan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <Button
+        android:layout_centerHorizontal="true"
+        android:id="@+id/tv_chang"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_yanzm_shape"
+        android:textSize="20dp"
+        android:text="确认修改"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+</LinearLayout>

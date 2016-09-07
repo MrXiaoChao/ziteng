@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp">
+
+    <LinearLayout
+
+        android:paddingRight="8dp"
+
+        android:paddingLeft="10dp"
+        android:paddingTop="13dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+            <TextView
+                android:singleLine="true"
+                android:text="文章标题"
+                android:textSize="13dp"
+                android:textColor="#666666"
+                android:id="@+id/tv_title"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:lineSpacingExtra="5dp"
+                android:gravity="center|left"
+                android:text="文章内容，文章内容，文章内容，文章内容，文章内容，我会尽快返回接口萨芬叫啥叫客服哈手机开发开放"
+                android:textSize="11dp"
+                android:textColor="#bfbfbf"
+                android:id="@+id/tv_content"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:gravity="center|bottom"
+                android:text="2016-02-12"
+                android:textSize="10dp"
+                android:textColor="#cccccc"
+                android:id="@+id/tv_time"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+</FrameLayout>
