@@ -24,7 +24,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/bl"
             android:textColor="@color/white"
             android:textSize="@dimen/text_big" />
     </RelativeLayout>
@@ -63,6 +62,7 @@
                 android:layout_height="45dp">
 
                 <TextView
+                    android:text="电池信息"
                     android:id="@+id/unit_xinxi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,7 +70,9 @@
                     android:layout_marginLeft="6dp"
                     android:gravity="center"
                     android:textColor="@color/blue"
-                    android:textSize="@dimen/text_mid"></TextView>
+                    android:textSize="@dimen/text_mid">
+
+                </TextView>
 
                 <ImageView
                     android:id="@+id/image_fx"

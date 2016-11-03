@@ -56,7 +56,7 @@ public class MoudleListAdapter extends BaseAdapter {
         }else {
             holder= (Viewholder) convertView.getTag();
         }
-        holder.childTextView.setText(list.get(position).getBatteryId());
+        holder.childTextView.setText("电池-"+list.get(position).getBatteryId().substring(5,7));
         return convertView;
     }
     class Viewholder{

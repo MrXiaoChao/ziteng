@@ -34,7 +34,7 @@ import java.util.Map;
 
 /**
  * 模块列表
- * Created by john on 2016/5/17.
+ * Created by john on 2016/5/17.-
  */
 public class ModuleActivity extends BaseActivity implements View.OnClickListener {
     private ImageView back;
@@ -49,6 +49,7 @@ public class ModuleActivity extends BaseActivity implements View.OnClickListener
     private ImageView fx;
     private ListView listview_modul;
     private PullToRefreshScrollView scrollView;
+    private TextView name;
 
 
     @Override
@@ -68,7 +69,8 @@ public class ModuleActivity extends BaseActivity implements View.OnClickListener
                 moudleList = PaseJson.PaseMoudlelist(s);
                 if (moudleList != null) {
                     listview_modul.setAdapter(new MoudleListAdapter(ModuleActivity.this, (ArrayList<MoudleList.BatterylistBean>) moudleList.getBatterylist()));
-                    unitxinxi.setText(moudleList.getMoudleId());
+                    unitxinxi.setText("模块信息");
+                    name.setText(getResources().getString(R.string.ml)+"-"+moudleid.substring(5,7));
                     dianliu.setText(moudleList.getCurrent()+"mA");
                     dianya.setText(moudleList.getVoltage()+"mV");
                     wendu.setText(moudleList.getTemperature()+"°C");
@@ -95,6 +97,7 @@ public class ModuleActivity extends BaseActivity implements View.OnClickListener
 
 
     private void initview() {
+        name = (TextView) findViewById(R.id.unit_title);
         scrollView = (PullToRefreshScrollView) findViewById(R.id.scrollView);
         back = (ImageView) findViewById(R.id.unit_fanhui);
         unitxinxi = (TextView) findViewById(R.id.unit_xinxi);

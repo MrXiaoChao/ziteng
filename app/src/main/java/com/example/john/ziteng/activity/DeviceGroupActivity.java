@@ -63,6 +63,7 @@ public class DeviceGroupActivity extends BaseActivity implements DevicePassWordF
     private RelativeLayout kongzhi;
     private PullToRefreshScrollView scrollView;
     private String level;
+    private TextView name;
 
 
     @Override
@@ -86,7 +87,8 @@ public class DeviceGroupActivity extends BaseActivity implements DevicePassWordF
                 deviceGroupInfo = PaseJson.PaseDGF(s);
                 if (deviceGroupInfo != null) {
                     listview.setAdapter(new MyListAdapter(DeviceGroupActivity.this, (ArrayList<DeviceGroupInfo.UnitlistBean>) deviceGroupInfo.getUnitlist()));
-                    groupTextView.setText(deviceGroupInfo.getEquip_id());
+                    groupTextView.setText("设备信息");
+                    name.setText(getResources().getString(R.string.dl)+"-"+equipId.substring(5,7));
                 }
                 scrollView.onRefreshComplete();
             }
@@ -154,6 +156,7 @@ public class DeviceGroupActivity extends BaseActivity implements DevicePassWordF
     }
 
     private void initview() {
+        name = (TextView) findViewById(R.id.web_title);
         scrollView = (PullToRefreshScrollView) findViewById(R.id.scrollView);
         xinxi = (RelativeLayout) findViewById(R.id.rl_xinxi);
         zhuangtai = (RelativeLayout) findViewById(R.id.rl_zhuantai);

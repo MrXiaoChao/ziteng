@@ -51,6 +51,7 @@ public class BatteryListActivity extends BaseActivity implements View.OnClickLis
     private TextView tv_soc;
     private TextView tv_soh;
     private PullToRefreshScrollView scrollView;
+    private TextView name;
 
 
     @Override
@@ -68,13 +69,14 @@ public class BatteryListActivity extends BaseActivity implements View.OnClickLis
             public void onResponse(String s) {
                 batteryList = PaseJson.PaseBatteryList(s);
                 if (batteryList != null) {
-                    unitxinxi.setText(batteryList.getBatteryid());
+                    unitxinxi.setText("电池信息");
+                    name.setText(getResources().getString(R.string.bl)+"-"+batteryId.substring(5,7));
                     dianliu.setText(batteryList.getCurrent() + "mA");
                     dianya.setText(batteryList.getVoltage() + "mV");
                     wendu.setText(batteryList.getTemperature() + "°C");
                     tv_zhuantai.setText(batteryList.getState());
-                    tv_soc.setText(batteryList.getSoc());
-                    tv_soh.setText(batteryList.getSoh());
+                    tv_soc.setText(batteryList.getSoc()+"％");
+                    tv_soh.setText(batteryList.getSoh()+"％");
                 }
                 scrollView.onRefreshComplete();
             }
@@ -96,6 +98,7 @@ public class BatteryListActivity extends BaseActivity implements View.OnClickLis
 
 
     private void initview() {
+        name = (TextView) findViewById(R.id.unit_title);
         scrollView = (PullToRefreshScrollView) findViewById(R.id.scrollView);
         back = (ImageView) findViewById(R.id.unit_fanhui);
         tv_soh = (TextView) findViewById(R.id.tv_soh);

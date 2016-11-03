@@ -58,7 +58,7 @@ public class UnitlistAdapter extends BaseAdapter {
         }else {
             holder= (Viewholder) convertView.getTag();
         }
-        holder.childTextView.setText(list.get(position).getMoudleId());
+        holder.childTextView.setText("模块-"+list.get(position).getMoudleId().substring(5,7));
         return convertView;
     }
     class Viewholder{

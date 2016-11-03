@@ -6,209 +6,374 @@ package com.example.john.ziteng.domain;
  */
 public class SiteDelicInfo {
 
+    /**
+     * AllUps : 2000
+     * deploytime : 2016-05-13 17:40:57
+     * electrovalency : 1
+     * energy_storage : 497
+     * id : 1000000
+     * latitude : 117.286452
+     * longitude : 36.604016
+     * name : 济南UPS测试
+     * power : 176
+     * siteState : 负载部分断电
+     * storageCapacity : 20
+     */
 
-    public String getCity() {
-        return city;
+    private BaseInformationBean baseInformation;
+    /**
+     * allSaveElectricity : 100.0
+     * allSaveMoney : 1000.0
+     * allemissions : 2000.0
+     * aveSaveElectricity : 1.5
+     * aveSaveMoney : 20.0
+     * aveemissions : 2000.0
+     */
+
+    private BenefitBean benefit;
+    /**
+     * dayOutpowerNum : 10
+     * dayOutpowerOfen : 10
+     * dayUps : 10
+     * monOutpowerNum : 20
+     * monOutpowerOfen : 20
+     * monUps : 20
+     * yearOutpowerNum : 30
+     * yearOutpowerOfen : 30
+     * yearUps : 30
+     */
+
+    private KeyDateBean keyDate;
+    /**
+     * city : 西城区
+     * cond : 多云
+     * dir : 南风4-5级
+     * max : 16°C - 9°C
+     * temperature : 16
+     */
+
+    private WeatherBean weather;
+
+    public BaseInformationBean getBaseInformation() {
+        return baseInformation;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setBaseInformation(BaseInformationBean baseInformation) {
+        this.baseInformation = baseInformation;
     }
 
-    public String getCond() {
-        return cond;
+    public BenefitBean getBenefit() {
+        return benefit;
     }
 
-    public void setCond(String cond) {
-        this.cond = cond;
+    public void setBenefit(BenefitBean benefit) {
+        this.benefit = benefit;
     }
 
-    public String getDir() {
-        return dir;
+    public KeyDateBean getKeyDate() {
+        return keyDate;
     }
 
-    public void setDir(String dir) {
-        this.dir = dir;
+    public void setKeyDate(KeyDateBean keyDate) {
+        this.keyDate = keyDate;
     }
 
-    public String getMax() {
-        return max;
+    public WeatherBean getWeather() {
+        return weather;
     }
 
-    public void setMax(String max) {
-        this.max = max;
+    public void setWeather(WeatherBean weather) {
+        this.weather = weather;
     }
 
-    public String getTemperature() {
-        return temperature;
+    public static class BaseInformationBean {
+        private String AllUps;
+        private String deploytime;
+        private int electrovalency;
+        private String energy_storage;
+        private String id;
+        private String latitude;
+        private String longitude;
+        private String name;
+        private String power;
+        private String siteState;
+        private String storageCapacity;
+
+        public String getAllUps() {
+            return AllUps;
+        }
+
+        public void setAllUps(String AllUps) {
+            this.AllUps = AllUps;
+        }
+
+        public String getDeploytime() {
+            return deploytime;
+        }
+
+        public void setDeploytime(String deploytime) {
+            this.deploytime = deploytime;
+        }
+
+        public int getElectrovalency() {
+            return electrovalency;
+        }
+
+        public void setElectrovalency(int electrovalency) {
+            this.electrovalency = electrovalency;
+        }
+
+        public String getEnergy_storage() {
+            return energy_storage;
+        }
+
+        public void setEnergy_storage(String energy_storage) {
+            this.energy_storage = energy_storage;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getLatitude() {
+            return latitude;
+        }
+
+        public void setLatitude(String latitude) {
+            this.latitude = latitude;
+        }
+
+        public String getLongitude() {
+            return longitude;
+        }
+
+        public void setLongitude(String longitude) {
+            this.longitude = longitude;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getPower() {
+            return power;
+        }
+
+        public void setPower(String power) {
+            this.power = power;
+        }
+
+        public String getSiteState() {
+            return siteState;
+        }
+
+        public void setSiteState(String siteState) {
+            this.siteState = siteState;
+        }
+
+        public String getStorageCapacity() {
+            return storageCapacity;
+        }
+
+        public void setStorageCapacity(String storageCapacity) {
+            this.storageCapacity = storageCapacity;
+        }
     }
 
-    public void setTemperature(String temperature) {
-        this.temperature = temperature;
+    public static class BenefitBean {
+        private String allSaveElectricity;
+        private String allSaveMoney;
+        private String allemissions;
+        private String aveSaveElectricity;
+        private String aveSaveMoney;
+        private String aveemissions;
+
+        public String getAllSaveElectricity() {
+            return allSaveElectricity;
+        }
+
+        public void setAllSaveElectricity(String allSaveElectricity) {
+            this.allSaveElectricity = allSaveElectricity;
+        }
+
+        public String getAllSaveMoney() {
+            return allSaveMoney;
+        }
+
+        public void setAllSaveMoney(String allSaveMoney) {
+            this.allSaveMoney = allSaveMoney;
+        }
+
+        public String getAllemissions() {
+            return allemissions;
+        }
+
+        public void setAllemissions(String allemissions) {
+            this.allemissions = allemissions;
+        }
+
+        public String getAveSaveElectricity() {
+            return aveSaveElectricity;
+        }
+
+        public void setAveSaveElectricity(String aveSaveElectricity) {
+            this.aveSaveElectricity = aveSaveElectricity;
+        }
+
+        public String getAveSaveMoney() {
+            return aveSaveMoney;
+        }
+
+        public void setAveSaveMoney(String aveSaveMoney) {
+            this.aveSaveMoney = aveSaveMoney;
+        }
+
+        public String getAveemissions() {
+            return aveemissions;
+        }
+
+        public void setAveemissions(String aveemissions) {
+            this.aveemissions = aveemissions;
+        }
     }
 
-    public String getAllPower() {
-        return allPower;
+    public static class KeyDateBean {
+        private String dayOutpowerNum;
+        private String dayOutpowerOfen;
+        private String dayUps;
+        private String monOutpowerNum;
+        private String monOutpowerOfen;
+        private String monUps;
+        private String yearOutpowerNum;
+        private String yearOutpowerOfen;
+        private String yearUps;
+
+        public String getDayOutpowerNum() {
+            return dayOutpowerNum;
+        }
+
+        public void setDayOutpowerNum(String dayOutpowerNum) {
+            this.dayOutpowerNum = dayOutpowerNum;
+        }
+
+        public String getDayOutpowerOfen() {
+            return dayOutpowerOfen;
+        }
+
+        public void setDayOutpowerOfen(String dayOutpowerOfen) {
+            this.dayOutpowerOfen = dayOutpowerOfen;
+        }
+
+        public String getDayUps() {
+            return dayUps;
+        }
+
+        public void setDayUps(String dayUps) {
+            this.dayUps = dayUps;
+        }
+
+        public String getMonOutpowerNum() {
+            return monOutpowerNum;
+        }
+
+        public void setMonOutpowerNum(String monOutpowerNum) {
+            this.monOutpowerNum = monOutpowerNum;
+        }
+
+        public String getMonOutpowerOfen() {
+            return monOutpowerOfen;
+        }
+
+        public void setMonOutpowerOfen(String monOutpowerOfen) {
+            this.monOutpowerOfen = monOutpowerOfen;
+        }
+
+        public String getMonUps() {
+            return monUps;
+        }
+
+        public void setMonUps(String monUps) {
+            this.monUps = monUps;
+        }
+
+        public String getYearOutpowerNum() {
+            return yearOutpowerNum;
+        }
+
+        public void setYearOutpowerNum(String yearOutpowerNum) {
+            this.yearOutpowerNum = yearOutpowerNum;
+        }
+
+        public String getYearOutpowerOfen() {
+            return yearOutpowerOfen;
+        }
+
+        public void setYearOutpowerOfen(String yearOutpowerOfen) {
+            this.yearOutpowerOfen = yearOutpowerOfen;
+        }
+
+        public String getYearUps() {
+            return yearUps;
+        }
+
+        public void setYearUps(String yearUps) {
+            this.yearUps = yearUps;
+        }
     }
 
-    public void setAllPower(String allPower) {
-        this.allPower = allPower;
+    public static class WeatherBean {
+        private String city;
+        private String cond;
+        private String dir;
+        private String max;
+        private String temperature;
+
+        public String getCity() {
+            return city;
+        }
+
+        public void setCity(String city) {
+            this.city = city;
+        }
+
+        public String getCond() {
+            return cond;
+        }
+
+        public void setCond(String cond) {
+            this.cond = cond;
+        }
+
+        public String getDir() {
+            return dir;
+        }
+
+        public void setDir(String dir) {
+            this.dir = dir;
+        }
+
+        public String getMax() {
+            return max;
+        }
+
+        public void setMax(String max) {
+            this.max = max;
+        }
+
+        public String getTemperature() {
+            return temperature;
+        }
+
+        public void setTemperature(String temperature) {
+            this.temperature = temperature;
+        }
     }
-
-    public String getAllSaveElectricity() {
-        return allSaveElectricity;
-    }
-
-    public void setAllSaveElectricity(String allSaveElectricity) {
-        this.allSaveElectricity = allSaveElectricity;
-    }
-
-    public String getAllSaveMoney() {
-        return allSaveMoney;
-    }
-
-    public void setAllSaveMoney(String allSaveMoney) {
-        this.allSaveMoney = allSaveMoney;
-    }
-
-    public String getAllemissions() {
-        return allemissions;
-    }
-
-    public void setAllemissions(String allemissions) {
-        this.allemissions = allemissions;
-    }
-
-    public String getAveSaveElectricity() {
-        return aveSaveElectricity;
-    }
-
-    public void setAveSaveElectricity(String aveSaveElectricity) {
-        this.aveSaveElectricity = aveSaveElectricity;
-    }
-
-    public String getAveSaveMoney() {
-        return aveSaveMoney;
-    }
-
-    public void setAveSaveMoney(String aveSaveMoney) {
-        this.aveSaveMoney = aveSaveMoney;
-    }
-
-    public String getAveemissions() {
-        return aveemissions;
-    }
-
-    public void setAveemissions(String aveemissions) {
-        this.aveemissions = aveemissions;
-    }
-
-    public String getCurrentPower() {
-        return currentPower;
-    }
-
-    public void setCurrentPower(String currentPower) {
-        this.currentPower = currentPower;
-    }
-
-    public String getCurrentstorageCapacity() {
-        return currentstorageCapacity;
-    }
-
-    public void setCurrentstorageCapacity(String currentstorageCapacity) {
-        this.currentstorageCapacity = currentstorageCapacity;
-    }
-
-    public String getPartPower() {
-        return partPower;
-    }
-
-    public void setPartPower(String partPower) {
-        this.partPower = partPower;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public String getStatusTime() {
-        return statusTime;
-    }
-
-    public void setStatusTime(String statusTime) {
-        this.statusTime = statusTime;
-    }
-
-    public int getUps() {
-        return ups;
-    }
-
-    public void setUps(int ups) {
-        this.ups = ups;
-    }
-
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
-    public SiteDelicInfo(String city, String cond, String dir, String max, String temperature, String allPower, String allSaveElectricity, String allSaveMoney, String allemissions, String aveSaveElectricity, String aveSaveMoney, String aveemissions, String currentPower, String currentstorageCapacity, String partPower, int status, String statusTime, int ups, String latitude, String longitude) {
-        this.city = city;
-        this.cond = cond;
-        this.dir = dir;
-        this.max = max;
-        this.temperature = temperature;
-        this.allPower = allPower;
-        this.allSaveElectricity = allSaveElectricity;
-        this.allSaveMoney = allSaveMoney;
-        this.allemissions = allemissions;
-        this.aveSaveElectricity = aveSaveElectricity;
-        this.aveSaveMoney = aveSaveMoney;
-        this.aveemissions = aveemissions;
-        this.currentPower = currentPower;
-        this.currentstorageCapacity = currentstorageCapacity;
-        this.partPower = partPower;
-        this.status = status;
-        this.statusTime = statusTime;
-        this.ups = ups;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
-
-    private String city;
-    private String cond;
-    private String dir;
-    private String max;
-    private String temperature;
-
-    private String allPower;
-    private String allSaveElectricity;
-    private String allSaveMoney;
-    private String allemissions;
-    private String aveSaveElectricity;
-    private String aveSaveMoney;
-    private String aveemissions;
-    private String currentPower;
-    private String currentstorageCapacity;
-    private String partPower;
-    private int status;
-    private String statusTime;
-    private int ups;
-    private String latitude;
-    private String longitude;
 }

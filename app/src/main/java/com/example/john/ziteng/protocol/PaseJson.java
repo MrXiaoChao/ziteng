@@ -521,41 +521,7 @@ public class PaseJson {
         return passWord;
     }
 
-    //站点详情及天气状况
-    public static SiteDelicInfo sitedelicInfo(String json) {
-        SiteDelicInfo siteDelicInfo = null;
-        try {
-            JSONObject object = new JSONObject(json);
-            JSONObject object1 = object.getJSONObject("cw");
-            String city = object1.getString("city");
-            String cond = object1.getString("cond");
-            String dir = object1.getString("dir");
-            String max = object1.getString("max");
-            String temperature = object1.getString("temperature");
-            JSONObject object2 = object.getJSONObject("ss");
-            String allPower = object2.getString("allPower");
-            String allSaveElectricity = object2.getString("allSaveElectricity");
-            String allSaveMoney = object2.getString("allSaveMoney");
-            String allemissions = object2.getString("allemissions");
-            String aveSaveElectricity = object2.getString("aveSaveElectricity");
-            String aveSaveMoney = object2.getString("aveSaveMoney");
-            String aveemissions = object2.getString("aveemissions");
-            String currentPower = object2.getString("currentPower");
-            String currentstorageCapacity = object2.getString("currentstorageCapacity");
-            String partPower = object2.getString("partPower");
-            String latitude = object2.getString("latitude");
-            String longitude = object2.getString("longitude");
-            int status = object2.getInt("status");
-            String statusTime = object2.getString("statusTime");
-            int ups = object2.getInt("ups");
-            siteDelicInfo = new SiteDelicInfo(city, cond, dir, max, temperature, allPower, allSaveElectricity,
-                    allSaveMoney, allemissions, aveSaveElectricity, aveSaveMoney, aveemissions, currentPower,
-                    currentstorageCapacity, partPower, status, statusTime, ups, latitude, longitude);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return siteDelicInfo;
-    }
+
 
     //站点关键数据
     public static SiteGuangJiang sitegj(String josn) {

@@ -69,7 +69,7 @@ public class DeviceGroupExListAdapter extends BaseExpandableListAdapter {
         DeviceGroup doi = groupList.get(groupPosition);
         view = LayoutInflater.from(context).inflate(R.layout.grouplist, null);
         TextView textView = (TextView) view.findViewById(R.id.groupTextView);
-        textView.setText("设备群-"+doi.getGroupName());
+        textView.setText("设备群-"+doi.getGroupName().substring(5,7));
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         if (groupIsSelected) {
             imageView.setImageDrawable(context.getResources().getDrawable(R.mipmap.down));
@@ -92,7 +92,7 @@ public class DeviceGroupExListAdapter extends BaseExpandableListAdapter {
             textView.setText(equipListBean.getEquip_id());
             image.setImageDrawable(context.getResources().getDrawable(R.mipmap.you2));
         } else {
-            textView.setText("设备" + equipListBean.getEquip_id());
+            textView.setText("设备-" + equipListBean.getEquip_id().substring(5,7));
         }
         return view;
     }

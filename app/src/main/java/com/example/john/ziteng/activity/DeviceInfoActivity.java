@@ -50,7 +50,7 @@ public class DeviceInfoActivity extends BaseActivity {
             @Override
             public void onResponse(String s) {
                 deviceInfo = PaseJson.PaseInfo(s);
-                mc.setText(deviceInfo.getEquip_id());
+                mc.setText("设备-"+deviceInfo.getEquip_id().substring(5,7));
                 gl.setText(String.valueOf(deviceInfo.getPower())+"KW");
                 dy.setText(String.valueOf(deviceInfo.getVoltage())+"mV");
                 cn.setText(String.valueOf(deviceInfo.getStored_energy())+"KWH");

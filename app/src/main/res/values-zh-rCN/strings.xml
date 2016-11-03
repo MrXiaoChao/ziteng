@@ -56,8 +56,8 @@
 	<string name="tdpr">总共省电量和平均省电量/天</string>
 	<string name="tdmr">总共省钱数和平均省钱数/天</string>
 	<string name="tdcr">总共减少的碳排放量和平均碳排放减少量/天</string>
-	<string name="bi">站点基本信息</string>
-	<string name="sn">站点名称</string>
+	<string name="bi">基本信息</string>
+	<string name="sn">名称</string>
 	<string name="dd">部署时间</string>
 	<string name="s">储存能力</string>
 	<string name="pp">谷峰电价</string>

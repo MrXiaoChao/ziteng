@@ -50,6 +50,7 @@ public class UnitActivity extends BaseActivity implements View.OnClickListener {
     private ImageView fx;
     private MyListview listview_unit;
     private PullToRefreshScrollView scrollView;
+    private TextView name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +69,8 @@ public class UnitActivity extends BaseActivity implements View.OnClickListener {
                 unitList = PaseJson.PaseUnitlist(s);
                 if (unitList != null) {
                     listview_unit.setAdapter(new UnitlistAdapter(UnitActivity.this, (ArrayList<UnitList.ModulelistBean>) unitList.getModulelist()));
-                    unitxinxi.setText(unitList.getUnitId());
+                    name.setText(getResources().getString(R.string.ul)+"-"+unitId.substring(5,7));
+                    unitxinxi.setText("单元信息");
                     dianliu.setText(unitList.getCurrent()+"mA");
                     dianya.setText(unitList.getVoltage()+"mV");
                     switch (unitList.getStatus()){
@@ -120,6 +122,7 @@ public class UnitActivity extends BaseActivity implements View.OnClickListener {
 
 
     private void initview() {
+        name = (TextView) findViewById(R.id.unit_title);
         back = (ImageView) findViewById(R.id.unit_fanhui);
         scrollView = (PullToRefreshScrollView) findViewById(R.id.scrollView);
         unitxinxi = (TextView) findViewById(R.id.unit_xinxi);

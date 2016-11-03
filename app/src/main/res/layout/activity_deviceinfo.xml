@@ -114,7 +114,7 @@
             android:textColor="@color/gray"
             android:layout_centerVertical="true"
             android:textSize="@dimen/text_mid_2"
-            android:text="储能"
+            android:text="储能量"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView

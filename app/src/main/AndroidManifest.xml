@@ -27,7 +27,7 @@
         <!--上线lo6qotEsd8fGVZa3ZTq0vjjRP6lpWkGK-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="lo6qotEsd8fGVZa3ZTq0vjjRP6lpWkGK"/>
+            android:value="whcAA0H4FS5kY8tSwRkr0LzItFq4u1Kb"/>
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"

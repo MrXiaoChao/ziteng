@@ -64,7 +64,7 @@ public class SiteInfoActivity extends BaseActivity {
         Intent intent = getIntent();
         mapSiteInfo = (MapSiteInfo) intent.getSerializableExtra("mapsiteinfo");
         initview();
-        getDataFromService();
+//        getDataFromService();
         setDataTOUi();
     }
     private void setDataTOUi() {
@@ -117,59 +117,59 @@ public class SiteInfoActivity extends BaseActivity {
                 // 显示最后更新的时间
                 refreshView.getLoadingLayoutProxy()
                         .setLastUpdatedLabel(label);
-                getDataFromService();
+//                getDataFromService();
             }
         });
     }
-    private void getDataFromService() {
-        StringRequest request =new StringRequest(Request.Method.POST, Path.SiteDelicInfo, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String s) {
-                SiteDelicInfo siteDelicInfo= PaseJson.sitedelicInfo(s);
-                if (siteDelicInfo!=null){
-                    city.setText(siteDelicInfo.getCity());
-                    temperature.setText(siteDelicInfo.getTemperature());
-                    cond.setText(siteDelicInfo.getCond());
-                    max.setText(siteDelicInfo.getMax());
-                    dir.setText(siteDelicInfo.getDir());
-                    currentstorageCapacity.setText(siteDelicInfo.getCurrentstorageCapacity()+"KWH");
-                    currentPower.setText(siteDelicInfo.getCurrentPower()+"KW");
-                    allSaveElectricity.setText(siteDelicInfo.getAllSaveElectricity()+"KWH");
-                    aveSaveElectricity.setText(siteDelicInfo.getAveSaveElectricity()+"KWH");
-                    allSaveMoney.setText(siteDelicInfo.getAllSaveMoney()+"¥");
-                    aveSaveMoney.setText(siteDelicInfo.getAveSaveMoney()+"¥");
-                    allemissions.setText(siteDelicInfo.getAllemissions()+"t");
-                    aveemissions.setText(siteDelicInfo.getAveemissions()+"t");
-                    statusTime.setText(siteDelicInfo.getStatusTime());
-                    if (siteDelicInfo.getStatus()==1){
-                        status.setText("外电正常");
-                    }else if (siteDelicInfo.getStatus()==2){
-                        rltime.setVisibility(View.VISIBLE);
-                        status.setText("ups供电");
-                    }else if (siteDelicInfo.getStatus()==3){
-                        rltime.setVisibility(View.VISIBLE);
-                        status.setText("负载部分断电");
-                    }else if (siteDelicInfo.getStatus()==4){
-                        rltime.setVisibility(View.VISIBLE);
-                        status.setText("负载全部断电");
-                    }
-                }
-                scrollView.onRefreshComplete();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
-
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params=new HashMap<>();
-                params.put("cityId",mapSiteInfo.getCITY());
-                params.put("siteId",mapSiteInfo.getId());
-                return params;
-            }
-        };
-        MyApplication.getHttpQueue().add(request);
-    }
+//    private void getDataFromService() {
+//        StringRequest request =new StringRequest(Request.Method.POST, Path.SiteDelicInfo, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String s) {
+//                SiteDelicInfo siteDelicInfo= PaseJson.sitedelicInfo(s);
+//                if (siteDelicInfo!=null){
+//                    city.setText(siteDelicInfo.getCity());
+//                    temperature.setText(siteDelicInfo.getTemperature());
+//                    cond.setText(siteDelicInfo.getCond());
+//                    max.setText(siteDelicInfo.getMax());
+//                    dir.setText(siteDelicInfo.getDir());
+//                    currentstorageCapacity.setText(siteDelicInfo.getCurrentstorageCapacity()+"KWH");
+//                    currentPower.setText(siteDelicInfo.getCurrentPower()+"KW");
+//                    allSaveElectricity.setText(siteDelicInfo.getAllSaveElectricity()+"KWH");
+//                    aveSaveElectricity.setText(siteDelicInfo.getAveSaveElectricity()+"KWH");
+//                    allSaveMoney.setText(siteDelicInfo.getAllSaveMoney()+"¥");
+//                    aveSaveMoney.setText(siteDelicInfo.getAveSaveMoney()+"¥");
+//                    allemissions.setText(siteDelicInfo.getAllemissions()+"t");
+//                    aveemissions.setText(siteDelicInfo.getAveemissions()+"t");
+//                    statusTime.setText(siteDelicInfo.getStatusTime());
+//                    if (siteDelicInfo.getStatus()==1){
+//                        status.setText("外电正常");
+//                    }else if (siteDelicInfo.getStatus()==2){
+//                        rltime.setVisibility(View.VISIBLE);
+//                        status.setText("ups供电");
+//                    }else if (siteDelicInfo.getStatus()==3){
+//                        rltime.setVisibility(View.VISIBLE);
+//                        status.setText("负载部分断电");
+//                    }else if (siteDelicInfo.getStatus()==4){
+//                        rltime.setVisibility(View.VISIBLE);
+//                        status.setText("负载全部断电");
+//                    }
+//                }
+//                scrollView.onRefreshComplete();
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError volleyError) {
+//
+//            }
+//        }){
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String,String> params=new HashMap<>();
+//                params.put("cityId",mapSiteInfo.getCITY());
+//                params.put("siteId",mapSiteInfo.getId());
+//                return params;
+//            }
+//        };
+//        MyApplication.getHttpQueue().add(request);
+//    }
 }

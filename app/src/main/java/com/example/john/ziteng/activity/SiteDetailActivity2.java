@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.john.ziteng.R;
 import com.example.john.ziteng.domain.SiteInfo;
-import com.example.john.ziteng.fragment.CoreDataFragment;
 import com.example.john.ziteng.fragment.DeviceGroupFragment;
 import com.example.john.ziteng.fragment.HistoricalDataFragment;
 import com.example.john.ziteng.fragment.SiteDetalFragment;

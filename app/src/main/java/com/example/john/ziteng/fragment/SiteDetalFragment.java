@@ -3,12 +3,12 @@ package com.example.john.ziteng.fragment;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -17,62 +17,125 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.john.ziteng.R;
-import com.example.john.ziteng.activity.CoreDataActivity;
 import com.example.john.ziteng.activity.SiteNewsActivity;
 import com.example.john.ziteng.activity.WebMapActivity;
 import com.example.john.ziteng.activity.WebViewTotalActivity;
 import com.example.john.ziteng.application.MyApplication;
 import com.example.john.ziteng.domain.SiteDelicInfo;
-import com.example.john.ziteng.domain.SiteGuangJiang;
 import com.example.john.ziteng.domain.SiteInfo;
-import com.example.john.ziteng.protocol.PaseJson;
 import com.example.john.ziteng.urlpath.Path;
 import com.example.john.ziteng.utils.SPUtils;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 /**
  * 站点概况
- * Created by john on 2016/3/25.
+ * Created by john on 2016/10/26.
  */
 public class SiteDetalFragment extends Fragment {
-    private TextView ritd;
-    private TextView risc;
-    private TextView riups;
-    private TextView yuetd;
-    private TextView yuesc;
-    private TextView yueups;
-    private TextView niantd;
-    private TextView niansc;
-    private TextView nianups;
-    private TextView ups;
-    private TextView name;
-    private TextView time;
-    private TextView power;
-    private TextView dianjia;
+    @BindView(R.id.city)
+    TextView city;
+    @BindView(R.id.temperature)
+    TextView temperature;
+    @BindView(R.id.cond)
+    TextView cond;
+    @BindView(R.id.max)
+    TextView max;
+    @BindView(R.id.dir)
+    TextView dir;
+    @BindView(R.id.tv_mingcheng)
+    TextView tvMingcheng;
+    @BindView(R.id.rl_zhandian)
+    RelativeLayout rlZhandian;
+    @BindView(R.id.tv_zhuantai)
+    TextView tvZhuantai;
+    @BindView(R.id.rl_zhuantai)
+    RelativeLayout rlZhuantai;
+    @BindView(R.id.tv_xchucun)
+    TextView tvXchucun;
+    @BindView(R.id.rl_xchucun)
+    RelativeLayout rlXchucun;
+    @BindView(R.id.tv_zchucun)
+    TextView tvZchucun;
+    @BindView(R.id.rl_zchucun)
+    RelativeLayout rlZchucun;
+    @BindView(R.id.tv_gonglv)
+    TextView tvGonglv;
+    @BindView(R.id.rl_gonglv)
+    RelativeLayout rlGonglv;
+    @BindView(R.id.tv_zdianl)
+    TextView tvZdianl;
+    @BindView(R.id.rl_zdianl)
+    RelativeLayout rlZdianl;
+    @BindView(R.id.tv_shijian)
+    TextView tvShijian;
+    @BindView(R.id.rl_pers)
+    RelativeLayout rlPers;
+    @BindView(R.id.dianjia)
+    TextView dianjia;
+    @BindView(R.id.rl_ponal)
+    RelativeLayout rlPonal;
+    @BindView(R.id.iv_jingji)
+    ImageView ivJingji;
+    @BindView(R.id.rl_jingji)
+    RelativeLayout rlJingji;
+    @BindView(R.id.tv_zsdl)
+    TextView tvZsdl;
+    @BindView(R.id.tv_psdl)
+    TextView tvPsdl;
+    @BindView(R.id.tv_zsqs)
+    TextView tvZsqs;
+    @BindView(R.id.tv_psqs)
+    TextView tvPsqs;
+    @BindView(R.id.tv_ztjsl)
+    TextView tvZtjsl;
+    @BindView(R.id.tv_ptjsl)
+    TextView tvPtjsl;
+    @BindView(R.id.ll_jingji)
+    LinearLayout llJingji;
+    @BindView(R.id.iv_guanjian)
+    ImageView ivGuanjian;
+    @BindView(R.id.rl_guanjian)
+    RelativeLayout rlGuanjian;
+    @BindView(R.id.tv_dtd)
+    TextView tvDtd;
+    @BindView(R.id.tv_dtdzsc)
+    TextView tvDtdzsc;
+    @BindView(R.id.tv_dups)
+    TextView tvDups;
+    @BindView(R.id.tv_ytd)
+    TextView tvYtd;
+    @BindView(R.id.tv_ytdsc)
+    TextView tvYtdsc;
+    @BindView(R.id.tv_yups)
+    TextView tvYups;
+    @BindView(R.id.tv_ntd)
+    TextView tvNtd;
+    @BindView(R.id.tv_ntdzsc)
+    TextView tvNtdzsc;
+    @BindView(R.id.tv_nups)
+    TextView tvNups;
+    @BindView(R.id.ll_guanjian)
+    LinearLayout llGuanjian;
+    @BindView(R.id.ll_warm)
+    RelativeLayout llWarm;
+    @BindView(R.id.ll_news)
+    RelativeLayout llNews;
+    @BindView(R.id.ll_map)
+    RelativeLayout llMap;
+    @BindView(R.id.view1)
+    View view1;
+    @BindView(R.id.view2)
+    View view2;
     private SiteInfo site;
-    private TextView city;
-    private TextView temperature;
-    private TextView cond;
-    private TextView max;
-    private TextView dir;
-    private TextView currentstorageCapacity;
-    private TextView currentPower;
-    private TextView allSaveElectricity;
-    private TextView aveSaveElectricity;
-    private TextView allSaveMoney;
-    private TextView aveSaveMoney;
-    private TextView allemissions;
-    private TextView aveemissions;
-    private TextView status;
-    private TextView statusTime;
-    private RelativeLayout rltime;
-    private SiteDelicInfo siteDelicInfo;
-    private PullToRefreshScrollView scrollView;
     private String level;
+    private SiteDelicInfo siteDelicInfo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -81,125 +144,104 @@ public class SiteDetalFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         site = (SiteInfo) intent.getSerializableExtra("siteInfo");
         level = (String) SPUtils.get(getActivity(), "level", "一级用户");
+        ButterKnife.bind(this, view);
         initview(view);
-        name.setText(site.getName());
-        time.setText(site.getDeploytime());
-        power.setText(site.getStorageCapacity());
-        dianjia.setText(site.getElectrovalency());
-        getDataFromService();
-        getdataFromService();
         return view;
     }
 
-    //从服务器获取数据
-    private void getDataFromService() {
-        StringRequest request = new StringRequest(Request.Method.POST, Path.SiteDelicInfo, new Response.Listener<String>() {
+    private void initview(View view) {
+        if (level.equals("一级用户")||level.equals("二级用户")){
+            llWarm.setVisibility(View.GONE);
+        }
+        StringRequest request =new StringRequest(Request.Method.POST, Path.sitexq, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
-                siteDelicInfo = PaseJson.sitedelicInfo(s);
-                if (siteDelicInfo != null) {
-                    city.setText(siteDelicInfo.getCity());
-                    temperature.setText(siteDelicInfo.getTemperature());
-                    cond.setText(siteDelicInfo.getCond());
-                    max.setText(siteDelicInfo.getMax());
-                    dir.setText(siteDelicInfo.getDir());
-                    currentstorageCapacity.setText(siteDelicInfo.getCurrentstorageCapacity() + "KWH");
-                    currentPower.setText(siteDelicInfo.getCurrentPower() + "KW");
-                    allSaveElectricity.setText(siteDelicInfo.getAllSaveElectricity() + "KW");
-                    aveSaveElectricity.setText(siteDelicInfo.getAveSaveElectricity() + "KW");
-                    allSaveMoney.setText(siteDelicInfo.getAllSaveMoney() + "¥");
-                    aveSaveMoney.setText(siteDelicInfo.getAveSaveMoney() + "¥");
-                    allemissions.setText(siteDelicInfo.getAllemissions() + "t");
-                    aveemissions.setText(siteDelicInfo.getAveemissions() + "t");
-                    statusTime.setText(siteDelicInfo.getStatusTime());
-                    if (siteDelicInfo.getStatus() == 1) {
-                        status.setText("外电正常");
-                    } else if (siteDelicInfo.getStatus() == 2) {
-                        rltime.setVisibility(View.VISIBLE);
-                        status.setText("ups供电");
-                    } else if (siteDelicInfo.getStatus() == 3) {
-                        rltime.setVisibility(View.VISIBLE);
-                        status.setText("负载部分断电");
-                    } else if (siteDelicInfo.getStatus() == 4) {
-                        rltime.setVisibility(View.VISIBLE);
-                        status.setText("负载全部断电");
-                    }
+                Gson gson=new Gson();
+                siteDelicInfo = gson.fromJson(s,SiteDelicInfo.class);
+                if (siteDelicInfo.getWeather().getCity()!=null){
+                    city.setText(siteDelicInfo.getWeather().getCity());
+                    cond.setText(siteDelicInfo.getWeather().getCond());
+                    dir.setText(siteDelicInfo.getWeather().getDir());
+                    max.setText(siteDelicInfo.getWeather().getMax());
+                    temperature.setText(siteDelicInfo.getWeather().getTemperature());
                 }
-                scrollView.onRefreshComplete();
+                if (siteDelicInfo.getBaseInformation().getName()!=null){
+                    tvMingcheng.setText(siteDelicInfo.getBaseInformation().getName());
+                    tvZhuantai.setText(siteDelicInfo.getBaseInformation().getSiteState());
+                    tvXchucun.setText(siteDelicInfo.getBaseInformation().getEnergy_storage()+"kwh");
+                    tvZchucun.setText(siteDelicInfo.getBaseInformation().getStorageCapacity()+"kwh");
+                    tvGonglv.setText(siteDelicInfo.getBaseInformation().getPower()+"kw");
+                    tvZdianl.setText(siteDelicInfo.getBaseInformation().getAllUps());
+                    tvShijian.setText(siteDelicInfo.getBaseInformation().getDeploytime());
+                    dianjia.setText("¥ "+ siteDelicInfo.getBaseInformation().getElectrovalency());
+                }
+                if (siteDelicInfo.getBenefit().getAllSaveElectricity()!=null){
+                    tvZsdl.setText(siteDelicInfo.getBenefit().getAllSaveElectricity()+"kwh");
+                    tvPsdl.setText(siteDelicInfo.getBenefit().getAveSaveElectricity()+"kwh");
+                    tvZsqs.setText("¥ "+ siteDelicInfo.getBenefit().getAllSaveMoney());
+                    tvPsqs.setText("¥ "+ siteDelicInfo.getBenefit().getAveSaveMoney());
+                    tvZtjsl.setText(siteDelicInfo.getBenefit().getAllemissions()+" t");
+                    tvPtjsl.setText(siteDelicInfo.getBenefit().getAveemissions()+" t");
+                }
+                if (siteDelicInfo.getKeyDate().getDayOutpowerNum()!=null){
+                    tvDtd.setText(siteDelicInfo.getKeyDate().getDayOutpowerNum());
+                    tvDtdzsc.setText(siteDelicInfo.getKeyDate().getDayOutpowerOfen()+" h");
+                    tvDups.setText(siteDelicInfo.getKeyDate().getDayUps()+" h");
+                    tvYtd.setText(siteDelicInfo.getKeyDate().getMonOutpowerNum());
+                    tvYtdsc.setText(siteDelicInfo.getKeyDate().getMonOutpowerOfen()+" h");
+                    tvYups.setText(siteDelicInfo.getKeyDate().getMonUps()+" h");
+                    tvNtd.setText(siteDelicInfo.getKeyDate().getYearOutpowerNum());
+                    tvNtdzsc.setText(siteDelicInfo.getKeyDate().getYearOutpowerOfen()+" h");
+                    tvNups.setText(siteDelicInfo.getKeyDate().getYearUps()+" h");
+                }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
+
             }
-        }) {
+        }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
+                Map<String, String> params = new HashMap<String, String>();
                 params.put("cityId", site.getCity());
                 params.put("siteId", site.getSite_id());
                 return params;
             }
         };
         MyApplication.getHttpQueue().add(request);
+
     }
-    private void initview(View view) {
-        scrollView = (PullToRefreshScrollView) view.findViewById(R.id.sv);
-        name = (TextView) view.findViewById(R.id.tv_mingcheng);
-        time = (TextView) view.findViewById(R.id.tv_shijian);
-        power = (TextView) view.findViewById(R.id.tv_nengli);
-        dianjia = (TextView) view.findViewById(R.id.dianjia);
-        city = (TextView) view.findViewById(R.id.city);
-        temperature = (TextView) view.findViewById(R.id.temperature);
-        cond = (TextView) view.findViewById(R.id.cond);
-        max = (TextView) view.findViewById(R.id.max);
-        dir = (TextView) view.findViewById(R.id.dir);
-        currentstorageCapacity = (TextView) view.findViewById(R.id.currentstorageCapacity);
-        currentPower = (TextView) view.findViewById(R.id.currentPower);
-        allSaveElectricity = (TextView) view.findViewById(R.id.allSaveElectricity);
-        aveSaveElectricity = (TextView) view.findViewById(R.id.aveSaveElectricity);
-        allSaveMoney = (TextView) view.findViewById(R.id.allSaveMoney);
-        aveSaveMoney = (TextView) view.findViewById(R.id.aveSaveMoney);
-        allemissions = (TextView) view.findViewById(R.id.allemissions);
-        aveemissions = (TextView) view.findViewById(R.id.aveemissions);
-        status = (TextView) view.findViewById(R.id.status);
-        statusTime = (TextView) view.findViewById(R.id.statusTime);
-        rltime = (RelativeLayout) view.findViewById(R.id.re_time);
-        ritd = (TextView)view. findViewById(R.id.tv_ritd);
-        risc = (TextView)view.findViewById(R.id.tv_risc);
-        riups = (TextView) view.findViewById(R.id.tv_riups);
-        yuetd = (TextView) view.findViewById(R.id.tv_yuetd);
-        yuesc = (TextView) view.findViewById(R.id.tv_yuesc);
-        yueups = (TextView) view.findViewById(R.id.tv_yueups);
-        niantd = (TextView) view.findViewById(R.id.tv_niantd);
-        niansc = (TextView) view.findViewById(R.id.tv_niansc);
-        nianups = (TextView) view.findViewById(R.id.tv_nianups);
-        ups = (TextView) view.findViewById(R.id.tv_zups);
-        RelativeLayout news = (RelativeLayout) view.findViewById(R.id.ll_news);
-        RelativeLayout map = (RelativeLayout) view.findViewById(R.id.ll_map);
-        RelativeLayout warm = (RelativeLayout) view.findViewById(R.id.ll_warm);
-        if (level.equals("一级用户")||level.equals("二级用户")){
-            warm.setVisibility(View.GONE);
-        }
-        news.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), SiteNewsActivity.class);
-                intent.putExtra("siteId", site.getSite_id());
-                startActivity(intent);
-            }
-        });
-        map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), WebMapActivity.class);
-                intent.putExtra("latitude", siteDelicInfo.getLatitude());
-                intent.putExtra("longitude", siteDelicInfo.getLongitude());
-                startActivity(intent);
-            }
-        });
-        warm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+
+    private boolean flag=true;
+    private boolean flag1=true;
+
+    @OnClick({R.id.rl_jingji, R.id.rl_guanjian, R.id.ll_warm, R.id.ll_news, R.id.ll_map})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.rl_jingji://经济环境效益
+                if (flag) {
+                    llJingji.setVisibility(View.VISIBLE);
+                    view1.setVisibility(View.VISIBLE);
+                    flag = false;
+                } else {
+                    llJingji.setVisibility(View.GONE);
+                    view1.setVisibility(View.GONE);
+                    flag = true;
+                }
+                break;
+            case R.id.rl_guanjian://关键数据
+                if (flag1) {
+                    view2.setVisibility(View.VISIBLE);
+                    llGuanjian.setVisibility(View.VISIBLE);
+                    flag1 = false;
+                } else {
+                    view2.setVisibility(View.GONE);
+                    llGuanjian.setVisibility(View.GONE);
+                    flag1 = true;
+                }
+                break;
+            case R.id.ll_warm://站点告警
                 StringBuffer url = new StringBuffer();
                 url.append(Path.SiteWarm);
                 url.append(site.getSite_id() + "&");
@@ -213,60 +255,18 @@ public class SiteDetalFragment extends Fragment {
                 intent.putExtra("biaoti", "站点告警");
                 intent.putExtra("URL", String.valueOf(url));
                 startActivity(intent);
-            }
-        });
-        scrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ScrollView>() {
-            @Override
-            public void onRefresh(PullToRefreshBase<ScrollView> refreshView) {
-                String label = DateUtils.formatDateTime(
-                        getActivity(),
-                        System.currentTimeMillis(),
-                        DateUtils.FORMAT_SHOW_TIME
-                                | DateUtils.FORMAT_SHOW_DATE
-                                | DateUtils.FORMAT_ABBREV_ALL);
-                // 显示最后更新的时间
-                refreshView.getLoadingLayoutProxy()
-                        .setLastUpdatedLabel(label);
-                getDataFromService();
-                getdataFromService();
-            }
-        });
-
+                break;
+            case R.id.ll_news://站点新闻
+                Intent intent2 = new Intent(getActivity(), SiteNewsActivity.class);
+                intent2.putExtra("siteId", site.getSite_id());
+                startActivity(intent2);
+                break;
+            case R.id.ll_map://站点地图
+                Intent intent1 = new Intent(getActivity(), WebMapActivity.class);
+                intent1.putExtra("latitude",siteDelicInfo.getBaseInformation().getLatitude());
+                intent1.putExtra("longitude", siteDelicInfo.getBaseInformation().getLongitude());
+                startActivity(intent1);
+                break;
+        }
     }
-    private void getdataFromService() {
-        StringRequest request =new StringRequest(Request.Method.POST, Path.SiteGuanJiang, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String s) {
-                SiteGuangJiang siteGuangJiang= PaseJson.sitegj(s);
-                if (siteGuangJiang!=null){
-                    ritd.setText(siteGuangJiang.getDayOutpowerNum());
-                    risc.setText(siteGuangJiang.getDayOutpowerOfen()+"h");
-                    riups.setText(siteGuangJiang.getDayUps()+"h");
-                    yuetd.setText(siteGuangJiang.getMonOutpowerNum());
-                    yuesc.setText(siteGuangJiang.getMonOutpowerOfen()+"h");
-                    yueups.setText(siteGuangJiang.getMonUps()+"h");
-                    niantd.setText(siteGuangJiang.getYearOutpowerNum());
-                    niansc.setText(siteGuangJiang.getYearOutpowerOfen()+"h");
-                    nianups.setText(siteGuangJiang.getYearUps()+"h");
-                    ups.setText(siteGuangJiang.getAllUps());
-                }
-                scrollView.onRefreshComplete();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
-
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params=new HashMap<>();
-                params.put("siteId",site.getSite_id());
-                return params;
-            }
-        };
-        MyApplication.getHttpQueue().add(request);
-    }
-
-
 }

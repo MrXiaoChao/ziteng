@@ -218,4 +218,6 @@ public class Path {
     public static String DGJ="http://123.57.251.129:8088/dem/client/clientequip!doNotNeedSessionAndSecurity_controlMoudleOperations.do?";
     //修改用户登录密码
     public static String CP="http://123.57.251.129:8088/dem/client/clientinter!doNotNeedSessionAndSecurity_updatePassword.do?";
+    //站点详情新接口
+    public static String sitexq="http://123.57.251.129:8088/dem/client/clientcity!doNotNeedSessionAndSecurity_stationDetails.do?";
 }

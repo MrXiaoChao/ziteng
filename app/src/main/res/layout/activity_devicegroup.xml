@@ -23,7 +23,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="@string/dl"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_big" />
         </RelativeLayout>
@@ -56,8 +55,11 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="6dp"
                         android:gravity="center"
+                        android:text="设备信息"
                         android:textColor="@color/blue"
-                        android:textSize="@dimen/text_mid"></TextView>
+                        android:textSize="@dimen/text_mid">
+
+                    </TextView>
 
                     <ImageView
                         android:id="@+id/image_fx"
