@@ -2,10 +2,8 @@ package com.example.john.ziteng.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -16,10 +14,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.john.ziteng.R;
 import com.example.john.ziteng.application.MyApplication;
 import com.example.john.ziteng.domain.SiteGuangJiang;
-import com.example.john.ziteng.domain.SiteInfo;
 import com.example.john.ziteng.protocol.PaseJson;
 import com.example.john.ziteng.urlpath.Path;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 
 import java.util.HashMap;
@@ -70,7 +66,7 @@ public class CoreDataActivity extends BaseActivity{
                     nianups.setText(siteGuangJiang.getYearUps()+"h");
                     ups.setText(siteGuangJiang.getAllUps());
                 }
-                scrollView.onRefreshComplete();
+//                scrollView.onRefreshComplete();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -90,7 +86,7 @@ public class CoreDataActivity extends BaseActivity{
 
     private void initview() {
         back = (ImageView) findViewById(R.id.coredata_fanhui);
-        scrollView = (PullToRefreshScrollView)findViewById(R.id.sv);
+//        scrollView = (PullToRefreshScrollView)findViewById(R.id.sv);
         ritd = (TextView) findViewById(R.id.tv_ritd);
         risc = (TextView)findViewById(R.id.tv_risc);
         riups = (TextView) findViewById(R.id.tv_riups);
@@ -107,20 +103,20 @@ public class CoreDataActivity extends BaseActivity{
                 finish();
             }
         });
-        scrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ScrollView>() {
-            @Override
-            public void onRefresh(PullToRefreshBase<ScrollView> refreshView) {
-                String label = DateUtils.formatDateTime(
-                        CoreDataActivity.this,
-                        System.currentTimeMillis(),
-                        DateUtils.FORMAT_SHOW_TIME
-                                | DateUtils.FORMAT_SHOW_DATE
-                                | DateUtils.FORMAT_ABBREV_ALL);
-                // 显示最后更新的时间
-                refreshView.getLoadingLayoutProxy()
-                        .setLastUpdatedLabel(label);
-                getDataFromService();
-            }
-        });
+//        scrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ScrollView>() {
+//            @Override
+//            public void onRefresh(PullToRefreshBase<ScrollView> refreshView) {
+//                String label = DateUtils.formatDateTime(
+//                        CoreDataActivity.this,
+//                        System.currentTimeMillis(),
+//                        DateUtils.FORMAT_SHOW_TIME
+//                                | DateUtils.FORMAT_SHOW_DATE
+//                                | DateUtils.FORMAT_ABBREV_ALL);
+//                // 显示最后更新的时间
+//                refreshView.getLoadingLayoutProxy()
+//                        .setLastUpdatedLabel(label);
+//                getDataFromService();
+//            }
+//        });
     }
 }

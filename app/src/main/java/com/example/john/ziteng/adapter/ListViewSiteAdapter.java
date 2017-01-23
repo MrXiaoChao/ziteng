@@ -64,21 +64,37 @@ public class ListViewSiteAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         //防止图片加载异位
-        if (!TextUtils.isEmpty(siteInfo.getUrl())){
+        if (!TextUtils.isEmpty(siteInfo.getUrl())) {
             imageLoader.displayImage(siteInfo.getUrl(), holder.icon, options);
-        }else {
+        } else {
             imageLoader.displayImage("", holder.icon, options);
         }
-        if (siteInfo.getAnElectric().equals("外电正常")){
+
+        if (siteInfo.getAnElectric().equals("外电正常")) {
             holder.waidian.setTextColor(context.getResources().getColor(R.color.green));
-        }else if (siteInfo.getAnElectric().equals("UPS供电")||siteInfo.getAnElectric().equals("后备电源供电")){
+        } else if (siteInfo.getAnElectric().equals("UPS供电") || siteInfo.getAnElectric().equals("后备电源供电")) {
             holder.waidian.setTextColor(context.getResources().getColor(R.color.orange));
-        }else if (siteInfo.getAnElectric().equals("负载部分断电")||siteInfo.getAnElectric().equals("负载全部断电")){
+        } else if (siteInfo.getAnElectric().equals("负载部分断电") || siteInfo.getAnElectric().equals("负载全部断电")) {
             holder.waidian.setTextColor(context.getResources().getColor(R.color.red));
         }
-        holder.waidian.setText(siteInfo.getAnElectric());
-        holder.tital.setText(siteInfo.getName());
+    //中英文转换，服务器只返回中文，所以本地实现，多加判断条件
+        if (!TextUtils.isEmpty(siteInfo.getAnElectric())) {
+            if (siteInfo.getAnElectric().equals("外电正常")) {
+                holder.waidian.setText(context.getResources().getString(R.string.wdzc));
+            }else if (siteInfo.getAnElectric().equals("负载部分断电")){
+                holder.waidian.setText(context.getResources().getString(R.string.fzbfdd));
+            }else if (siteInfo.getAnElectric().equals("UPS供电")){
+                holder.waidian.setText(context.getResources().getString(R.string.upsgd));
+            }else if (siteInfo.getAnElectric().equals("负载全部断电")){
+                holder.waidian.setText(context.getResources().getString(R.string.fzqbdd));
+            }else if (siteInfo.getAnElectric().equals("后备电源供电")){
+                holder.waidian.setText(context.getResources().getString(R.string.hbdygd));
+            }
+        } else {
+            holder.waidian.setText("");
+        }
 
+        holder.tital.setText(siteInfo.getName());
 
         return convertView;
     }

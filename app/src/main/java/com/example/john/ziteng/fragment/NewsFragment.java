@@ -38,6 +38,7 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_news, container, false);
         initView(view);
+        setDefaultFragment();
         setTabSelected(btn1);
         return view;
     }
@@ -47,7 +48,6 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
-        setDefaultFragment();
     }
 
     private void initView(View view) {

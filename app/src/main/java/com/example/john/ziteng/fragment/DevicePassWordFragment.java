@@ -32,7 +32,7 @@ public class DevicePassWordFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_devicepassword, null);
         password = (EditText) view.findViewById(R.id.device_password);
         builder.setView(view)
-                .setPositiveButton("确定",
+                .setPositiveButton(getActivity().getResources().getString(R.string.confirm),
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {

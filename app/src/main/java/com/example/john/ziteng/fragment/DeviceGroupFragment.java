@@ -3,7 +3,6 @@ package com.example.john.ziteng.fragment;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.john.ziteng.R;
 import com.example.john.ziteng.activity.DeviceGroupActivity;
-import com.example.john.ziteng.activity.DeviceGroupInfoActivity;
 import com.example.john.ziteng.adapter.DeviceGroupExListAdapter;
 import com.example.john.ziteng.application.MyApplication;
 import com.example.john.ziteng.domain.DeviceGroup;
@@ -25,8 +23,6 @@ import com.example.john.ziteng.domain.SiteInfo;
 import com.example.john.ziteng.protocol.PaseJson;
 import com.example.john.ziteng.urlpath.Path;
 import com.example.john.ziteng.utils.SPUtils;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshExpandableListView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,7 +55,7 @@ public class DeviceGroupFragment extends Fragment {
             @Override
             public void onResponse(String s) {
                 pb.setVisibility(View.GONE);
-                list = PaseJson.PaseDevice(s);
+                list = PaseJson.PaseDevice(s,getActivity());
                 DeviceGroupExListAdapter adapter = new DeviceGroupExListAdapter(getActivity(), list);
                 if (getActivity() != null && adapter != null) {
                     deviceExlist.setAdapter(adapter);
@@ -77,18 +73,7 @@ public class DeviceGroupFragment extends Fragment {
                    @Override
                    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                        DeviceGroup deviceGroup = list.get(groupPosition);
-                       String deploy_time = deviceGroup.getDeploy_time();
-                       int voltage = deviceGroup.getVoltage();
-                       int stored_energy = deviceGroup.getStored_energy();
-                       int power = deviceGroup.getPower();
-                       if (childPosition == 0) {
-                           Intent intent = new Intent(getActivity(), DeviceGroupInfoActivity.class);
-                           intent.putExtra("deploy_time", deploy_time);
-                           intent.putExtra("voltage", voltage);
-                           intent.putExtra("power", power);
-                           intent.putExtra("stored_energy", stored_energy);
-                           startActivity(intent);
-                       } else {
+                       if (childPosition >4) {
                            String equipId = String.valueOf(SPUtils.put(getActivity(), "equipId", deviceGroup.getEquipList().get(childPosition).getEquipId()));
                            Intent intent = new Intent(getActivity(), DeviceGroupActivity.class);
                            intent.putExtra("group_id", deviceGroup.getGroupId());

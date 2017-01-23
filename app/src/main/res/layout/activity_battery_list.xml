@@ -62,7 +62,7 @@
                 android:layout_height="45dp">
 
                 <TextView
-                    android:text="电池信息"
+                    android:text="@string/dcxx"
                     android:id="@+id/unit_xinxi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -105,7 +105,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="12dp"
                         android:gravity="center_vertical"
-                        android:text="状态"
+                        android:text="@string/zta"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/text_mid_2" />
 
@@ -123,6 +123,7 @@
                 </RelativeLayout>
 
                 <View
+                    android:layout_marginLeft="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:background="@color/gray" />
@@ -138,7 +139,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="12dp"
                         android:gravity="center_vertical"
-                        android:text="温度"
+                        android:text="@string/wd"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/text_mid_2" />
 
@@ -156,6 +157,7 @@
                 </RelativeLayout>
 
                 <View
+                    android:layout_marginLeft="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:background="@color/gray" />
@@ -171,7 +173,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="12dp"
                         android:gravity="center_vertical"
-                        android:text="电流"
+                        android:text="@string/dl1"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/text_mid_2" />
 
@@ -189,6 +191,7 @@
                 </RelativeLayout>
 
                 <View
+                    android:layout_marginLeft="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:background="@color/gray" />
@@ -204,7 +207,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="12dp"
                         android:gravity="center_vertical"
-                        android:text="电压"
+                        android:text="@string/dy"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/text_mid_2" />
 
@@ -222,6 +225,7 @@
                 </RelativeLayout>
 
                 <View
+                    android:layout_marginLeft="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:background="@color/gray" />
@@ -255,6 +259,7 @@
                 </RelativeLayout>
 
                 <View
+                    android:layout_marginLeft="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:background="@color/gray" />
@@ -315,7 +320,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="12dp"
                     android:gravity="center_vertical"
-                    android:text="历史数据"
+                    android:text="@string/lssj"
                     android:textColor="@color/blue"
                     android:textSize="@dimen/text_mid_2" />
 

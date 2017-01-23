@@ -1,44 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:more="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <View
-        android:background="#f7f7f7"
-        android:layout_width="match_parent"
-        android:layout_height="8dp"/>
     <LinearLayout
         android:layout_marginLeft="15dp"
         android:layout_marginRight="20dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="55dp">
+        android:layout_height="wrap_content">
         <TextView
-            android:singleLine="true"
-            android:id="@+id/tv_warn_tital"
+            android:layout_marginTop="5dp"
+            android:id="@+id/tv_warn_site"
             android:gravity="center_vertical"
             android:layout_gravity="center_vertical"
             android:textColor="@color/blue"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_weight="1"
-            android:singleLine="true"
-            android:id="@+id/tv_warn_site"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_vertical"
-            android:textColor="#666666"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
-            android:maxLines="2"
-            android:ellipsize="end"
             android:id="@+id/tv_warn_time"
-            android:gravity="right"
+            android:gravity="center_horizontal"
             android:layout_gravity="center_vertical"
             android:textColor="#999999"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        <com.example.john.ziteng.view.MoreTextView
+            android:layout_marginBottom="5dp"
+            android:id="@+id/tv_warn_tital"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            more:textColor="#999999"
+            more:maxLine="1"
+            more:textSize="14dp"
+           />
 
     </LinearLayout>
 

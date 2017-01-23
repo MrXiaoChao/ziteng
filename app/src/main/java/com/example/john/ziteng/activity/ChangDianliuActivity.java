@@ -60,10 +60,10 @@ public class ChangDianliuActivity extends Activity implements View.OnClickListen
                     Intent intent1=new Intent(ChangDianliuActivity.this,DeviceModerActivity.class);
                     intent1.putExtra("electric",electric);
                     setResult(1,intent1);
-                    Toast.makeText(ChangDianliuActivity.this,"修改成功",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChangDianliuActivity.this,getResources().getString(R.string.xgcg),Toast.LENGTH_SHORT).show();
                     finish();
                 }else {
-                    Toast.makeText(ChangDianliuActivity.this,"修改失败",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChangDianliuActivity.this,getResources().getString(R.string.xgsb),Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {

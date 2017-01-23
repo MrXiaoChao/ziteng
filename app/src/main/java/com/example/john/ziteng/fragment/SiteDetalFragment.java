@@ -17,9 +17,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.john.ziteng.R;
+import com.example.john.ziteng.activity.GaoJingInfoActivity;
 import com.example.john.ziteng.activity.SiteNewsActivity;
 import com.example.john.ziteng.activity.WebMapActivity;
-import com.example.john.ziteng.activity.WebViewTotalActivity;
 import com.example.john.ziteng.application.MyApplication;
 import com.example.john.ziteng.domain.SiteDelicInfo;
 import com.example.john.ziteng.domain.SiteInfo;
@@ -136,12 +136,16 @@ public class SiteDetalFragment extends Fragment {
     private SiteInfo site;
     private String level;
     private SiteDelicInfo siteDelicInfo;
+    private String cityId;
+    private String siteId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_site_datils, container, false);
         //拿到关注站点传过来的对象
         Intent intent = getActivity().getIntent();
+        cityId = intent.getStringExtra("cityId");
+        siteId = intent.getStringExtra("siteId");
         site = (SiteInfo) intent.getSerializableExtra("siteInfo");
         level = (String) SPUtils.get(getActivity(), "level", "一级用户");
         ButterKnife.bind(this, view);
@@ -150,49 +154,63 @@ public class SiteDetalFragment extends Fragment {
     }
 
     private void initview(View view) {
-        if (level.equals("一级用户")||level.equals("二级用户")){
+        if (level.equals("一级用户") || level.equals("二级用户")) {
             llWarm.setVisibility(View.GONE);
         }
-        StringRequest request =new StringRequest(Request.Method.POST, Path.sitexq, new Response.Listener<String>() {
+        if (siteId != null) {
+
+        }
+        StringRequest request = new StringRequest(Request.Method.POST, Path.sitexq, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
-                Gson gson=new Gson();
-                siteDelicInfo = gson.fromJson(s,SiteDelicInfo.class);
-                if (siteDelicInfo.getWeather().getCity()!=null){
+                Gson gson = new Gson();
+                siteDelicInfo = gson.fromJson(s, SiteDelicInfo.class);
+                if (siteDelicInfo.getWeather().getCity() != null) {
                     city.setText(siteDelicInfo.getWeather().getCity());
                     cond.setText(siteDelicInfo.getWeather().getCond());
                     dir.setText(siteDelicInfo.getWeather().getDir());
                     max.setText(siteDelicInfo.getWeather().getMax());
                     temperature.setText(siteDelicInfo.getWeather().getTemperature());
                 }
-                if (siteDelicInfo.getBaseInformation().getName()!=null){
+                if (siteDelicInfo.getBaseInformation().getName() != null) {
                     tvMingcheng.setText(siteDelicInfo.getBaseInformation().getName());
-                    tvZhuantai.setText(siteDelicInfo.getBaseInformation().getSiteState());
-                    tvXchucun.setText(siteDelicInfo.getBaseInformation().getEnergy_storage()+"kwh");
-                    tvZchucun.setText(siteDelicInfo.getBaseInformation().getStorageCapacity()+"kwh");
-                    tvGonglv.setText(siteDelicInfo.getBaseInformation().getPower()+"kw");
-                    tvZdianl.setText(siteDelicInfo.getBaseInformation().getAllUps());
+                    //状态
+                    if (siteDelicInfo.getBaseInformation().getSiteState().equals("外电正常")) {
+                        tvZhuantai.setText(getResources().getString(R.string.wdzc));
+                    } else if (siteDelicInfo.getBaseInformation().getSiteState().equals("负载部分断电")) {
+                        tvZhuantai.setText(getActivity().getResources().getString(R.string.fzbfdd));
+                    } else if (siteDelicInfo.getBaseInformation().getSiteState().equals("UPS供电")) {
+                        tvZhuantai.setText(getActivity().getResources().getString(R.string.upsgd));
+                    } else if (siteDelicInfo.getBaseInformation().getSiteState().equals("负载全部断电")) {
+                        tvZhuantai.setText(getActivity().getResources().getString(R.string.fzqbdd));
+                    } else if (siteDelicInfo.getBaseInformation().getSiteState().equals("后备电源供电")) {
+                        tvZhuantai.setText(getActivity().getResources().getString(R.string.hbdygd));
+                    }
+                    tvXchucun.setText(siteDelicInfo.getBaseInformation().getStatusTime());
+                    tvZchucun.setText(siteDelicInfo.getBaseInformation().getEnergy_storage() + "kwh" + "/" + siteDelicInfo.getBaseInformation().getStorageCapacity() + "kwh");
+                    tvGonglv.setText(siteDelicInfo.getBaseInformation().getPower() + "kw");
+                    tvZdianl.setText(siteDelicInfo.getBaseInformation().getAllUps() + " kwh");
                     tvShijian.setText(siteDelicInfo.getBaseInformation().getDeploytime());
-                    dianjia.setText("¥ "+ siteDelicInfo.getBaseInformation().getElectrovalency());
+                    dianjia.setText("¥ " + siteDelicInfo.getBaseInformation().getElectrovalency());
                 }
-                if (siteDelicInfo.getBenefit().getAllSaveElectricity()!=null){
-                    tvZsdl.setText(siteDelicInfo.getBenefit().getAllSaveElectricity()+"kwh");
-                    tvPsdl.setText(siteDelicInfo.getBenefit().getAveSaveElectricity()+"kwh");
-                    tvZsqs.setText("¥ "+ siteDelicInfo.getBenefit().getAllSaveMoney());
-                    tvPsqs.setText("¥ "+ siteDelicInfo.getBenefit().getAveSaveMoney());
-                    tvZtjsl.setText(siteDelicInfo.getBenefit().getAllemissions()+" t");
-                    tvPtjsl.setText(siteDelicInfo.getBenefit().getAveemissions()+" t");
+                if (siteDelicInfo.getBenefit().getAllSaveElectricity() != null) {
+                    tvZsdl.setText(siteDelicInfo.getBenefit().getAllSaveElectricity() + "kwh");
+                    tvPsdl.setText(siteDelicInfo.getBenefit().getAveSaveElectricity() + "kwh");
+                    tvZsqs.setText("¥ " + siteDelicInfo.getBenefit().getAllSaveMoney());
+                    tvPsqs.setText("¥ " + siteDelicInfo.getBenefit().getAveSaveMoney());
+                    tvZtjsl.setText(siteDelicInfo.getBenefit().getAllemissions() + " t");
+                    tvPtjsl.setText(siteDelicInfo.getBenefit().getAveemissions() + " t");
                 }
-                if (siteDelicInfo.getKeyDate().getDayOutpowerNum()!=null){
+                if (siteDelicInfo.getKeyDate().getDayOutpowerNum() != null) {
                     tvDtd.setText(siteDelicInfo.getKeyDate().getDayOutpowerNum());
-                    tvDtdzsc.setText(siteDelicInfo.getKeyDate().getDayOutpowerOfen()+" h");
-                    tvDups.setText(siteDelicInfo.getKeyDate().getDayUps()+" h");
+                    tvDtdzsc.setText(siteDelicInfo.getKeyDate().getDayOutpowerOfen() + " h");
+                    tvDups.setText(siteDelicInfo.getKeyDate().getDayUps() + " h");
                     tvYtd.setText(siteDelicInfo.getKeyDate().getMonOutpowerNum());
-                    tvYtdsc.setText(siteDelicInfo.getKeyDate().getMonOutpowerOfen()+" h");
-                    tvYups.setText(siteDelicInfo.getKeyDate().getMonUps()+" h");
+                    tvYtdsc.setText(siteDelicInfo.getKeyDate().getMonOutpowerOfen() + " h");
+                    tvYups.setText(siteDelicInfo.getKeyDate().getMonUps() + " h");
                     tvNtd.setText(siteDelicInfo.getKeyDate().getYearOutpowerNum());
-                    tvNtdzsc.setText(siteDelicInfo.getKeyDate().getYearOutpowerOfen()+" h");
-                    tvNups.setText(siteDelicInfo.getKeyDate().getYearUps()+" h");
+                    tvNtdzsc.setText(siteDelicInfo.getKeyDate().getYearOutpowerOfen() + " h");
+                    tvNups.setText(siteDelicInfo.getKeyDate().getYearUps() + " h");
                 }
             }
         }, new Response.ErrorListener() {
@@ -200,12 +218,17 @@ public class SiteDetalFragment extends Fragment {
             public void onErrorResponse(VolleyError volleyError) {
 
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("cityId", site.getCity());
-                params.put("siteId", site.getSite_id());
+                if (siteId != null) {
+                    params.put("cityId", cityId);
+                    params.put("siteId", siteId);
+                } else {
+                    params.put("cityId", site.getCity());
+                    params.put("siteId", site.getSite_id());
+                }
                 return params;
             }
         };
@@ -213,8 +236,8 @@ public class SiteDetalFragment extends Fragment {
 
     }
 
-    private boolean flag=true;
-    private boolean flag1=true;
+    private boolean flag = true;
+    private boolean flag1 = true;
 
     @OnClick({R.id.rl_jingji, R.id.rl_guanjian, R.id.ll_warm, R.id.ll_news, R.id.ll_map})
     public void onClick(View view) {
@@ -242,28 +265,21 @@ public class SiteDetalFragment extends Fragment {
                 }
                 break;
             case R.id.ll_warm://站点告警
-                StringBuffer url = new StringBuffer();
-                url.append(Path.SiteWarm);
-                url.append(site.getSite_id() + "&");
-                url.append("zyw=");
-                if (getResources().getConfiguration().locale.getCountry().equals("CN")) {
-                    url.append(1);//1代表中文
-                } else {
-                    url.append(2);//2代表英文
-                }
-                Intent intent = new Intent(getActivity(), WebViewTotalActivity.class);
-                intent.putExtra("biaoti", "站点告警");
-                intent.putExtra("URL", String.valueOf(url));
+                Intent intent = new Intent(getActivity(), GaoJingInfoActivity.class);
+                intent.putExtra("number", 1);
+                intent.putExtra("siteId", siteDelicInfo.getBaseInformation().getSiteId());
                 startActivity(intent);
                 break;
             case R.id.ll_news://站点新闻
-                Intent intent2 = new Intent(getActivity(), SiteNewsActivity.class);
-                intent2.putExtra("siteId", site.getSite_id());
-                startActivity(intent2);
+                if (siteId == null) {
+                    Intent intent2 = new Intent(getActivity(), SiteNewsActivity.class);
+                    intent2.putExtra("siteId", site.getSite_id());
+                    startActivity(intent2);
+                }
                 break;
             case R.id.ll_map://站点地图
                 Intent intent1 = new Intent(getActivity(), WebMapActivity.class);
-                intent1.putExtra("latitude",siteDelicInfo.getBaseInformation().getLatitude());
+                intent1.putExtra("latitude", siteDelicInfo.getBaseInformation().getLatitude());
                 intent1.putExtra("longitude", siteDelicInfo.getBaseInformation().getLongitude());
                 startActivity(intent1);
                 break;

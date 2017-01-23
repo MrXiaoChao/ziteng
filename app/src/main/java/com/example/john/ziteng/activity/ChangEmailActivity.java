@@ -62,11 +62,11 @@ public class ChangEmailActivity extends Activity implements View.OnClickListener
             case R.id.tv_baocun:
                 newEmail = email.getText().toString().trim();
                 if (newEmail.isEmpty()) {
-                    Toast.makeText(ChangEmailActivity.this, "新的Email不能为空", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChangEmailActivity.this, getResources().getString(R.string.bd), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (!ComUtils.isEmail(newEmail)) {
-                    Toast.makeText(ChangEmailActivity.this, "请正确填写你的Email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChangEmailActivity.this, getResources().getString(R.string.bd), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 getDateFromService();

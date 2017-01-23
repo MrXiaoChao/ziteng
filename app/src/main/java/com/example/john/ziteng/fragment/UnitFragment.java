@@ -1,7 +1,6 @@
 package com.example.john.ziteng.fragment;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,11 +21,13 @@ public class UnitFragment extends Fragment{
     private ImageView back;
     private WebView webView;
     private String unitId;
+    private String equip_id;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_unit, container, false);
         unitId = String.valueOf(SPUtils.get(getActivity(), "unitId", ""));
+        equip_id = getActivity().getIntent().getStringExtra("equip_id");
         initview(view);
         checkURl();
         loadweb();
@@ -35,11 +36,15 @@ public class UnitFragment extends Fragment{
     private StringBuffer checkURl() {
         StringBuffer url=new StringBuffer();
         if (getResources().getConfiguration().locale.getCountry().equals("CN")){
-            url.append("http://123.57.251.129:8088/dem/phone/station/unitDataCurve.jsp?unitId=");
+            url.append("http://123.57.251.129/dem/phone/station/unitDataCurve.jsp?equip_id=");
+            url.append(equip_id+"&");
+            url.append("unitId=");
             url.append(unitId);
             url.append("&zyw=1");
         }else {
-            url.append("http://123.57.251.129:8088/dem/phone/station/unitDataCurve.jsp?unitId=");
+            url.append("http://123.57.251.129/dem/phone/station/unitDataCurve.jsp?equip_id=");
+            url.append(equip_id+"&");
+            url.append("unitId=");
             url.append(unitId);
             url.append("&zyw=2");
         }

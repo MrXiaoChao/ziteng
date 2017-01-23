@@ -164,7 +164,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
-            android:text="状态"
+            android:text="@string/dqzt"
             android:textColor="@color/gray"
             android:textSize="@dimen/text_mid_2" />
 
@@ -196,7 +196,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
-            android:text="现储能量"
+            android:text="@string/ddsj"
             android:textColor="@color/gray"
             android:textSize="@dimen/text_mid_2" />
 
@@ -228,7 +228,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
-            android:text="总储能量"
+            android:text="@string/xcn"
             android:textColor="@color/gray"
             android:textSize="@dimen/text_mid_2" />
 
@@ -260,7 +260,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
-            android:text="功率"
+            android:text="@string/dqgl"
             android:textColor="@color/gray"
             android:textSize="@dimen/text_mid_2" />
 
@@ -292,7 +292,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
-            android:text="当年UPS总电量"
+            android:text="@string/dnups"
             android:textColor="@color/gray"
             android:textSize="@dimen/text_mid_2" />
 
@@ -390,12 +390,12 @@
             >
             <TextView
                 android:drawablePadding="5dp"
-                android:drawableLeft="@mipmap/sitawarm"
+                android:drawableLeft="@mipmap/jinji"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
-                android:text="经济和环境效益"
+                android:text="@string/jjhj"
                 android:textColor="#46a3c5"
                 android:textSize="@dimen/text_mid_2" />
             <ImageView
@@ -430,7 +430,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="24dp"
-                    android:text="总共省电量"
+                    android:text="@string/zdl"
                     android:textColor="#fd5706"
                     android:textSize="@dimen/text_mid_2" />
 
@@ -458,7 +458,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="24dp"
-                    android:text="平均省电量/天"
+                    android:text="@string/pjdl"
                     android:textColor="#fd5706"
                     android:textSize="@dimen/text_mid_2" />
 
@@ -486,7 +486,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="24dp"
-                    android:text="总共省钱数"
+                    android:text="@string/zgsqs"
                     android:textColor="#fab31e"
                     android:textSize="@dimen/text_mid_2" />
 
@@ -514,7 +514,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="24dp"
-                    android:text="平均省钱数/天"
+                    android:text="@string/pjsqs"
                     android:textColor="#fab31e"
                     android:textSize="@dimen/text_mid_2" />
 
@@ -542,7 +542,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="24dp"
-                    android:text="总共碳排放减少量"
+                    android:text="@string/zgtpl"
                     android:textColor="#08b37a"
                     android:textSize="@dimen/text_mid_2" />
 
@@ -570,7 +570,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="24dp"
-                    android:text="平均碳排放减少量/天"
+                    android:text="@string/pjtpl"
                     android:textColor="#08b37a"
                     android:textSize="@dimen/text_mid_2" />
 
@@ -601,12 +601,12 @@
             >
             <TextView
                 android:drawablePadding="5dp"
-                android:drawableLeft="@mipmap/sitawarm"
+                android:drawableLeft="@mipmap/guanjianshuju"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
-                android:text="关键数据"
+                android:text="@string/keydata"
                 android:textColor="#42a4c4"
                 android:textSize="@dimen/text_mid_2" />
             <ImageView
@@ -641,7 +641,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="24dp"
-                    android:text="当日停电次数"
+                    android:text="@string/drtd"
                     android:textColor="#52b0e7"
                     android:textSize="@dimen/text_mid_2" />
 
@@ -669,7 +669,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="24dp"
-                    android:text="当日停电总时长"
+                    android:text="@string/drtdzs"
                     android:textColor="#52b0e7"
                     android:textSize="@dimen/text_mid_2" />
 
@@ -696,7 +696,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="24dp"
-                    android:text="当日UPS供电总时长"
+                    android:text="@string/upsrd"
                     android:textColor="#52b0e7"
                     android:textSize="@dimen/text_mid_2" />
 
@@ -724,7 +724,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="24dp"
-                    android:text="当月停电次数"
+                    android:text="@string/dytd"
                     android:textColor="#f46131"
                     android:textSize="@dimen/text_mid_2" />
 
@@ -752,7 +752,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="24dp"
-                    android:text="当月停电总时长"
+                    android:text="@string/dytdzs"
                     android:textColor="#f46131"
                     android:textSize="@dimen/text_mid_2" />
 
@@ -779,7 +779,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="24dp"
-                    android:text="当月UPS供电总时长"
+                    android:text="@string/upsyd"
                     android:textColor="#f46131"
                     android:textSize="@dimen/text_mid_2" />
 
@@ -807,7 +807,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="24dp"
-                    android:text="当年停电次数"
+                    android:text="@string/dntd"
                     android:textColor="#1d9f69"
                     android:textSize="@dimen/text_mid_2" />
 
@@ -835,7 +835,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="24dp"
-                    android:text="当年停电总时长"
+                    android:text="@string/dntdzs"
                     android:textColor="#1d9f69"
                     android:textSize="@dimen/text_mid_2" />
 
@@ -863,7 +863,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="24dp"
-                    android:text="当年UPS供电总时长"
+                    android:text="@string/zdxq"
                     android:textColor="#1d9f69"
                     android:textSize="@dimen/text_mid_2" />
 
@@ -916,7 +916,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
-                android:text="站点告警"
+                android:text="@string/zdgj"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/text_mid_2" />
             <ImageView
@@ -944,7 +944,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
-                android:text="站点新闻"
+                android:text="@string/sitesnews"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/text_mid_2" />
             <ImageView
@@ -974,7 +974,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
-                android:text="站点地图"
+                android:text="@string/zddt"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/text_mid_2" />
             <ImageView

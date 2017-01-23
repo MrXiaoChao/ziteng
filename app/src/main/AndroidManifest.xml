@@ -24,7 +24,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <!--测试whcAA0H4FS5kY8tSwRkr0LzItFq4u1Kb-->
-        <!--上线lo6qotEsd8fGVZa3ZTq0vjjRP6lpWkGK-->
+        <!--上线+6
+        -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="whcAA0H4FS5kY8tSwRkr0LzItFq4u1Kb"/>
@@ -83,7 +84,9 @@
         <activity android:name=".activity.SuggestActivity">
 
         </activity>
-        <activity android:name=".activity.SiteDetailActivity">
+        <activity android:name=".activity.SiteDetailActivity"
+            android:launchMode="singleTask"
+            >
 
         </activity>
         <activity android:name=".activity.ChangPhoneActivity">
@@ -177,6 +180,19 @@
 
         </activity>
         <activity android:name=".activity.ChangPasswordActivity2">
+
+        </activity>
+
+        <activity android:name=".activity.SiteGaojingActivity">
+
+        </activity>
+        <activity android:name=".activity.DianliuActivity">
+
+        </activity>
+        <activity android:name=".activity.PinlvActivity">
+
+        </activity>
+        <activity android:name=".activity.GaojiCaozuoActivity">
 
         </activity>
 

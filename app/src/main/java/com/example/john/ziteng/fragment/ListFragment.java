@@ -23,6 +23,7 @@ public class ListFragment extends Fragment{
     private String moduleId;
     private String unitId;
     private String equipId;
+    private int checknumber;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,30 +33,57 @@ public class ListFragment extends Fragment{
         unitId = String.valueOf(SPUtils.get(getActivity(), "unitId", ""));
         moduleId = String.valueOf(SPUtils.get(getActivity(), "moduleId", ""));
         batteryId = String.valueOf(SPUtils.get(getActivity(), "batteryId", ""));
-        checkURl();
+        checknumber = getActivity().getIntent().getIntExtra("checknumber",1);
+        checkURl(checknumber);
         loadweb();
         return view;
     }
-    private StringBuffer checkURl() {
+    private StringBuffer checkURl(int checknumber) {
         StringBuffer url=new StringBuffer();
-        if (getResources().getConfiguration().locale.getCountry().equals("CN")){
-            url.append("http://123.57.251.129:8088/dem/phone/station/allBatteryHistory.jsp?equip_id=");
-            url.append(equipId+"&unitId=");
-            url.append(unitId+"&moduleId=");
-            url.append(moduleId+"&batteryId=");
-            url.append(batteryId+"&zyw=1");
-        }else {
-            url.append("http://123.57.251.129:8088/dem/phone/station/allBatteryHistory.jsp?equip_id=");
-            url.append(equipId+"&unitId=");
-            url.append(unitId+"&moduleId=");
-            url.append(moduleId+"&batteryId=");
-            url.append(batteryId+"&zyw=2");
+        switch (checknumber){
+            case 1:
+                if (getResources().getConfiguration().locale.getCountry().equals("CN")){
+                    url.append("http://123.57.251.129/dem/phone/station/allUnitHistory.jsp?equip_id=");
+                    url.append(equipId+"&unitId=");
+                    url.append(unitId+"&zyw=1");
+                    StringBuffer a=url;
+                }else {
+                    url.append("http://123.57.251.129/dem/phone/station/allUnitHistory.jsp?equip_id=");
+                    url.append(equipId+"&unitId=");
+                    url.append(unitId+"&zyw=2");
+                }
+                break;
+            case 2:
+                if (getResources().getConfiguration().locale.getCountry().equals("CN")){
+                    url.append("http://123.57.251.129/dem/phone/station/allModuleHistory.jsp?equip_id=");
+                    url.append(equipId+"&moduleId=");
+                    url.append(moduleId+"&zyw=1");
+                }else {
+                    url.append("http://123.57.251.129/dem/phone/station/allUnitHistory.jsp?equip_id=");
+                    url.append(equipId+"&moduleId=");
+                    url.append(moduleId+"&zyw=2");
+                }
+                break;
+            case 3:
+                if (getResources().getConfiguration().locale.getCountry().equals("CN")){
+                    url.append("http://123.57.251.129/dem/phone/station/batteryDataCurve.jsp?equip_id=");
+                    url.append(equipId+"&batteryId=");
+                    url.append(batteryId+"&zyw=1");
+                    StringBuffer a=url;
+                }else {
+                    url.append("http://123.57.251.129/dem/phone/station/batteryDataCurve.jsp?equip_id=");
+                    url.append(equipId+"&batteryId=");
+                    url.append(batteryId+"&zyw=2");
+                }
+                break;
         }
+
+
         return url;
     }
 
     private void loadweb() {
-        webView.loadUrl(String.valueOf(checkURl()));
+        webView.loadUrl(String.valueOf(checkURl(checknumber)));
         webView.requestFocusFromTouch();//支持获取手势焦点
         //覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
         WebSettings setting = webView.getSettings();
@@ -64,7 +92,7 @@ public class ListFragment extends Fragment{
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 //返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器
-                view.loadUrl(String.valueOf(checkURl()));
+                view.loadUrl(String.valueOf(checkURl(checknumber)));
                 return true;
             }
         });

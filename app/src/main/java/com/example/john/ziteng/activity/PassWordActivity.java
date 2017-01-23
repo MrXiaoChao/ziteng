@@ -65,7 +65,7 @@ public class PassWordActivity extends Activity implements View.OnClickListener {
                 if (qpassword1.equals(password1)){
                     PostPassWord();
                 }else {
-                    Toast.makeText(PassWordActivity.this,"两次输入的密码不一致",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PassWordActivity.this,getResources().getString(R.string.byz),Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

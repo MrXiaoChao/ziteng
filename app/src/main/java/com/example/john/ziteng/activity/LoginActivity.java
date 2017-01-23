@@ -138,11 +138,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 phone = etPhone.getText().toString();
                 password = etPassword.getText().toString();
                 if (TextUtils.isEmpty(phone)) {
-                    Toast.makeText(LoginActivity.this, "手机号码不能为空", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.hmbwk), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(LoginActivity.this, "密码不能为空", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.mmbwk), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (ck.isChecked()) {
@@ -166,7 +166,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(LoginActivity.this, "服务器开小差中...", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this,getResources().getString(R.string.kxc), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -187,7 +187,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             long t = System.currentTimeMillis();
             if (t - backtime > 3000) {
-                Toast.makeText(this, "你还没登录,确定退出吗?", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getResources().getString(R.string.qddl), Toast.LENGTH_SHORT).show();
                 backtime = t;
                 return true;
             }

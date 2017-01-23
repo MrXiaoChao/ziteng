@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.example.john.ziteng.R;
-import com.example.john.ziteng.activity.WebViewActivity;
 import com.example.john.ziteng.activity.WebViewTotalActivity;
 import com.example.john.ziteng.domain.SiteInfo;
 import com.example.john.ziteng.urlpath.Path;
@@ -63,7 +62,7 @@ public class HistoricalDataFragment extends Fragment implements View.OnClickList
                     url.append(2);//2代表英文
                 }
                 Intent intent=new Intent(getActivity(), WebViewTotalActivity.class);
-                intent.putExtra("biaoti","停电次数图");
+                intent.putExtra("biaoti",getActivity().getResources().getString(R.string.tdcst));
                 intent.putExtra("URL",String.valueOf(url));
                 startActivity(intent);
                 break;
@@ -78,7 +77,7 @@ public class HistoricalDataFragment extends Fragment implements View.OnClickList
                     url1.append(2);//2代表英文
                 }
                 Intent intent1=new Intent(getActivity(), WebViewTotalActivity.class);
-                intent1.putExtra("biaoti","停电时长图");
+                intent1.putExtra("biaoti",getActivity().getResources().getString(R.string.tdsct));
                 intent1.putExtra("URL",String.valueOf(url1));
                 startActivity(intent1);
                 break;
@@ -93,7 +92,7 @@ public class HistoricalDataFragment extends Fragment implements View.OnClickList
                     url2.append(2);//2代表英文
                 }
                 Intent intent2=new Intent(getActivity(), WebViewTotalActivity.class);
-                intent2.putExtra("biaoti","UPS供电图");
+                intent2.putExtra("biaoti",getActivity().getResources().getString(R.string.UPSgdt));
                 intent2.putExtra("URL",String.valueOf(url2));
                 startActivity(intent2);
                 break;
@@ -108,7 +107,7 @@ public class HistoricalDataFragment extends Fragment implements View.OnClickList
                     url3.append(2);//2代表英文
                 }
                 Intent intent3=new Intent(getActivity(), WebViewTotalActivity.class);
-                intent3.putExtra("biaoti","停电全列表");
+                intent3.putExtra("biaoti",getActivity().getResources().getString(R.string.ol));
                 intent3.putExtra("URL",String.valueOf(url3));
                 startActivity(intent3);
                 break;

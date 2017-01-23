@@ -149,7 +149,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             long t = System.currentTimeMillis();
             if (t - backtime > 3000) {
-                Toast.makeText(this, "再按一次退出客户端", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getResources().getString(R.string.tuichu), Toast.LENGTH_SHORT).show();
                 backtime = t;
                 return true;
             }

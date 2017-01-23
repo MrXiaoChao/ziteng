@@ -5,17 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.BaseExpandableListAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.john.ziteng.R;
 import com.example.john.ziteng.domain.MoudleList;
-import com.example.john.ziteng.domain.UnitList;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 模块列表
@@ -56,7 +51,7 @@ public class MoudleListAdapter extends BaseAdapter {
         }else {
             holder= (Viewholder) convertView.getTag();
         }
-        holder.childTextView.setText("电池-"+list.get(position).getBatteryId().substring(5,7));
+        holder.childTextView.setText(context.getString(R.string.dca)+"-"+list.get(position).getBatteryId().substring(5,7));
         return convertView;
     }
     class Viewholder{

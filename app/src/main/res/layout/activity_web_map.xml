@@ -97,16 +97,55 @@
         </RelativeLayout>
     </RelativeLayout>
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <com.baidu.mapapi.map.MapView
             android:id="@+id/id_bmapView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true" />
-
+        <RelativeLayout
+            android:id="@+id/rl_chuangkou"
+            android:background="@color/white"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_width="200dp"
+            android:layout_height="100dp">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:drawablePadding="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:drawableLeft="@mipmap/green"
+                    android:layout_weight="1"
+                    android:text="@string/wdzc"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp" />
+                <TextView
+                    android:drawablePadding="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="@string/wdzc1"
+                    android:drawableLeft="@mipmap/yellow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp" />
+                <TextView
+                    android:drawablePadding="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="@string/wdzc2"
+                    android:drawableLeft="@mipmap/red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp" />
+            </LinearLayout>
+        </RelativeLayout>
         <LinearLayout
             android:visibility="gone"
             android:orientation="horizontal"

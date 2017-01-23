@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -30,6 +29,7 @@ import com.example.john.ziteng.protocol.PaseJson;
 import com.example.john.ziteng.urlpath.Path;
 import com.example.john.ziteng.utils.SPUtils;
 import com.example.john.ziteng.view.MyListview;
+import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 
@@ -64,6 +64,13 @@ public class DeviceGroupActivity extends BaseActivity implements DevicePassWordF
     private PullToRefreshScrollView scrollView;
     private String level;
     private TextView name;
+    private TextView sbzt;
+    private TextView dy;
+    private TextView dl;
+    private TextView wd;
+    private TextView xhsj;
+    private TextView cnl;
+    private TextView bssj;
 
 
     @Override
@@ -84,15 +91,36 @@ public class DeviceGroupActivity extends BaseActivity implements DevicePassWordF
         StringRequest request = new StringRequest(Request.Method.POST, Path.DeviceGroupInfo, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
-                deviceGroupInfo = PaseJson.PaseDGF(s);
-                if (deviceGroupInfo != null) {
-                    listview.setAdapter(new MyListAdapter(DeviceGroupActivity.this, (ArrayList<DeviceGroupInfo.UnitlistBean>) deviceGroupInfo.getUnitlist()));
-                    groupTextView.setText("设备信息");
-                    name.setText(getResources().getString(R.string.dl)+"-"+equipId.substring(5,7));
+                //这个限制条件是后台只有equipId=3000000有数据·如果不限制的话·gson解析会出错误,如果后台有数据解除这个限制就行
+                if (equipId.equals("3000000")) {
+                    Gson gson = new Gson();
+                    deviceGroupInfo = gson.fromJson(s, DeviceGroupInfo.class);
+                    if (deviceGroupInfo != null) {
+                        listview.setAdapter(new MyListAdapter(DeviceGroupActivity.this, (ArrayList<DeviceGroupInfo.UnitlistBean>) deviceGroupInfo.getUnitlist()));
+                        groupTextView.setText(getResources().getString(R.string.sbxx));
+                        name.setText(getResources().getString(R.string.dl) + "-" + equipId.substring(5, 7));
+                        if (deviceGroupInfo.getState().equals("IDLE")) {
+                            sbzt.setText(getResources().getString(R.string.kx));
+                        } else if (deviceGroupInfo.getState().equals("DISCHARGING")) {
+                            sbzt.setText(getResources().getString(R.string.fd));
+                        } else if (deviceGroupInfo.getState().equals("CHARGING")) {
+                            sbzt.setText(getResources().getString(R.string.cd));
+                        } else if (deviceGroupInfo.getState().equals("WARNING")) {
+                            sbzt.setText(getResources().getString(R.string.gj));
+                        } else if (deviceGroupInfo.getState().equals("STOP")) {
+                            sbzt.setText(getResources().getString(R.string.tj));
+                        }
+                        dy.setText(String.valueOf(deviceGroupInfo.getVoltage()) + " V");
+                        dl.setText(deviceGroupInfo.getElectricCurrent() + " A");
+                        wd.setText(deviceGroupInfo.getTemperature() + " °C");
+                        xhsj.setText(String.valueOf(deviceGroupInfo.getHoldTime()) + " h");
+                        cnl.setText(deviceGroupInfo.getStored_energy() + " kWh");
+                        bssj.setText(deviceGroupInfo.getDeploy_time());
+                    }
+                    scrollView.onRefreshComplete();
                 }
-                scrollView.onRefreshComplete();
             }
-        },new Response.ErrorListener() {
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
 
@@ -156,11 +184,16 @@ public class DeviceGroupActivity extends BaseActivity implements DevicePassWordF
     }
 
     private void initview() {
+        sbzt = (TextView) findViewById(R.id.sbzt);
+        dy = (TextView) findViewById(R.id.dy);
+        dl = (TextView) findViewById(R.id.dl);
+        wd = (TextView) findViewById(R.id.wd);
+        xhsj = (TextView) findViewById(R.id.xhsj);
+        cnl = (TextView) findViewById(R.id.cnl);
+        bssj = (TextView) findViewById(R.id.bssj);
         name = (TextView) findViewById(R.id.web_title);
         scrollView = (PullToRefreshScrollView) findViewById(R.id.scrollView);
-        xinxi = (RelativeLayout) findViewById(R.id.rl_xinxi);
         zhuangtai = (RelativeLayout) findViewById(R.id.rl_zhuantai);
-        canshu = (RelativeLayout) findViewById(R.id.rl_canshu);
         gxinxi = (RelativeLayout) findViewById(R.id.rl_gxinxi);
         shuju = (RelativeLayout) findViewById(R.id.rl_shuju);
         kongzhi = (RelativeLayout) findViewById(R.id.rl_kongzhi);
@@ -173,14 +206,11 @@ public class DeviceGroupActivity extends BaseActivity implements DevicePassWordF
         fx.setImageDrawable(getResources().getDrawable(R.mipmap.down));
         imageView.setOnClickListener(this);
         rl_fx.setOnClickListener(this);
-        xinxi.setOnClickListener(this);
-        zhuangtai.setOnClickListener(this);
-        canshu.setOnClickListener(this);
         gxinxi.setOnClickListener(this);
         shuju.setOnClickListener(this);
         kongzhi.setOnClickListener(this);
         //用户权限
-        if (level.equals("一级用户")||level.equals("二级用户")||level.equals("三级用户")){
+        if (level.equals("一级用户") || level.equals("二级用户") || level.equals("三级用户")) {
             kongzhi.setVisibility(View.GONE);
         }
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -189,6 +219,7 @@ public class DeviceGroupActivity extends BaseActivity implements DevicePassWordF
                 String unitId = String.valueOf(SPUtils.put(DeviceGroupActivity.this, "unitId", deviceGroupInfo.getUnitlist().get(position).getUnitId()));
                 Intent intent4 = new Intent(DeviceGroupActivity.this, UnitActivity.class);
                 intent4.putExtra("unitId", deviceGroupInfo.getUnitlist().get(position).getUnitId());
+                intent4.putExtra("equip_id", deviceGroupInfo.getEquip_id());
                 startActivity(intent4);
 
             }
@@ -210,56 +241,31 @@ public class DeviceGroupActivity extends BaseActivity implements DevicePassWordF
         });
 
     }
+
     private boolean isselect;
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.group_fanhui:
                 finish();
                 break;
             case R.id.rl_fx:
-                if (!isselect){
+                if (!isselect) {
                     fx.setImageDrawable(getResources().getDrawable(R.mipmap.buleyou));
                     ll.setVisibility(View.GONE);
-                    isselect=true;
-                }else {
+                    isselect = true;
+                } else {
                     fx.setImageDrawable(getResources().getDrawable(R.mipmap.down));
                     ll.setVisibility(View.VISIBLE);
-                    isselect=false;
+                    isselect = false;
                 }
                 break;
-            case R.id.rl_xinxi://基本信息
-                Intent intent = new Intent(DeviceGroupActivity.this, DeviceInfoActivity.class);
+
+            case R.id.rl_gxinxi://告警信息
+                Intent intent = new Intent(DeviceGroupActivity.this, SiteGaojingActivity.class);
                 intent.putExtra("equipId", deviceGroupInfo.getEquipId());
                 startActivity(intent);
-                break;
-            case R.id.rl_zhuantai://设备状态
-                Intent intent0 = new Intent(DeviceGroupActivity.this, DeviceStateActivity.class);
-                intent0.putExtra("equipId", deviceGroupInfo.getEquipId());
-                startActivity(intent0);
-                break;
-            case R.id.rl_canshu://设备参数
-                Intent intent1 = new Intent(DeviceGroupActivity.this, DeviceParameActivity.class);
-                intent1.putExtra("equipId", deviceGroupInfo.getEquipId());
-                startActivity(intent1);
-                break;
-            case R.id.rl_gxinxi://告警信息
-                StringBuffer URL2 = new StringBuffer();
-                URL2.append(Path.ImportWarn);
-                URL2.append("equip_id=");
-                URL2.append(deviceGroupInfo.getEquipId() + "&");
-                URL2.append("group_id=");
-                URL2.append(group_id+"&");
-                URL2.append("zyw=");
-                if (getResources().getConfiguration().locale.getCountry().equals("CN")) {
-                    URL2.append(1);//1代表中文
-                } else {
-                    URL2.append(2);//2代表英文
-                }
-                Intent intent2 = new Intent(DeviceGroupActivity.this, WebViewTotalActivity.class);
-                intent2.putExtra("URL", String.valueOf(URL2));
-                intent2.putExtra("biaoti", "告警信息");
-                startActivity(intent2);
                 break;
             case R.id.rl_shuju://历史数据
                 Intent intent3 = new Intent(DeviceGroupActivity.this, DeviceHistoryActivity.class);
@@ -271,7 +277,9 @@ public class DeviceGroupActivity extends BaseActivity implements DevicePassWordF
                 break;
         }
     }
+
 }
+
 
 
 

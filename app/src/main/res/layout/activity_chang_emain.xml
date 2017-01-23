@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="个人信息配置"
+            android:text="@string/yxxg"
             android:textColor="@color/white"
             android:textSize="@dimen/text_big" />
         <TextView
@@ -32,7 +32,7 @@
             android:textColor="@color/white"
             android:layout_marginRight="8dp"
             android:layout_alignParentRight="true"
-            android:text="保存"
+            android:text="@string/commit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
@@ -47,7 +47,7 @@
     <EditText
         android:id="@+id/et_email"
         android:textSize="@dimen/text_mid_2"
-        android:hint="请输入新的邮箱"
+        android:hint="@string/xyx"
         android:paddingLeft="8dp"
         android:background="@color/white"
         android:layout_width="match_parent"

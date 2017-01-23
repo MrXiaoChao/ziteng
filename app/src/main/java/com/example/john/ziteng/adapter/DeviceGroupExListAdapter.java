@@ -39,7 +39,7 @@ public class DeviceGroupExListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public Object getGroup(int i)    {
+    public Object getGroup(int i) {
         return groupList.get(i);
     }
 
@@ -69,7 +69,7 @@ public class DeviceGroupExListAdapter extends BaseExpandableListAdapter {
         DeviceGroup doi = groupList.get(groupPosition);
         view = LayoutInflater.from(context).inflate(R.layout.grouplist, null);
         TextView textView = (TextView) view.findViewById(R.id.groupTextView);
-        textView.setText("设备群-"+doi.getGroupName().substring(5,7));
+        textView.setText(context.getString(R.string.sbq)+"-" + doi.getGroupName().substring(5, 7));
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         if (groupIsSelected) {
             imageView.setImageDrawable(context.getResources().getDrawable(R.mipmap.down));
@@ -84,15 +84,32 @@ public class DeviceGroupExListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean childIsSelected, View view, ViewGroup viewGroup) {
         DeviceGroup.EquipListBean equipListBean = groupList.get(groupPosition).getEquipList().get(childPosition);
-        view = LayoutInflater.from(context).inflate(R.layout.childlist, null);
-        TextView textView = (TextView) view.findViewById(R.id.childTextView);
-        ImageView image = (ImageView) view.findViewById(R.id.image);
-        if (childPosition == 0) {
-            textView.setTextColor(context.getResources().getColor(R.color.gray));
+        if (childPosition <= 4) {
+            view = LayoutInflater.from(context).inflate(R.layout.activity_devicegroupinfo, null);
+            TextView textView = (TextView) view.findViewById(R.id.tv_text);
             textView.setText(equipListBean.getEquip_id());
-            image.setImageDrawable(context.getResources().getDrawable(R.mipmap.you2));
+            TextView textView1 = (TextView) view.findViewById(R.id.tv_mc);
+            switch (childPosition){
+                case 0:
+                    textView1.setText(context.getResources().getString(R.string.sbq)+"-"+groupList.get(groupPosition).getGroupName().substring(5, 7));
+                    break;
+                case 1:
+                    textView1.setText(groupList.get(groupPosition).getPower()+" kW");
+                    break;
+                case 2:
+                    textView1.setText(groupList.get(groupPosition).getVoltage()+" V");
+                    break;
+                case 3:
+                    textView1.setText(groupList.get(groupPosition).getStored_energy()+" kWh");
+                    break;
+                case 4:
+                    textView1.setText(groupList.get(groupPosition).getDeploy_time());
+                    break;
+            }
         } else {
-            textView.setText("设备-" + equipListBean.getEquip_id().substring(5,7));
+            view = LayoutInflater.from(context).inflate(R.layout.childlist, null);
+            TextView textView = (TextView) view.findViewById(R.id.childTextView);
+            textView.setText(context.getString(R.string.sb)+"-" + equipListBean.getEquip_id().substring(5, 7));
         }
         return view;
     }

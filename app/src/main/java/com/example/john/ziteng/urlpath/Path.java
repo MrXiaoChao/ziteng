@@ -220,4 +220,8 @@ public class Path {
     public static String CP="http://123.57.251.129:8088/dem/client/clientinter!doNotNeedSessionAndSecurity_updatePassword.do?";
     //站点详情新接口
     public static String sitexq="http://123.57.251.129:8088/dem/client/clientcity!doNotNeedSessionAndSecurity_stationDetails.do?";
+    //站点概况里面的站点告警
+    public static String gaojing="http://123.57.251.129:8088/dem/client/clientinfo!doNotNeedSessionAndSecurity_getWarnsBySiteId.do?";
+    //设备告警
+    public static String sbgaojing="http://123.57.251.129:8088/dem/client/clientinfo!doNotNeedSessionAndSecurity_getWarnsByEquipId.do?";
 }

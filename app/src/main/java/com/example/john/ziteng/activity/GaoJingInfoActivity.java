@@ -35,18 +35,34 @@ public class GaoJingInfoActivity extends BaseActivity {
     private ListView listview_warn;
     private String mPhone;
     private RelativeLayout pb;
+    private String siteId;
+    private int number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gaojing);
         mPhone = (String) SPUtils.get(GaoJingInfoActivity.this, "phone", "");
+        siteId = getIntent().getStringExtra("siteId");
+        number = getIntent().getIntExtra("number", 0);
         initview();
-        getDateFromService();
+        checkSJ(number);
+    }
+
+    private void checkSJ(int number) {
+        switch (number){
+            case 0:
+                getDateFromService();
+                break;
+            case 1:
+                getDateFromService1();
+                break;
+
+        }
     }
 
 
-
+    //首页告警
     private void getDateFromService() {
         StringRequest request = new StringRequest(Request.Method.POST, Path.SiteGaojing, new Response.Listener<String>() {
             @Override
@@ -74,7 +90,37 @@ public class GaoJingInfoActivity extends BaseActivity {
                 return params;
             }
         };
-        request.setTag("siteWarn");
+        MyApplication.getHttpQueue().add(request);
+    }
+
+    //站点概况里面的告警
+    private void getDateFromService1() {
+        StringRequest request = new StringRequest(Request.Method.POST, Path.gaojing, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+                pb.setVisibility(View.GONE);
+                ArrayList<WarnInfo> list = (ArrayList<WarnInfo>) PaseJson.PaseWarnInfo(s);
+                WarnListviewAdapter adapter = new WarnListviewAdapter(GaoJingInfoActivity.this, list);
+                if (adapter != null && list.size() > 0) {
+                    listview_warn.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(GaoJingInfoActivity.this, "解析出错啦", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("siteId", siteId);
+                return params;
+            }
+        };
         MyApplication.getHttpQueue().add(request);
     }
 

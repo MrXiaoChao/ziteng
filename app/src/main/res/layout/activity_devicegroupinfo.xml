@@ -1,75 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="45dp"
     android:orientation="vertical">
     <RelativeLayout
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="12dp"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/blue">
-
-        <ImageView
-            android:id="@+id/info_fanhui"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="12dp"
-            android:background="@mipmap/fanhui"
-            android:padding="9dp" />
-
+        android:layout_height="45dp">
         <TextView
-            android:id="@+id/device_control_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="基本信息"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_big" />
-    </RelativeLayout>
-    <View
-        android:background="@color/gray_dan"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
-    <RelativeLayout
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="46dp">
-        <TextView
+            android:id="@+id/tv_text"
             android:textColor="@color/gray"
             android:layout_centerVertical="true"
             android:textSize="@dimen/text_mid_2"
-            android:text="部署日期"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/tv_mc"
-            android:textColor="#807a7a"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:textSize="@dimen/text_mid_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
-    <View
-        android:background="#2e2b2b"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
-    <RelativeLayout
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="46dp">
-        <TextView
             android:textColor="@color/gray"
-            android:layout_centerVertical="true"
-            android:textSize="@dimen/text_mid_2"
-            android:text="电压参数"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/tv_gl"
-            android:textColor="#807a7a"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:textSize="@dimen/text_mid_2"
@@ -77,67 +25,8 @@
             android:layout_height="wrap_content" />
     </RelativeLayout>
     <View
-        android:background="#2e2b2b"
+        android:layout_marginLeft="8dp"
         android:layout_width="match_parent"
-        android:layout_height="1px"/>
-    <RelativeLayout
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="46dp">
-        <TextView
-            android:textColor="@color/gray"
-            android:layout_centerVertical="true"
-            android:textSize="@dimen/text_mid_2"
-            android:text="功率参数"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/tv_dy"
-            android:textColor="#807a7a"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:textSize="@dimen/text_mid_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
-    <View
-        android:background="#2e2b2b"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
-    <RelativeLayout
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="46dp">
-        <TextView
-            android:textColor="@color/gray"
-            android:layout_centerVertical="true"
-            android:textSize="@dimen/text_mid_2"
-            android:text="储能参数"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/tv_cn"
-            android:textColor="#807a7a"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:textSize="@dimen/text_mid_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
-    <View
-        android:background="#2e2b2b"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
-
-    <View
-        android:background="#2e2b2b"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
-    <View
-        android:background="@color/gray_dan"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
+        android:layout_height="1px"
+        android:background="@color/gray" />
 </LinearLayout>

@@ -68,11 +68,11 @@ public class ChangPasswordActivity2 extends BaseActivity implements View.OnClick
                 passWordnew = newpassword.getText().toString().trim();
                 passWordnew2 = newpassword2.getText().toString().trim();
                 if (passWordjiu.isEmpty()){
-                    Toast.makeText(ChangPasswordActivity2.this, "请输入密码", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChangPasswordActivity2.this, getResources().getString(R.string.qsrmm), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (!passWordnew.equals(passWordnew2)){
-                    Toast.makeText(ChangPasswordActivity2.this, "两次输入的密码不一致", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChangPasswordActivity2.this, getResources().getString(R.string.byz), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 getDateFromService();
@@ -87,7 +87,7 @@ public class ChangPasswordActivity2 extends BaseActivity implements View.OnClick
             public void onResponse(String s) {
                 ChangPassword changPassword = PaseJson.PasePassWord(s);
                 if (changPassword.getSuccess()) {
-                    Toast.makeText(ChangPasswordActivity2.this,"修改密码成功", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChangPasswordActivity2.this,getResources().getString(R.string.xgmmcg), Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
                     Toast.makeText(ChangPasswordActivity2.this, changPassword.getMsg(), Toast.LENGTH_SHORT).show();

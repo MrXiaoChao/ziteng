@@ -1,6 +1,5 @@
 package com.example.john.ziteng.activity;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -58,7 +57,7 @@ public class GuanyuActivity extends BaseActivity implements View.OnClickListener
                     url.append(2);//2代表英文
                 }
                 intent.putExtra("URL", String.valueOf(url));
-                intent.putExtra("biaoti","更新说明");
+                intent.putExtra("biaoti",getResources().getString(R.string.gxsm));
                 startActivity(intent);
                 break;
             case R.id.rl_help:
@@ -71,13 +70,13 @@ public class GuanyuActivity extends BaseActivity implements View.OnClickListener
                     url1.append(2);//2代表英文
                 }
                 intent1.putExtra("URL", String.valueOf(url1));
-                intent1.putExtra("biaoti", "使用帮助");
+                intent1.putExtra("biaoti", getResources().getString(R.string.sybz));
                 startActivity(intent1);
                 break;
             case R.id.rl_verson://版本更新
                 AlertDialog.Builder builder=new AlertDialog.Builder(GuanyuActivity.this);
-                builder.setTitle("已经是最新版本");
-                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                builder.setTitle(getResources().getString(R.string.zxbb));
+                builder.setPositiveButton(getResources().getString(R.string.confirm), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();

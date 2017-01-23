@@ -7,18 +7,22 @@ import java.util.List;
  * Created by john on 2016/5/17.
  */
 public class UnitList {
-    public UnitList(String current, int status, String voltage, String unitId, List<ModulelistBean> modulelist) {
-        this.current = current;
-        this.status = status;
-        this.voltage = voltage;
-        this.unitId = unitId;
-        this.modulelist = modulelist;
-    }
+
+    /**
+     * current : 0
+     * modulelist : [{"moudleId":"5000000"},{"moudleId":"5000001"},{"moudleId":"5000002"},{"moudleId":"5000003"}]
+     * status : 空闲
+     * unitId : 4000000
+     * voltage : 13702
+     */
 
     private String current;
-    private int status;
+    private String status;
     private String unitId;
     private String voltage;
+    /**
+     * moudleId : 5000000
+     */
 
     private List<ModulelistBean> modulelist;
 
@@ -30,11 +34,11 @@ public class UnitList {
         this.current = current;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -63,10 +67,6 @@ public class UnitList {
     }
 
     public static class ModulelistBean {
-        public ModulelistBean(String moudleId) {
-            this.moudleId = moudleId;
-        }
-
         private String moudleId;
 
         public String getMoudleId() {

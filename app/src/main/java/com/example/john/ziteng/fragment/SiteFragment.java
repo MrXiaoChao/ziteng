@@ -2,12 +2,10 @@ package com.example.john.ziteng.fragment;
 
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.text.format.DateUtils;
@@ -29,7 +27,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.john.ziteng.R;
 import com.example.john.ziteng.activity.GaoJingInfoActivity;
-import com.example.john.ziteng.activity.MainActivity;
 import com.example.john.ziteng.activity.SiteDetailActivity;
 import com.example.john.ziteng.activity.SiteDetailActivity2;
 import com.example.john.ziteng.adapter.ListViewSiteAdapter;
@@ -274,7 +271,7 @@ public class SiteFragment extends Fragment implements View.OnClickListener {
                             listView.onRefreshComplete();
                         }
                     }, 1000);
-                    Toast.makeText(getActivity(), "已经在最后一页了", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.zhyy), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -289,6 +286,7 @@ public class SiteFragment extends Fragment implements View.OnClickListener {
                 } else {
                     Intent intent = new Intent(getActivity(), SiteDetailActivity.class);
                     intent.putExtra("siteInfo", siteInfo);
+                    startActivity(intent);
                     startActivity(intent);
                 }
             }
@@ -320,6 +318,7 @@ public class SiteFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.right:
                 Intent intent = new Intent(getActivity(), GaoJingInfoActivity.class);
+                intent.putExtra("number",0);
                 startActivity(intent);
                 break;
             case R.id.left:

@@ -1,7 +1,6 @@
 package com.example.john.ziteng.fragment;
 
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,7 +19,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.john.ziteng.R;
-import com.example.john.ziteng.activity.WebViewActivity;
 import com.example.john.ziteng.activity.WebViewInfoActivity;
 import com.example.john.ziteng.adapter.ListViewNewsAdapter;
 import com.example.john.ziteng.application.MyApplication;
@@ -114,7 +112,7 @@ public class IndustryFragment extends Fragment {
                             listView.onRefreshComplete();
                         }
                     }, 1000);
-                    Toast.makeText(getActivity(), "已经在最后一页了", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.zhyy), Toast.LENGTH_SHORT).show();
                 }
 
 

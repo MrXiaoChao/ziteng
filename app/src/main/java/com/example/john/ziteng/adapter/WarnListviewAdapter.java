@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.john.ziteng.R;
 import com.example.john.ziteng.domain.WarnInfo;
+import com.example.john.ziteng.view.MoreTextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,26 +45,13 @@ public class WarnListviewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         WarnInfo warnInfo = list.get(position);
-        ViewHolder holder;
-        if (convertView == null) {
-            holder = new ViewHolder();
-            convertView = LayoutInflater.from(context).inflate(R.layout.listview_warn_info, null);
-            holder.time = (TextView) convertView.findViewById(R.id.tv_warn_time);
-            holder.tital = (TextView) convertView.findViewById(R.id.tv_warn_tital);
-            holder.site = (TextView) convertView.findViewById(R.id.tv_warn_site);
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
-        }
-        holder.time.setText(warnInfo.getTime());
-        holder.tital.setText(warnInfo.getWarnContent());
-        holder.site.setText(warnInfo.getSiteName());
+        convertView = LayoutInflater.from(context).inflate(R.layout.listview_warn_info, null);
+        TextView time = (TextView) convertView.findViewById(R.id.tv_warn_time);
+        MoreTextView tital = (MoreTextView) convertView.findViewById(R.id.tv_warn_tital);
+        TextView site = (TextView) convertView.findViewById(R.id.tv_warn_site);
+        time.setText(warnInfo.getTime());
+        tital.setText(warnInfo.getWarnContent());
+        site.setText(warnInfo.getSiteName());
         return convertView;
-    }
-
-    class ViewHolder {
-        TextView time;
-        TextView tital;
-        TextView site;
     }
 }

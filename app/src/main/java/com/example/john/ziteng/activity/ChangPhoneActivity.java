@@ -3,7 +3,6 @@ package com.example.john.ziteng.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -70,26 +69,26 @@ public class ChangPhoneActivity extends Activity implements View.OnClickListener
                 newPhone = password.getText().toString().trim();
                 newPhone1 = password1.getText().toString().trim();
                 if (newPhone.isEmpty()) {
-                    Toast.makeText(ChangPhoneActivity.this, "新手机号码不能为空", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChangPhoneActivity.this, getResources().getString(R.string.xsjhm), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (!ComUtils.isMobileNum(newPhone)) {
-                    Toast.makeText(ChangPhoneActivity.this, "你输入的手机号码不合法", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChangPhoneActivity.this, getResources().getString(R.string.sjbhf), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (newPhone1.isEmpty()) {
-                    Toast.makeText(ChangPhoneActivity.this, "请确认你的新手机号码", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChangPhoneActivity.this, getResources().getString(R.string.qrxsh), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (newPhone.equals(newPhone1)) {
                     if (mPhone != null) {
                         getDateFromService();
                     } else {
-                        Toast.makeText(ChangPhoneActivity.this, "两次输入的密码不一致", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ChangPhoneActivity.this, getResources().getString(R.string.byz), Toast.LENGTH_SHORT).show();
                         return;
                     }
                 } else {
-                    Toast.makeText(ChangPhoneActivity.this, "你填写的号码不一致", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChangPhoneActivity.this,getResources().getString(R.string.byz1), Toast.LENGTH_SHORT).show();
                     return;
                 }
 

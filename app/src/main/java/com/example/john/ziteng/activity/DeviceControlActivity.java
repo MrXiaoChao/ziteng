@@ -1,6 +1,8 @@
 package com.example.john.ziteng.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateUtils;
@@ -33,10 +35,8 @@ import com.example.john.ziteng.domain.Unit;
 import com.example.john.ziteng.fragment.ExpertContorlFragment;
 import com.example.john.ziteng.protocol.PaseJson;
 import com.example.john.ziteng.urlpath.Path;
-import com.example.john.ziteng.utils.SPUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
-import com.umeng.analytics.MobclickAgent;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -59,8 +59,6 @@ public class DeviceControlActivity extends Activity implements View.OnClickListe
     private DeviceControl deviceControl;
     private ToggleButton tbdevice;
     private LinearLayout contor;
-    private EditText dl;
-    private Button commite;
     private TextView tvControl;
     private EditText pl;
     private Button btnDevice;
@@ -72,6 +70,9 @@ public class DeviceControlActivity extends Activity implements View.OnClickListe
     private RelativeLayout rlGao;
     private PullToRefreshScrollView scrollView;
     private String cp;
+    private TextView dianliu;
+    private RelativeLayout rl_dianliu;
+    private RelativeLayout rl_pinglv;
 
 
     @Override
@@ -88,9 +89,10 @@ public class DeviceControlActivity extends Activity implements View.OnClickListe
         getKGFromService();
         onclickItem();
     }
+
     //设备开关展示
     private void getKGFromService() {
-        StringRequest request=new StringRequest(Request.Method.POST, Path.SKG, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, Path.SKG, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 try {
@@ -113,17 +115,17 @@ public class DeviceControlActivity extends Activity implements View.OnClickListe
             public void onErrorResponse(VolleyError volleyError) {
 
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params=new HashMap<>();
-                params.put("equipId",equipId);
+                Map<String, String> params = new HashMap<>();
+                params.put("equipId", equipId);
                 return params;
             }
         };
         MyApplication.getHttpQueue().add(request);
     }
-
+    boolean flag;
     private void onclickItem() {
         //点击之后进去相应单元里面的模块
         listUnit.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -139,17 +141,25 @@ public class DeviceControlActivity extends Activity implements View.OnClickListe
                 startActivity(intent);
             }
         });
+
         tbdevice.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     contor.setVisibility(View.VISIBLE);
                     tvControl.setTextColor(getResources().getColor(R.color.blue));
-                    sendkgToService("1");//1表示开机
+                    if (flag) {
+                        showDialog1();
+                    }
+
                 } else {
                     contor.setVisibility(View.GONE);
                     tvControl.setTextColor(getResources().getColor(R.color.gray));
-                    sendkgToService("0");//0表示关机
+                    if (!flag) {
+                        showDialog1();
+                    }
+
+
                 }
             }
         });
@@ -166,85 +176,38 @@ public class DeviceControlActivity extends Activity implements View.OnClickListe
                 refreshView.getLoadingLayoutProxy()
                         .setLastUpdatedLabel(label);
                 getDateFromService();
-                getKGFromService();
+//                getKGFromService();
             }
         });
     }
+
     //设备开关控制
-    private void sendkgToService(final String status){
-        StringRequest request=new StringRequest(Request.Method.POST, Path.kgCortol, new Response.Listener<String>() {
+    private void sendkgToService(final String status) {
+        StringRequest request = new StringRequest(Request.Method.POST, Path.kgCortol, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
-//                Toast.makeText(DeviceControlActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(DeviceControlActivity.this, getResources().getString(R.string.szcg), Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
 
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("equipId", equipId);
-                params.put("siteId",stationId);
-                params.put("groupId",groupId);
-                params.put("status",status);
+                params.put("siteId", stationId);
+                params.put("groupId", groupId);
+                params.put("status", status);
                 return params;
             }
         };
         MyApplication.getHttpQueue().add(request);
     }
-    //设备电流控制
-    private void sendDlToService(final String electric){
-        StringRequest request=new StringRequest(Request.Method.POST, Path.dlCortol, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String s) {
-                Toast.makeText(DeviceControlActivity.this, "提交成功", Toast.LENGTH_SHORT).show();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
 
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("equipId", equipId);
-                params.put("siteId",stationId);
-                params.put("groupId",groupId);
-                params.put("electric",electric);
-                return params;
-            }
-        };
-        MyApplication.getHttpQueue().add(request);
-    }
-    //采样频率设置
-    private void SendPLToService(final String pl){
-        StringRequest request=new StringRequest(Request.Method.POST, Path.PL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String s) {
-                SPUtils.put(DeviceControlActivity.this, "pl", cp);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
 
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params=new HashMap<>();
-                params.put("siteId",stationId);
-                params.put("groupId",groupId);
-                params.put("equipId",equipId);
-                params.put("frequency",pl);
-                return params;
-            }
-        };
-        MyApplication.getHttpQueue().add(request);
-    }
     //获取设备电流 单元列表
     private void getDateFromService() {
         StringRequest request = new StringRequest(Request.Method.POST, Path.DeviceControl, new Response.Listener<String>() {
@@ -255,7 +218,8 @@ public class DeviceControlActivity extends Activity implements View.OnClickListe
                 if (adapter != null) {
                     listUnit.setAdapter(adapter);
                 }
-                dl.setText(deviceControl.getCurrent());
+                dianliu.setText(deviceControl.getCurrent() + " A");
+//                caiyang.setText(deviceControl.getList().get());
                 setListViewHeightBasedOnChildren(listUnit);
                 scrollView.onRefreshComplete();
             }
@@ -275,9 +239,10 @@ public class DeviceControlActivity extends Activity implements View.OnClickListe
         request.setTag("DeviceUnit");
         MyApplication.getHttpQueue().add(request);
     }
+
     //设备高级功能设置
-    private void sendGJToService(final int status){
-        StringRequest request=new StringRequest(Request.Method.POST, Path.SGJ, new Response.Listener<String>() {
+    private void sendGJToService(final int status) {
+        StringRequest request = new StringRequest(Request.Method.POST, Path.SGJ, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
             }
@@ -286,22 +251,25 @@ public class DeviceControlActivity extends Activity implements View.OnClickListe
             public void onErrorResponse(VolleyError volleyError) {
 
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params=new HashMap<>();
-                params.put("siteId",stationId);
-                params.put("groupId",groupId);
-                params.put("equipId",equipId);
-                params.put("status",String.valueOf(status));
+                Map<String, String> params = new HashMap<>();
+                params.put("siteId", stationId);
+                params.put("groupId", groupId);
+                params.put("equipId", equipId);
+                params.put("status", String.valueOf(status));
                 return params;
             }
         };
         MyApplication.getHttpQueue().add(request);
     }
+
     private void initview() {
-        scrollView = (PullToRefreshScrollView)findViewById(R.id.Sv);
-        gaoji = (TextView) findViewById(R.id.tv_gaojiContorl);
+        rl_pinglv = (RelativeLayout) findViewById(R.id.rl_pinglv);
+        rl_dianliu = (RelativeLayout) findViewById(R.id.rl_dianliu);
+        dianliu = (TextView) findViewById(R.id.dianliu);
+        scrollView = (PullToRefreshScrollView) findViewById(R.id.Sv);
         rlGao = (RelativeLayout) findViewById(R.id.rl_gaoji);
         rlGao.setOnClickListener(this);
         btnDevice = (Button) findViewById(R.id.btn_device);
@@ -319,17 +287,9 @@ public class DeviceControlActivity extends Activity implements View.OnClickListe
         contor = (LinearLayout) findViewById(R.id.ll_contor);
 //        commit = (Button) findViewById(R.id.btn);
 //        commit.setOnClickListener(this);
-        commite = (Button) findViewById(R.id.btn_tijiao);
-        commite.setOnClickListener(this);
-        pl = (EditText) findViewById(R.id.et_pl);
-        pl.setSelection(pl.getText().length());
-        pl.setSelectAllOnFocus(true);
-        pl.setText(String.valueOf(SPUtils.get(DeviceControlActivity.this, "pl", "")));
-        dl = (EditText) findViewById(R.id.et_dl);
-        //设置光标在右边
-        dl.setSelection(dl.getText().length());
-        //获得焦点时全选文本
-        dl.setSelectAllOnFocus(true);
+        rl_dianliu.setOnClickListener(this);
+        rl_pinglv.setOnClickListener(this);
+
 
     }
 
@@ -339,58 +299,92 @@ public class DeviceControlActivity extends Activity implements View.OnClickListe
             case R.id.device_control_fanhui:
                 finish();
                 break;
-            case R.id.btn_tijiao:
-                //电流设置
-                String electric=dl.getText().toString().trim();
-                sendDlToService(electric);
-                //频率设置
-                cp = pl.getText().toString().trim();
-                SendPLToService(cp);
-                //设备高级功能设置
-                String gj=gaoji.getText().toString().trim();
-                if (gj.equals("终止充电")){
-                    sendGJToService(1);
-                }else if (gj.equals("开始充电")){
-                    sendGJToService(2);
-                }else if (gj.equals("终止放电")){
-                    sendGJToService(3);
-                }else if (gj.equals("开始放电")){
-                    sendGJToService(4);
-                }
-                break;
+
             case R.id.btn_device:
                 con.setVisibility(View.VISIBLE);
                 llUnit.setVisibility(View.GONE);
-                commite.setVisibility(View.VISIBLE);
                 btnDevice.setSelected(true);
                 btnUnit.setSelected(false);
                 break;
             case R.id.bt_unit:
                 con.setVisibility(View.GONE);
                 llUnit.setVisibility(View.VISIBLE);
-                commite.setVisibility(View.GONE);
                 btnUnit.setSelected(true);
                 btnDevice.setSelected(false);
                 break;
             case R.id.rl_gaoji:
-                showDialog();
+                Intent intent0=new Intent(this,GaojiCaozuoActivity.class);
+                startActivity(intent0);
+                break;
+            case R.id.rl_dianliu:
+                Intent intent=new Intent(this,DianliuActivity.class);
+                intent.putExtra("equipId", equipId);
+                intent.putExtra("siteId", stationId);
+                intent.putExtra("groupId", groupId);
+                intent.putExtra("number","1");
+                startActivity(intent);
                 break;
 //            case R.id.btn:
 //                Toast.makeText(DeviceControlActivity.this,"提交成功",Toast.LENGTH_SHORT).show();
 //                finish();
 //                break;
+            case R.id.rl_pinglv:
+                Intent intent1=new Intent(this,PinlvActivity.class);
+                intent1.putExtra("equipId", equipId);
+                intent1.putExtra("siteId", stationId);
+                intent1.putExtra("groupId", groupId);
+                startActivity(intent1);
+                break;
         }
     }
 
     private void showDialog() {
         dialog = new ExpertContorlFragment();
         dialog.show(getFragmentManager(), "");
+
     }
+
+    private void showDialog1() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(DeviceControlActivity.this)
+                .setTitle(getResources().getString(R.string.ts))
+                .setMessage(getResources().getString(R.string.qrts))
+                .setPositiveButton(getResources().getString(R.string.confirm), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (!tbdevice.isChecked()) {
+                            flag = true;
+                            sendkgToService("1");//1表示开机
+                        } else {
+                            flag = false;
+                            sendkgToService("0");//0表示关机
+                        }
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton(getResources().getString(R.string.qx1), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (!tbdevice.isChecked()) {
+                            tbdevice.setChecked(true);
+                            flag = false;
+                        } else {
+                            tbdevice.setChecked(false);
+                            flag = true;
+                        }
+                        dialog.dismiss();
+                    }
+                });
+        builder.setCancelable(false);
+        builder.show();
+
+    }
+
 
     @Override
     public void InputComplete(String text) {
         if (!text.equals("取消")) {
-            gaoji.setText(text);
+
+
         }
         dialog.dismiss();
     }

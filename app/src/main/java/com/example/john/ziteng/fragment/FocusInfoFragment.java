@@ -118,7 +118,7 @@ public class FocusInfoFragment extends Fragment {
                             listview.onRefreshComplete();
                         }
                     }, 1000);
-                    Toast.makeText(getActivity(), "已经在最后一页了", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.zhyy), Toast.LENGTH_SHORT).show();
                 }
 
             }

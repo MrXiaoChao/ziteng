@@ -1,17 +1,19 @@
 package com.example.john.ziteng.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -53,7 +55,6 @@ public class DeviceModerActivity extends Activity implements View.OnClickListene
     private LinearLayout unit;
     private LinearLayout moder;
     private ToggleButton tbModer;
-    private EditText dianliu;
     private Button btnUnit;
     private Button btnModer;
     private TextView unitContor;
@@ -74,6 +75,10 @@ public class DeviceModerActivity extends Activity implements View.OnClickListene
     List<JSONObject> stringList = new ArrayList<>();
     private LinearLayout lldan;
     private PullToRefreshScrollView scrollView;
+    private RelativeLayout rl_dianliu;
+    private RelativeLayout rl_gaoji;
+    private boolean flag;
+    private TextView dianliu;
 
 
     @Override
@@ -118,33 +123,6 @@ public class DeviceModerActivity extends Activity implements View.OnClickListene
         MyApplication.getHttpQueue().add(request);
     }
 
-    //单元电流修改
-    private void sendDLToService(final String electric) {
-        StringRequest request = new StringRequest(Request.Method.POST, Path.UdlK, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String s) {
-                Toast.makeText(DeviceModerActivity.this, "提交成功", Toast.LENGTH_SHORT).show();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
-
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("equipId", equipId);
-                params.put("siteId", stationId);
-                params.put("groupId", groupId);
-                params.put("unitId", unitId);
-                params.put("electric", electric);
-                return params;
-            }
-        };
-        MyApplication.getHttpQueue().add(request);
-    }
-
     //单元电流展示
     private void getDLFromService() {
         StringRequest request = new StringRequest(Request.Method.POST, Path.Udl, new Response.Listener<String>() {
@@ -153,7 +131,7 @@ public class DeviceModerActivity extends Activity implements View.OnClickListene
                 try {
                     JSONObject object = new JSONObject(s);
                     String current = object.getString("setting_current");
-                    dianliu.setText(current);
+                    dianliu.setText(current+" A");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -214,7 +192,7 @@ public class DeviceModerActivity extends Activity implements View.OnClickListene
         StringRequest request = new StringRequest(Request.Method.POST, Path.UkgC, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
-
+                Toast.makeText(DeviceModerActivity.this,getResources().getString(R.string.szcg),Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -254,41 +232,44 @@ public class DeviceModerActivity extends Activity implements View.OnClickListene
 
 
     private void initview() {
+        dianliu = (TextView) findViewById(R.id.dianliu);
+        rl_gaoji = (RelativeLayout) findViewById(R.id.rl_gaoji);
+        rl_dianliu = (RelativeLayout) findViewById(R.id.rl_dianliu);
         scrollView = (PullToRefreshScrollView) findViewById(R.id.svw);
         lldan = (LinearLayout) findViewById(R.id.ll_danyuan);
         listmoder = (ListView) findViewById(R.id.list_device_moder);
-        commit = (Button) findViewById(R.id.btn_tijiao);
-        commit.setOnClickListener(this);
         fanhui = (ImageView) findViewById(R.id.moder_fanhui);
         fanhui.setOnClickListener(this);
-        gaoji = (TextView) findViewById(R.id.tv_gaoji);
+
         unitContor = (TextView) findViewById(R.id.tv_unit_contor);
         unit = (LinearLayout) findViewById(R.id.ll_unitContor);
         moder = (LinearLayout) findViewById(R.id.ll_moder);
         tbModer = (ToggleButton) findViewById(R.id.tb_moder);
-        dianliu = (EditText) findViewById(R.id.et_dianliu);
         btnUnit = (Button) findViewById(R.id.btn_unit);
         btnModer = (Button) findViewById(R.id.bt_moder);
-        gcontorl = (RelativeLayout) findViewById(R.id.rl_contor);
-        btn_tijia = (Button) findViewById(R.id.btn_tijia);
-        btn_tijia.setOnClickListener(this);
-        gcontorl.setOnClickListener(this);
+
         btnUnit.setOnClickListener(this);
         btnModer.setOnClickListener(this);
         btnUnit.setSelected(true);
-        dianliu.setSelection(dianliu.getText().length());
-        dianliu.setSelectAllOnFocus(true);
+        rl_dianliu.setOnClickListener(this);
+        rl_gaoji.setOnClickListener(this);
+
         tbModer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     unit.setVisibility(View.VISIBLE);
                     unitContor.setTextColor(getResources().getColor(R.color.blue));
-                    SendKgToService("1");
+                    if (flag) {
+                        showDialog1();
+                    }
+
                 } else {
                     unit.setVisibility(View.GONE);
                     unitContor.setTextColor(getResources().getColor(R.color.gray));
-                    SendKgToService("0");
+                    if (!flag) {
+                        showDialog1();
+                    }
                 }
             }
         });
@@ -296,7 +277,7 @@ public class DeviceModerActivity extends Activity implements View.OnClickListene
             @Override
             public void onRefresh(PullToRefreshBase<ScrollView> refreshView) {
                 String label = DateUtils.formatDateTime(
-                       DeviceModerActivity.this,
+                        DeviceModerActivity.this,
                         System.currentTimeMillis(),
                         DateUtils.FORMAT_SHOW_TIME
                                 | DateUtils.FORMAT_SHOW_DATE
@@ -307,6 +288,19 @@ public class DeviceModerActivity extends Activity implements View.OnClickListene
                 getDateFromService();
                 getKGFromService();
                 getDLFromService();
+            }
+        });
+        listmoder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent= new Intent(DeviceModerActivity.this,DianliuActivity.class);
+                intent.putExtra("moduleId",deviceModers.get(position).getModuleId());
+                intent.putExtra("siteId",stationId);
+                intent.putExtra("groupId",groupId);
+                intent.putExtra("equipId",equipId);
+                intent.putExtra("unitId",unitId);
+                intent.putExtra("number","3");
+                startActivity(intent);
             }
         });
 
@@ -320,7 +314,7 @@ public class DeviceModerActivity extends Activity implements View.OnClickListene
     @Override
     public void InputComplete(String text) {
         if (!text.equals("取消")) {
-            gaoji.setText(text);
+
         }
         dialog.dismiss();
     }
@@ -342,42 +336,24 @@ public class DeviceModerActivity extends Activity implements View.OnClickListene
                 moder.setVisibility(View.VISIBLE);
                 unit.setVisibility(View.GONE);
                 break;
-            case R.id.rl_contor:
-                showDialog();
-                break;
+
+
             case R.id.moder_fanhui:
                 finish();
                 break;
-            case R.id.btn_tijiao:
-                String electric = dianliu.getText().toString().trim();
-                sendDLToService(electric);
-                String gj=gaoji.getText().toString().trim();
-                if (gj.equals("终止充电")){
-                    sendGJToService(1);
-                }else if (gj.equals("开始充电")){
-                    sendGJToService(2);
-                }else if (gj.equals("终止放电")){
-                    sendGJToService(3);
-                }else if (gj.equals("开始放电")){
-                    sendGJToService(4);
-                }
+
+            case R.id.rl_dianliu:
+                Intent intent=new Intent(this,DianliuActivity.class);
+                intent.putExtra("equipId", equipId);
+                intent.putExtra("siteId", stationId);
+                intent.putExtra("groupId", groupId);
+                intent.putExtra("unitId", unitId);
+                intent.putExtra("number","0");
+                startActivity(intent);
                 break;
-            case R.id.btn_tijia://模块的提交按钮
-                for (int i = 0; i < listmoder.getCount(); i++) {
-                    DeviceModer deviceModer = deviceModers.get(i);
-                    LinearLayout layout = (LinearLayout) listmoder.getChildAt(i);
-                    EditText editText = (EditText) layout.findViewById(R.id.device_moder);
-                    JSONObject object=new JSONObject();
-                    try {
-                        object.put("moduleCurrent",editText.getText().toString());
-                        object.put("moduleId",deviceModer.getModuleId());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    stringList.add(object);
-                    str = String.valueOf(stringList);
-                }
-                sendDataToService();
+            case R.id.rl_gaoji:
+                Intent intent1=new Intent(this,GaojiCaozuoActivity.class);
+                startActivity(intent1);
                 break;
         }
 
@@ -409,43 +385,41 @@ public class DeviceModerActivity extends Activity implements View.OnClickListene
         MyApplication.getHttpQueue().add(request);
     }
 
-    //上传修改之后的模块电流至服务器
-    private void sendDataToService() {
-        StringRequest request = new StringRequest(Request.Method.POST, Path.MDXG, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String s) {
-                try {
-                    JSONObject object = new JSONObject(s);
-                    boolean success = object.getBoolean("success");
-                    if (success) {
-                        Toast.makeText(DeviceModerActivity.this, "提交成功", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(DeviceModerActivity.this, "提交失败", Toast.LENGTH_SHORT).show();
+
+    private void showDialog1() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(DeviceModerActivity.this)
+                .setTitle(getResources().getString(R.string.ts))
+                .setMessage(getResources().getString(R.string.qrts))
+                .setPositiveButton(getResources().getString(R.string.confirm), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (!tbModer.isChecked()) {
+                            flag = true;
+                            SendKgToService("1");
+                        } else {
+                            flag=false;
+                            SendKgToService("0");
+                        }
+                        dialog.dismiss();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
+                })
+                .setNegativeButton(getResources().getString(R.string.qx1), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (!tbModer.isChecked()) {
+                            tbModer.setChecked(true);
+                            flag = false;
+                        } else {
+                            tbModer.setChecked(false);
+                            flag=true;
+                        }
+                        dialog.dismiss();
+                    }
+                });
+        builder.setCancelable(false);
+        builder.show();
 
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("siteId", stationId);
-                params.put("groupId", groupId);
-                params.put("equipId", equipId);
-                params.put("unitId", unitId);
-                params.put("jsonStr", str);
-                return params;
-            }
-        };
-        MyApplication.getHttpQueue().add(request);
     }
-
 
     //模块列表中的adapter
     public class DeviceMondlerAdapter extends BaseAdapter {
@@ -478,25 +452,20 @@ public class DeviceModerActivity extends Activity implements View.OnClickListene
                 holder = new viewHolder();
                 convertView = LayoutInflater.from(context).inflate(R.layout.list_moder, null);
                 holder.moder = (TextView) convertView.findViewById(R.id.tv_device_moder);
-                holder.electricCurrent = (EditText) convertView.findViewById(R.id.device_moder);
-                //设置光标在右边
-                holder.electricCurrent.setSelection(holder.electricCurrent.getText().length());
-                //获得焦点时全选文本
-                holder.electricCurrent.setSelectAllOnFocus(true);
-
+                holder.tv_dianliu= (TextView) convertView.findViewById(R.id.tv_dianliu);
                 convertView.setTag(holder);
             } else {
                 holder = (viewHolder) convertView.getTag();
             }
-
-            holder.moder.setText(moder1.getModuleId());
-            holder.electricCurrent.setText(String.valueOf(moder1.getElectricCurren()));
+            holder.moder.setText(getResources().getString(R.string.mka)+"-" + moder1.getModuleId().substring(5, 7));
+            holder.moder.setTextColor(context.getResources().getColor(R.color.blue));
+            holder.tv_dianliu.setText(String.valueOf(moder1.getElectricCurren()) + " A");
             return convertView;
         }
 
         class viewHolder {
             TextView moder;
-            EditText electricCurrent;
+            TextView tv_dianliu;
         }
     }
 }

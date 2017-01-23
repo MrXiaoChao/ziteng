@@ -159,7 +159,7 @@ public class SiteListActivity extends BaseActivity implements View.OnClickListen
                             listView.onRefreshComplete();
                         }
                     }, 1000);
-                    Toast.makeText(SiteListActivity.this, "已经在最后一页了", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SiteListActivity.this, getResources().getString(R.string.zhyy), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -359,16 +359,16 @@ public class SiteListActivity extends BaseActivity implements View.OnClickListen
                 siteInfo.setVisibility(View.GONE);
             }
         });
-
         viewHolder.siteinfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 siteInfo.setVisibility(View.GONE);
-                Intent intent = new Intent(SiteListActivity.this, SiteInfoActivity.class);
+                Intent intent = new Intent(SiteListActivity.this, SiteDetailActivity.class);
                 if (mapSiteInfo == null) {
                     return;
                 }
-                intent.putExtra("mapsiteinfo", mapSiteInfo);
+                intent.putExtra("cityId", mapSiteInfo.getCITY());
+                intent.putExtra("siteId",info.getSiteId());
                 startActivity(intent);
             }
         });
@@ -428,9 +428,9 @@ public class SiteListActivity extends BaseActivity implements View.OnClickListen
                     info.setFocus(focus);
                     adapter.notifyDataSetChanged();
                     if (info.getFocus().equals("已关注")) {
-                        Toast.makeText(SiteListActivity.this, "你已关注站点", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SiteListActivity.this, getResources().getString(R.string.gz), Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(SiteListActivity.this, "你已取消关注", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SiteListActivity.this, getResources().getString(R.string.qx), Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -497,7 +497,7 @@ public class SiteListActivity extends BaseActivity implements View.OnClickListen
 
     private void showDialog() {
         dialog = new ProgressDialog(SiteListActivity.this);
-        dialog.setMessage("正在加载中...");
+        dialog.setMessage(getResources().getString(R.string.zzjz));
         dialog.show();
     }
 

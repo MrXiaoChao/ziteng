@@ -34,6 +34,12 @@
             android:textColor="@drawable/btn_barrty_list"
             android:text="@string/mka"
             style="@style/btn_main" />
+        <View
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_width="2px"
+            android:layout_height="match_parent"
+            android:background="@color/gray" />
         <Button
             android:layout_marginTop="2dp"
             android:id="@+id/btn_unit"
@@ -41,6 +47,13 @@
             android:textColor="@drawable/btn_barrty_list"
             android:text="@string/dya"
             style="@style/btn_main" />
+        <View
+            android:id="@+id/view"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_width="2px"
+            android:layout_height="match_parent"
+            android:background="@color/gray" />
         <Button
             android:layout_marginTop="2dp"
             android:id="@+id/btn_list"

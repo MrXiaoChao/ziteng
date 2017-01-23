@@ -1,6 +1,5 @@
 package com.example.john.ziteng.activity;
 
-import android.app.ExpandableListActivity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -36,12 +35,16 @@ public class SiteDetailActivity extends BaseActivity implements View.OnClickList
     private ImageView fanhui;
     private TextView tv_site_title;
     private SiteInfo site;
+    private String siteId;
+    private View view;
+    private View view3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_site_detal);
         Intent intent=getIntent();
+        siteId = intent.getStringExtra("siteId");
         site = (SiteInfo) intent.getSerializableExtra("siteInfo");
         initView();
         setTabSelected(btn1);
@@ -50,9 +53,10 @@ public class SiteDetailActivity extends BaseActivity implements View.OnClickList
 
 
     private void initView() {
+        view3 = findViewById(R.id.view3);
+        view = findViewById(R.id.view);
         fanhui = (ImageView) findViewById(R.id.site_fanhui);
         tv_site_title = (TextView) findViewById(R.id.tv_site_title);
-        tv_site_title.setText(site.getName());
         //Tab
         layout = (LinearLayout)findViewById(R.id.layout_tab);
         btn1 = (Button)findViewById(R.id.btnTab001);
@@ -64,7 +68,11 @@ public class SiteDetailActivity extends BaseActivity implements View.OnClickList
         btn3.setOnClickListener(this);
         btn4.setOnClickListener(this);
         fanhui.setOnClickListener(this);
-
+        if (siteId!=null){
+            layout.setVisibility(View.GONE);
+            view.setVisibility(View.GONE);
+            view3.setVisibility(View.GONE);
+        }
     }
     //选择button绘制下面的横线
     private void setTabSelected(Button btnSelected) {

@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="设备控制"
+            android:text="@string/sbkz"
             android:textColor="@color/white"
             android:textSize="@dimen/text_big" />
     </RelativeLayout>
@@ -52,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:text="设备"
+                    android:text="@string/sb"
                     android:textColor="@drawable/btn_selet_color"
                     android:textSize="@dimen/text_mid_2" />
 
@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:text="单元"
+                    android:text="@string/dya"
                     android:textColor="@drawable/btn_selet_color"
                     android:textSize="@dimen/text_mid_2" />
             </LinearLayout>
@@ -84,25 +84,7 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:text="单元列表"
-                        android:textColor="@color/blue"
-                        android:textSize="@dimen/text_mid" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:background="@color/gray" />
 
                 <ListView
                     android:id="@+id/list_device_unit"
@@ -132,7 +114,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="8dp"
-                        android:text="设备控制"
+                        android:text="@string/sbkg"
                         android:textColor="@color/blue"
                         android:textSize="@dimen/text_mid_2" />
 
@@ -143,7 +125,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:background="@android:color/transparent"
-                        android:button="@drawable/checkbox_iphone"
+                        android:button="@drawable/checkbox_android"
                         android:checked="false"
                         android:clickable="true"
                         android:focusable="false"
@@ -164,6 +146,7 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
+                        android:id="@+id/rl_dianliu"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:orientation="vertical">
@@ -173,41 +156,19 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:paddingLeft="10dp"
-                            android:text="充电电流设置"
-                            android:textColor="@color/gray"
+                            android:text="@string/dlsz"
+                            android:textColor="@color/blue"
                             android:textSize="@dimen/text_mid_2" />
 
-                        <LinearLayout
-                            android:layout_width="200dp"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
+                        <TextView
                             android:layout_marginRight="8dp"
-                            android:focusable="true"
-                            android:focusableInTouchMode="true"
-                            android:gravity="right"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/et_dl"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="8dp"
-                                android:layout_weight="1"
-                                android:background="@null"
-                                android:gravity="center_vertical|right"
-                                android:numeric="integer"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/text_mid_2" />
-
-                            <TextView
-                                android:id="@+id/b"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="mA"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/text_mid_2" />
-                        </LinearLayout>
+                            android:id="@+id/dianliu"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_mid_2" />
                     </RelativeLayout>
 
                     <View
@@ -216,6 +177,7 @@
                         android:background="@color/gray" />
 
                     <RelativeLayout
+                        android:id="@+id/rl_pinglv"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:orientation="vertical">
@@ -225,41 +187,19 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:paddingLeft="10dp"
-                            android:text="数据采样频率"
-                            android:textColor="@color/gray"
+                            android:text="@string/cypl"
+                            android:textColor="@color/blue"
                             android:textSize="@dimen/text_mid_2" />
 
-                        <LinearLayout
-                            android:layout_width="200dp"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
+                        <TextView
+                            android:text="1 S"
                             android:layout_marginRight="8dp"
-                            android:focusable="true"
-                            android:focusableInTouchMode="true"
-                            android:gravity="right"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/et_pl"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="8dp"
-                                android:layout_weight="1"
-                                android:background="@null"
-                                android:gravity="center_vertical|right"
-                                android:numeric="integer"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/text_mid_2" />
-
-                            <TextView
-                                android:id="@+id/a"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="S"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/text_mid_2" />
-                        </LinearLayout>
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_mid_2" />
 
                     </RelativeLayout>
 
@@ -279,40 +219,36 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:paddingLeft="10dp"
-                            android:text="高级功能"
-                            android:textColor="@color/gray"
+                            android:text="@string/gjcz"
+                            android:textColor="@color/blue"
                             android:textSize="@dimen/text_mid_2" />
 
-                        <TextView
+                        <ImageView
+                            android:layout_marginRight="8dp"
+                            android:background="@mipmap/you2"
                             android:id="@+id/tv_gaojiContorl"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
-                            android:layout_marginRight="8dp"
-                            android:textColor="@color/gray"
-                            android:textSize="@dimen/text_mid_2" />
+                            />
                     </RelativeLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1px"
                         android:background="@color/gray" />
+                    <RelativeLayout
+                        android:background="@color/gray_dan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    </RelativeLayout>
 
                 </LinearLayout>
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_tijiao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="100dp"
-                android:background="@drawable/shape_button"
-                android:paddingLeft="135dp"
-                android:paddingRight="135dp"
-                android:text="提交"
-                android:textColor="@color/white" />
+
         </LinearLayout>
     </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
 </LinearLayout>

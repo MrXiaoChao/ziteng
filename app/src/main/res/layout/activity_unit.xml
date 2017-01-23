@@ -61,7 +61,7 @@
                 android:layout_height="45dp">
 
                 <TextView
-                    android:text="单元信息"
+                    android:text="@string/dyxx"
                     android:id="@+id/unit_xinxi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="12dp"
                         android:gravity="center_vertical"
-                        android:text="状态"
+                        android:text="@string/zta"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/text_mid_2" />
 
@@ -122,6 +122,7 @@
                 </RelativeLayout>
 
                 <View
+                    android:layout_marginLeft="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:background="@color/gray" />
@@ -137,7 +138,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="12dp"
                         android:gravity="center_vertical"
-                        android:text="电流"
+                        android:text="@string/dl1"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/text_mid_2" />
 
@@ -155,6 +156,7 @@
                 </RelativeLayout>
 
                 <View
+                    android:layout_marginLeft="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:background="@color/gray" />
@@ -170,7 +172,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="12dp"
                         android:gravity="center_vertical"
-                        android:text="电压"
+                        android:text="@string/dy"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/text_mid_2" />
 
@@ -186,6 +188,35 @@
                         android:textSize="@dimen/text_mid_2" />
 
                 </RelativeLayout>
+                <View
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/gray" />
+                <RelativeLayout
+                    android:id="@+id/lssj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp">
+                    <TextView
+                        android:text="@string/lssj"
+                        android:layout_centerVertical="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="12dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/text_mid_2" />
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="40px"
+                        android:layout_height="40px"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="8dp"
+                        android:background="@mipmap/you" />
+                </RelativeLayout>
+
 
                 <View
                     android:layout_width="match_parent"

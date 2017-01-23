@@ -7,6 +7,16 @@ import java.io.Serializable;
  * Created by john on 2016/4/12.
  */
 public class MarkInfo implements Serializable{
+    private String CITY;
+    private String DESCRIPTION;
+    private String LATITUDE;
+    private String LONGITUDE;
+    private String focus;
+    private String manage;
+    private String name;
+    private String siteId;
+    private String state;
+    private String url;
 
     public String getCITY() {
         return CITY;
@@ -40,20 +50,28 @@ public class MarkInfo implements Serializable{
         this.LONGITUDE = LONGITUDE;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getFocus() {
         return focus;
     }
 
     public void setFocus(String focus) {
         this.focus = focus;
+    }
+
+    public String getManage() {
+        return manage;
+    }
+
+    public void setManage(String manage) {
+        this.manage = manage;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSiteId() {
@@ -64,22 +82,19 @@ public class MarkInfo implements Serializable{
         this.siteId = siteId;
     }
 
-    public MarkInfo(String CITY, String DESCRIPTION, String LATITUDE, String LONGITUDE, String name, String focus, String siteId) {
-        this.CITY = CITY;
-        this.DESCRIPTION = DESCRIPTION;
-        this.LATITUDE = LATITUDE;
-        this.LONGITUDE = LONGITUDE;
-        this.name = name;
-        this.focus = focus;
-        this.siteId = siteId;
+    public String getState() {
+        return state;
     }
 
-    private String CITY;
-    private String DESCRIPTION;
-    private String LATITUDE;//纬度
-    private String LONGITUDE;//精度
-    private String name;//站点名称
-    private String focus;
-    private String siteId;
+    public void setState(String state) {
+        this.state = state;
+    }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }

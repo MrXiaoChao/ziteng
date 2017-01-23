@@ -5,19 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.BaseExpandableListAdapter;
-import android.widget.ExpandableListView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.john.ziteng.R;
-import com.example.john.ziteng.domain.DeviceGroupInfo;
 import com.example.john.ziteng.domain.UnitList;
-import com.example.john.ziteng.view.HeaderGridView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 单元列表
@@ -58,7 +51,7 @@ public class UnitlistAdapter extends BaseAdapter {
         }else {
             holder= (Viewholder) convertView.getTag();
         }
-        holder.childTextView.setText("模块-"+list.get(position).getMoudleId().substring(5,7));
+        holder.childTextView.setText(context.getString(R.string.ml)+"-"+list.get(position).getMoudleId().substring(5,7));
         return convertView;
     }
     class Viewholder{

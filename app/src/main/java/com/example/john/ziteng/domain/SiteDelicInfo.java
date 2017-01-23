@@ -6,17 +6,19 @@ package com.example.john.ziteng.domain;
  */
 public class SiteDelicInfo {
 
+
     /**
      * AllUps : 2000
      * deploytime : 2016-05-13 17:40:57
      * electrovalency : 1
-     * energy_storage : 497
-     * id : 1000000
-     * latitude : 117.286452
-     * longitude : 36.604016
+     * energy_storage : 658
+     * latitude : 36.6728230000
+     * longitude : 117.1345356327
      * name : 济南UPS测试
-     * power : 176
+     * power : 173
+     * siteId : 1000000
      * siteState : 负载部分断电
+     * statusTime : 2016-12-12 11:06:04
      * storageCapacity : 20
      */
 
@@ -46,10 +48,10 @@ public class SiteDelicInfo {
     private KeyDateBean keyDate;
     /**
      * city : 西城区
-     * cond : 多云
-     * dir : 南风4-5级
-     * max : 16°C - 9°C
-     * temperature : 16
+     * cond : 霾
+     * dir : 西风3-4级
+     * max : 3°C - -3°C
+     * temperature : 3
      */
 
     private WeatherBean weather;
@@ -91,12 +93,13 @@ public class SiteDelicInfo {
         private String deploytime;
         private int electrovalency;
         private String energy_storage;
-        private String id;
         private String latitude;
         private String longitude;
         private String name;
         private String power;
+        private String siteId;
         private String siteState;
+        private String statusTime;
         private String storageCapacity;
 
         public String getAllUps() {
@@ -131,14 +134,6 @@ public class SiteDelicInfo {
             this.energy_storage = energy_storage;
         }
 
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
-
         public String getLatitude() {
             return latitude;
         }
@@ -171,12 +166,28 @@ public class SiteDelicInfo {
             this.power = power;
         }
 
+        public String getSiteId() {
+            return siteId;
+        }
+
+        public void setSiteId(String siteId) {
+            this.siteId = siteId;
+        }
+
         public String getSiteState() {
             return siteState;
         }
 
         public void setSiteState(String siteState) {
             this.siteState = siteState;
+        }
+
+        public String getStatusTime() {
+            return statusTime;
+        }
+
+        public void setStatusTime(String statusTime) {
+            this.statusTime = statusTime;
         }
 
         public String getStorageCapacity() {

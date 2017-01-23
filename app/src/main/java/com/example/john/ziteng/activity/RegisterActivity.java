@@ -50,7 +50,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         @Override
         public void onFinish() {
             btnHuoqu.setEnabled(true);
-            btnHuoqu.setText("获取验证码");
+            btnHuoqu.setText(getResources().getString(R.string.hqyzm));
         }
     };
 
@@ -59,7 +59,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         StringRequest request = new StringRequest(Request.Method.POST, Path.YZM, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
-                Toast.makeText(RegisterActivity.this, "请去你的邮箱查收验证码", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this,getResources().getString(R.string.cs), Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -110,7 +110,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 if (ComUtils.isEmail(email)) {
                     GetYzmFromService();
                 } else {
-                    Toast.makeText(RegisterActivity.this, "请输入正确的邮箱号", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, getResources().getString(R.string.zqxy), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 timer.start();
@@ -121,7 +121,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             case R.id.queren:
                 yzm = etYanzm.getText().toString().trim();
                 if (yzm == null) {
-                    Toast.makeText(RegisterActivity.this, "请输入验证码", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, getResources().getString(R.string.qsryzm), Toast.LENGTH_SHORT).show();
                 } else {
                     ComPareYZM();
                 }
@@ -141,7 +141,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(RegisterActivity.this, "请输入正确的验证码", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, getResources().getString(R.string.adjk), Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {

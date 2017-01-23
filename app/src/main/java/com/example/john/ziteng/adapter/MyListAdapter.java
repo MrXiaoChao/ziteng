@@ -5,18 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.BaseExpandableListAdapter;
-import android.widget.ExpandableListView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.john.ziteng.R;
 import com.example.john.ziteng.domain.DeviceGroupInfo;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 多级下拉列表
@@ -57,7 +51,7 @@ public class MyListAdapter extends BaseAdapter {
         }else {
             holder= (Viewholder) convertView.getTag();
         }
-        holder.childTextView.setText("单元-"+list.get(position).getUnitId().substring(5,7));
+        holder.childTextView.setText(context.getString(R.string.ul)+"-"+list.get(position).getUnitId().substring(5,7));
         return convertView;
     }
     class Viewholder{

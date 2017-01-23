@@ -7,7 +7,6 @@ import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -17,7 +16,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.john.ziteng.R;
-import com.example.john.ziteng.activity.WebViewTotalActivity;
 import com.example.john.ziteng.application.MyApplication;
 import com.example.john.ziteng.domain.SiteGuangJiang;
 import com.example.john.ziteng.domain.SiteInfo;
@@ -96,7 +94,7 @@ public class CoreDataFragment extends Fragment  {
     }
 
     private void initview(View view) {
-        scrollView = (PullToRefreshScrollView) view.findViewById(R.id.sv);
+//        scrollView = (PullToRefreshScrollView) view.findViewById(R.id.sv);
         ritd = (TextView) view.findViewById(R.id.tv_ritd);
         risc = (TextView) view.findViewById(R.id.tv_risc);
         riups = (TextView) view.findViewById(R.id.tv_riups);

@@ -7,25 +7,24 @@ import java.util.List;
  * Created by john on 2016/5/17.
  */
 public class MoudleList {
-    public MoudleList(String moudleId,String current, String temperature, String voltage, List<BatterylistBean> batterylist) {
-        this.moudleId=moudleId;
-        this.current = current;
-        this.temperature = temperature;
-        this.voltage = voltage;
-        this.batterylist = batterylist;
-    }
-    private String moudleId;
 
-    public String getMoudleId() {
-        return moudleId;
-    }
+    /**
+     * batterylist : [{"batteryId":"6000000"},{"batteryId":"6000001"},{"batteryId":"6000002"},{"batteryId":"6000003"},{"batteryId":"6000004"},{"batteryId":"6000005"},{"batteryId":"6000006"},{"batteryId":"6000007"},{"batteryId":"6000008"},{"batteryId":"6000009"},{"batteryId":"6000010"},{"batteryId":"6000011"},{"batteryId":"6000012"},{"batteryId":"6000013"},{"batteryId":"6000014"},{"batteryId":"6000015"}]
+     * current : 0
+     * moudleid : 5000000
+     * status : 空闲
+     * temperature : 35
+     * voltage : 13702
+     */
 
-    public void setMoudleId(String moudleId) {
-        this.moudleId = moudleId;
-    }
     private String current;
+    private String moudleid;
+    private String status;
     private String temperature;
     private String voltage;
+    /**
+     * batteryId : 6000000
+     */
 
     private List<BatterylistBean> batterylist;
 
@@ -35,6 +34,22 @@ public class MoudleList {
 
     public void setCurrent(String current) {
         this.current = current;
+    }
+
+    public String getMoudleid() {
+        return moudleid;
+    }
+
+    public void setMoudleid(String moudleid) {
+        this.moudleid = moudleid;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getTemperature() {
@@ -62,10 +77,6 @@ public class MoudleList {
     }
 
     public static class BatterylistBean {
-        public BatterylistBean(String batteryId) {
-            this.batteryId = batteryId;
-        }
-
         private String batteryId;
 
         public String getBatteryId() {

@@ -1,6 +1,8 @@
 package com.example.john.ziteng.protocol;
 
 
+import android.content.Context;
+
 import com.example.john.ziteng.R;
 import com.example.john.ziteng.citylist.SortModel;
 import com.example.john.ziteng.domain.BatteryList;
@@ -14,7 +16,6 @@ import com.example.john.ziteng.domain.Commite;
 import com.example.john.ziteng.domain.DeviceCanshu;
 import com.example.john.ziteng.domain.DeviceControl;
 import com.example.john.ziteng.domain.DeviceGroup;
-import com.example.john.ziteng.domain.DeviceGroupInfo;
 import com.example.john.ziteng.domain.DeviceInfo;
 import com.example.john.ziteng.domain.DeviceModer;
 import com.example.john.ziteng.domain.DevicePassWord;
@@ -22,20 +23,18 @@ import com.example.john.ziteng.domain.DeviceState;
 import com.example.john.ziteng.domain.MapSiteInfo;
 import com.example.john.ziteng.domain.MarkInfo;
 import com.example.john.ziteng.domain.Monitor;
-import com.example.john.ziteng.domain.MoudleList;
 import com.example.john.ziteng.domain.NewsInfo;
 import com.example.john.ziteng.domain.NewsTotal;
 import com.example.john.ziteng.domain.PassWord;
 import com.example.john.ziteng.domain.Personal;
 import com.example.john.ziteng.domain.Pic;
-import com.example.john.ziteng.domain.SiteDelicInfo;
+import com.example.john.ziteng.domain.Shebeigaojing;
 import com.example.john.ziteng.domain.SiteGuangJiang;
 import com.example.john.ziteng.domain.SiteInfo;
 import com.example.john.ziteng.domain.SiteListInfo;
 import com.example.john.ziteng.domain.SiteLists;
 import com.example.john.ziteng.domain.Sitefours;
 import com.example.john.ziteng.domain.Unit;
-import com.example.john.ziteng.domain.UnitList;
 import com.example.john.ziteng.domain.UserLogin;
 import com.example.john.ziteng.domain.Warn;
 import com.example.john.ziteng.domain.Warn1;
@@ -252,7 +251,7 @@ public class PaseJson {
     }
 
     //设备群入口群基本信息
-    public static ArrayList<DeviceGroup> PaseDevice(String json) {
+    public static ArrayList<DeviceGroup> PaseDevice(String json,Context context) {
         ArrayList<DeviceGroup> list = new ArrayList<>();
         ArrayList<DeviceGroup.EquipListBean> list1 = new ArrayList<>();
         try {
@@ -275,9 +274,26 @@ public class PaseJson {
                     equipListBean.setEquipId(equipId);
                     list1.add(equipListBean);
                 }
+                DeviceGroup.EquipListBean equipListBean0 = new DeviceGroup.EquipListBean();
+                equipListBean0.setEquip_id(context.getResources().getString(R.string.sbqmc));
+                list1.add(0, equipListBean0);
+
                 DeviceGroup.EquipListBean equipListBean1 = new DeviceGroup.EquipListBean();
-                equipListBean1.setEquip_id("基本信息");
-                list1.add(0, equipListBean1);
+                equipListBean1.setEquip_id(context.getResources().getString(R.string.gl));
+                list1.add(1, equipListBean1);
+
+                DeviceGroup.EquipListBean equipListBean2 = new DeviceGroup.EquipListBean();
+                equipListBean2.setEquip_id(context.getResources().getString(R.string.dy));
+                list1.add(2, equipListBean2);
+
+                DeviceGroup.EquipListBean equipListBean3 = new DeviceGroup.EquipListBean();
+                equipListBean3.setEquip_id(context.getResources().getString(R.string.cnl));
+                list1.add(3, equipListBean3);
+
+                DeviceGroup.EquipListBean equipListBean4 = new DeviceGroup.EquipListBean();
+                equipListBean4.setEquip_id(context.getResources().getString(R.string.bssj));
+                list1.add(4, equipListBean4);
+
                 DeviceGroup deviceGroup = new DeviceGroup(deploy_time, groupId, groupName, power, stored_energy, voltage, list1);
                 list.add(deviceGroup);
             }
@@ -318,30 +334,7 @@ public class PaseJson {
     }
 
     //设备群列表 里面的设备
-    public static DeviceGroupInfo PaseDGF(String json) {
-        ArrayList<DeviceGroupInfo.UnitlistBean> list = new ArrayList<>();
-        DeviceGroupInfo deviceGroupInfo = null;
-        try {
-            JSONObject object = new JSONObject(json);
-            String deploy_time = object.getString("deploy_time");
-            String equip_id = object.getString("equip_id");
-            String equipId = object.getString("equipId");
-            int power = object.getInt("power");
-            int stored_energy = object.getInt("stored_energy");
-            int voltage = object.getInt("voltage");
-            JSONArray array = object.getJSONArray("unitlist");
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject object1 = array.getJSONObject(i);
-                String unitId = object1.getString("unitId");
-                DeviceGroupInfo.UnitlistBean unitlistBean = new DeviceGroupInfo.UnitlistBean(unitId);
-                list.add(unitlistBean);
-            }
-            deviceGroupInfo = new DeviceGroupInfo(deploy_time, equipId, equip_id, power, stored_energy, voltage, list);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return deviceGroupInfo;
-    }
+
 
     //重要告警信息
     public static List<WarnInfo> PaseWarnInfo(String json) {
@@ -443,16 +436,27 @@ public class PaseJson {
             JSONArray array = new JSONArray(json);
             for (int i = 0; i < array.length(); i++) {
                 JSONObject object = array.getJSONObject(i);
+                MarkInfo info = new MarkInfo();
                 String CITY = object.getString("CITY");
                 String DESCRIPTION = object.getString("DESCRIPTION");
                 String LATITUDE = object.getString("LATITUDE");
                 String LONGITUDE = object.getString("LONGITUDE");
                 String focus = object.getString("focus");
+                String manage = object.getString("manage");
                 String name = object.getString("name");
-                if (!object.isNull("siteId")) {
-                    siteId = object.getString("siteId");
-                }
-                MarkInfo info = new MarkInfo(CITY, DESCRIPTION, LATITUDE, LONGITUDE, name, focus, siteId);
+                siteId = object.getString("siteId");
+                String state = object.getString("state");
+                String url = object.getString("url");
+                info.setCITY(CITY);
+                info.setDESCRIPTION(DESCRIPTION);
+                info.setLATITUDE(LATITUDE);
+                info.setLONGITUDE(LONGITUDE);
+                info.setFocus(focus);
+                info.setManage(manage);
+                info.setName(name);
+                info.setSiteId(siteId);
+                info.setState(state);
+                info.setUrl(url);
                 list.add(info);
             }
         } catch (JSONException e) {
@@ -520,7 +524,6 @@ public class PaseJson {
         }
         return passWord;
     }
-
 
 
     //站点关键数据
@@ -598,7 +601,7 @@ public class PaseJson {
             ArrayList<SiteListInfo> list = new ArrayList<SiteListInfo>();
             for (int i = 0; i < array.length(); i++) {
                 String urlsite = null;
-                String manage=null;
+                String manage = null;
                 JSONObject object2 = array.getJSONObject(i);
                 String S_PROVNAME = object2.getString("S_PROVNAME");
                 String companyName = object2.getString("companyName");
@@ -608,12 +611,12 @@ public class PaseJson {
                 String siteId = object2.getString("siteId");
                 String status = object2.getString("status");
                 if (!object2.isNull("manage")) {
-                     manage = object2.getString("manage");
+                    manage = object2.getString("manage");
                 }
                 if (!object2.isNull("url")) {
                     urlsite = object2.getString("url");
                 }
-                SiteListInfo newsInfo = new SiteListInfo(manage,S_PROVNAME, companyName, focus, kind, name, siteId, status, urlsite);
+                SiteListInfo newsInfo = new SiteListInfo(manage, S_PROVNAME, companyName, focus, kind, name, siteId, status, urlsite);
                 list.add(newsInfo);
             }
             siteLists = new SiteLists(currentPage, rows, totalPage, list);
@@ -625,52 +628,10 @@ public class PaseJson {
     }
 
     //单元列表
-    public static UnitList PaseUnitlist(String json) {
-        UnitList unitList = null;
-        ArrayList<UnitList.ModulelistBean> modulelistBeans = new ArrayList<>();
-        try {
-            JSONObject object = new JSONObject(json);
-            String current = object.getString("current");
-            int status = object.getInt("status");
-            String unitId = object.getString("unitId");
-            String voltage = object.getString("voltage");
-            JSONArray array = object.getJSONArray("modulelist");
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject object1 = array.getJSONObject(i);
-                String moudleId = object1.getString("moudleId");
-                UnitList.ModulelistBean modulelistBean = new UnitList.ModulelistBean(moudleId);
-                modulelistBeans.add(modulelistBean);
-            }
-            unitList = new UnitList(current, status, voltage, unitId, modulelistBeans);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return unitList;
-    }
+
 
     //模块列表
-    public static MoudleList PaseMoudlelist(String json) {
-        MoudleList moudleList = null;
-        ArrayList<MoudleList.BatterylistBean> list = new ArrayList<>();
-        try {
-            JSONObject object = new JSONObject(json);
-            String moudleid = object.getString("moudleid");
-            String current = object.getString("current");
-            String temperature = object.getString("temperature");
-            String voltage = object.getString("voltage");
-            JSONArray array = object.getJSONArray("batterylist");
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject object1 = array.getJSONObject(i);
-                String batteryId = object1.getString("batteryId");
-                MoudleList.BatterylistBean batterylistBean = new MoudleList.BatterylistBean(batteryId);
-                list.add(batterylistBean);
-            }
-            moudleList = new MoudleList(moudleid, current, temperature, voltage, list);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return moudleList;
-    }
+
 
     //电池列表
     public static BatteryList PaseBatteryList(String json) {
@@ -742,5 +703,23 @@ public class PaseJson {
             e.printStackTrace();
         }
         return deviceState;
+    }
+
+    //设备告警
+    public static ArrayList<Shebeigaojing> PaseSBgaojing(String json) {
+        ArrayList<Shebeigaojing> list=new ArrayList<>();
+        try {
+            JSONArray jsonArray = new JSONArray(json);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject object = jsonArray.getJSONObject(i);
+                String time=object.getString("time");
+                String warnContent=object.getString("warnContent");
+                Shebeigaojing shebeigaojing=new Shebeigaojing(time,warnContent);
+                list.add(shebeigaojing);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

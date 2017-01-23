@@ -22,11 +22,13 @@ public class BarrteyFragment extends Fragment{
     private ImageView back;
     private WebView webView;
     private String batteryId;
+    private String equip_id;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_barrtey, container, false);
         batteryId= String.valueOf(SPUtils.get(getActivity(), "batteryId", ""));
+        equip_id = getActivity().getIntent().getStringExtra("equip_id");
         initview(view);
         checkURl();
         loadweb();
@@ -36,11 +38,11 @@ public class BarrteyFragment extends Fragment{
     private StringBuffer checkURl() {
         StringBuffer url=new StringBuffer();
         if (getResources().getConfiguration().locale.getCountry().equals("CN")){
-            url.append("http://123.57.251.129:8088/dem/phone/station/batteryDataCurve.jsp?batteryId=");
+            url.append("http://123.57.251.129/dem/phone/station/batteryDataCurve.jsp?batteryId=");
             url.append(batteryId);
             url.append("&zyw=1");
         }else {
-            url.append("http://123.57.251.129:8088/dem/phone/station/batteryDataCurve.jsp?batteryId=");
+            url.append("http://123.57.251.129/dem/phone/station/batteryDataCurve.jsp?batteryId=");
             url.append(batteryId);
             url.append("&zyw=2");
         }

@@ -1,7 +1,6 @@
 package com.example.john.ziteng.activity;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.view.View;
@@ -115,7 +114,7 @@ public class SiteNewsActivity extends BaseActivity {
                             listview.onRefreshComplete();
                         }
                     }, 1000);
-                    Toast.makeText(SiteNewsActivity.this, "已经在最后一页了", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SiteNewsActivity.this, getResources().getString(R.string.zhyy), Toast.LENGTH_SHORT).show();
                 }
 
             }

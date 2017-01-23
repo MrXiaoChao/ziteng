@@ -6,24 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.example.john.ziteng.R;
-import com.example.john.ziteng.application.MyApplication;
 import com.example.john.ziteng.domain.Unit;
-import com.example.john.ziteng.urlpath.Path;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 单元控制适配器
@@ -68,8 +56,8 @@ public class DeviceUnitAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.tvUnit.setText(unit.getUnitId());
-
+        holder.tvUnit.setText(context.getString(R.string.dya)+"-"+unit.getUnitId().substring(5,7));
+        holder.tvUnit.setTextColor(context.getResources().getColor(R.color.blue));
         return convertView;
     }
 

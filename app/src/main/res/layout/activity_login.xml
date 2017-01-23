@@ -17,7 +17,7 @@
         android:textColor="@color/white"
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
-        android:text="Nova Greentech分布式能量监控"
+        android:text="iBatteryCloud"
         android:textSize="@dimen/text_big2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -42,9 +42,8 @@
             android:textColorHint="#88e2ff"
             android:textColor="@color/white"
             android:id="@+id/et_phone"
-            android:hint="请输入用户名"
+            android:hint="@string/qsrzh"
             android:numeric="integer"
-            android:maxLength="11"
             android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,10 +62,9 @@
             android:textColorHint="#88e2ff"
             android:textColor="@color/white"
             android:id="@+id/et_password"
-            android:hint="请输入密码"
+            android:hint="@string/qsrmm"
             android:singleLine="true"
             android:password="true"
-            android:maxLength="25"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
@@ -92,7 +90,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@id/ck_password"
                 android:textColor="#88e2ff"
-                android:text="记住密码"
+                android:text="@string/jzmm"
                 android:textSize="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -103,7 +101,7 @@
                 android:layout_centerVertical="true"
                 android:textColor="#88e2ff"
                 android:layout_alignParentRight="true"
-                android:text="忘记密码？"
+                android:text="@string/wzmm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </RelativeLayout>
@@ -115,7 +113,7 @@
             android:background="@drawable/shape_login"
             android:textSize="@dimen/text_big"
             android:textColor="@color/blue"
-            android:text="登录"
+            android:text="@string/abc"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"

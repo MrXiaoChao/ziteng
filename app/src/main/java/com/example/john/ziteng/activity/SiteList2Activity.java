@@ -23,7 +23,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.john.ziteng.R;
-import com.example.john.ziteng.adapter.SiteListAdapter;
 import com.example.john.ziteng.adapter.SiteListAdapter2;
 import com.example.john.ziteng.application.MyApplication;
 import com.example.john.ziteng.domain.CityPid;
@@ -160,7 +159,7 @@ public class SiteList2Activity extends BaseActivity implements View.OnClickListe
                             listView.onRefreshComplete();
                         }
                     }, 1000);
-                    Toast.makeText(SiteList2Activity.this, "已经在最后一页了", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SiteList2Activity.this, getResources().getString(R.string.zhyy), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -363,11 +362,12 @@ public class SiteList2Activity extends BaseActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 siteInfo.setVisibility(View.GONE);
-                Intent intent = new Intent(SiteList2Activity.this, SiteInfoActivity.class);
+                Intent intent = new Intent(SiteList2Activity.this, SiteDetailActivity.class);
                 if (mapSiteInfo == null) {
                     return;
                 }
-                intent.putExtra("mapsiteinfo", mapSiteInfo);
+                intent.putExtra("cityId", mapSiteInfo.getCITY());
+                intent.putExtra("siteId",info.getSiteId());
                 startActivity(intent);
             }
         });
@@ -427,9 +427,9 @@ public class SiteList2Activity extends BaseActivity implements View.OnClickListe
                     info.setFocus(focus);
                     adapter.notifyDataSetChanged();
                     if (info.getFocus().equals("已关注")) {
-                        Toast.makeText(SiteList2Activity.this, "你已关注站点", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SiteList2Activity.this, getResources().getString(R.string.gz), Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(SiteList2Activity.this, "你已取消关注", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SiteList2Activity.this, getResources().getString(R.string.qx), Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -496,7 +496,7 @@ public class SiteList2Activity extends BaseActivity implements View.OnClickListe
 
     private void showDialog() {
         dialog = new ProgressDialog(SiteList2Activity.this);
-        dialog.setMessage("正在加载中...");
+        dialog.setMessage(getResources().getString(R.string.zzjz));
         dialog.show();
     }
 

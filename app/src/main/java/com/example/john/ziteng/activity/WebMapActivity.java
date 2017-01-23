@@ -123,7 +123,7 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
             showDialog();
             getDateFromService();
         } else {
-            addInfosOverlay1(longitude,latitude);
+            addInfosOverlay1(latitude, longitude);
         }
 
 //        initMyLocation();自我定位 暂时用不上
@@ -179,7 +179,9 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
             @Override
             public void onResponse(String s) {
                 list = PaseJson.PaseMark(s);
-                addInfosOverlay(list);
+                if (list != null) {
+                    addInfosOverlay(list);
+                }
                 disDialog();
             }
         }, new Response.ErrorListener() {
@@ -256,10 +258,21 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
         if (infos != null) {
             for (MarkInfo info : infos) {
                 // 位置
-                latLng = new LatLng(Double.parseDouble(info.getLONGITUDE()), Double.parseDouble(info.getLATITUDE()));
+                latLng = new LatLng(Double.parseDouble(info.getLATITUDE()), Double.parseDouble(info.getLONGITUDE()));
                 // 图标
+                if (info.getState().equals("外电正常")) {
+                    mIconMaker = BitmapDescriptorFactory.fromResource(R.mipmap.green);
+                } else if (info.getState().equals("UPS或后备电源供电")) {
+                    mIconMaker = BitmapDescriptorFactory.fromResource(R.mipmap.yellow);
+                } else if (info.getState().equals("")) {
+                    mIconMaker = BitmapDescriptorFactory.fromResource(R.mipmap.red);
+                } else if (info.getState().equals("负载部分断电")) {
+                    mIconMaker = BitmapDescriptorFactory.fromResource(R.mipmap.red);
+                }
                 overlayOptions = new MarkerOptions().position(latLng).icon(mIconMaker).zIndex(5);
-                marker = (Marker) (mBaiduMap.addOverlay(overlayOptions));
+                if (overlayOptions != null) {
+                    marker = (Marker) (mBaiduMap.addOverlay(overlayOptions));
+                }
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("info", info);
                 marker.setExtraInfo(bundle);
@@ -274,18 +287,19 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
     }
 
     public void addInfosOverlay1(String latitude, String longitude) {
-            mBaiduMap.clear();
+        mBaiduMap.clear();
         // 位置
-            latLng = new LatLng(Double.parseDouble(longitude), Double.parseDouble(latitude));
-        // 图标
-            overlayOptions = new MarkerOptions().position(latLng).icon(mIconMaker).zIndex(5);
-            marker = (Marker) (mBaiduMap.addOverlay(overlayOptions));
-            MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(latLng);
-            mBaiduMap.setMapStatus(u);
-            MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(8.6f);
-            mBaiduMap.setMapStatus(msu);
-            search.setVisibility(View.GONE);
-            isClick=true;
+        latLng = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
+        // 图标   根据状态来判断图标用哪个·接口少个字段，所以暂时统一用红色的小图标
+        mIconMaker = BitmapDescriptorFactory.fromResource(R.mipmap.red);
+        overlayOptions = new MarkerOptions().position(latLng).icon(mIconMaker).zIndex(5);
+        marker = (Marker) (mBaiduMap.addOverlay(overlayOptions));
+        MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(latLng);
+        mBaiduMap.setMapStatus(u);
+        MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(8.6f);
+        mBaiduMap.setMapStatus(msu);
+        search.setVisibility(View.GONE);
+        isClick = true;
     }
 
 
@@ -347,6 +361,8 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
     }
 
     private void initview() {
+        RelativeLayout rl_chuangkou = (RelativeLayout) findViewById(R.id.rl_chuangkou);
+        rl_chuangkou.getBackground().setAlpha(180);
         mapback = (ImageView) findViewById(R.id.map_fanhui);
         mapback.setOnClickListener(this);
         //搜索框
@@ -370,7 +386,6 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
         mMapView = (MapView) findViewById(R.id.id_bmapView);
         // 获得地图的实例
         mBaiduMap = mMapView.getMap();
-        mIconMaker = BitmapDescriptorFactory.fromResource(R.mipmap.icon_gcoding);
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
 
     }
@@ -410,16 +425,17 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
         } else {
             viewHolder = (ViewHolder) mMarkerLy.getTag();
         }
-        imageLoader.displayImage(info.getDESCRIPTION(), viewHolder.infoImg, options);
+        imageLoader.displayImage(info.getUrl(), viewHolder.infoImg, options);
         viewHolder.infoName.setText(info.getName());
         viewHolder.siteinfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(WebMapActivity.this, SiteInfoActivity.class);
+                Intent intent = new Intent(WebMapActivity.this, SiteDetailActivity.class);
                 if (mapSiteInfo == null) {
                     return;
                 }
-                intent.putExtra("mapsiteinfo", mapSiteInfo);
+                intent.putExtra("cityId", info.getCITY());
+                intent.putExtra("siteId", info.getSiteId());
                 startActivity(intent);
             }
         });
@@ -551,9 +567,9 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
                     guanzhu.setText(focus);
                     info.setFocus(focus);
                     if (info.getFocus().equals("已关注")) {
-                        Toast.makeText(WebMapActivity.this, "你已关注站点", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(WebMapActivity.this, getResources().getString(R.string.gz), Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(WebMapActivity.this, "你已取消关注", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(WebMapActivity.this, getResources().getString(R.string.qx), Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -586,8 +602,17 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
                 list = PaseJson.PaseMark(s);
                 for (MarkInfo info : list) {
                     // 位置
-                    latLng = new LatLng(Double.parseDouble(info.getLONGITUDE()), Double.parseDouble(info.getLATITUDE()));
+                    latLng = new LatLng(Double.parseDouble(info.getLATITUDE()), Double.parseDouble(info.getLONGITUDE()));
                     // 图标
+                    if (info.getState().equals("外电正常")) {
+                        mIconMaker = BitmapDescriptorFactory.fromResource(R.mipmap.green);
+                    } else if (info.getState().equals("UPS或后备电源供电")) {
+                        mIconMaker = BitmapDescriptorFactory.fromResource(R.mipmap.yellow);
+                    } else if (info.getState().equals("")) {
+                        mIconMaker = BitmapDescriptorFactory.fromResource(R.mipmap.red);
+                    } else if (info.getState().equals("负载部分断电")) {
+                        mIconMaker = BitmapDescriptorFactory.fromResource(R.mipmap.red);
+                    }
                     overlayOptions = new MarkerOptions().position(latLng).icon(mIconMaker).zIndex(5);
                     marker = (Marker) (mBaiduMap.addOverlay(overlayOptions));
                     Bundle bundle = new Bundle();
@@ -629,7 +654,7 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
 
     private void showDialog() {
         dialog = new ProgressDialog(WebMapActivity.this);
-        dialog.setMessage("正在加载中...");
+        dialog.setMessage(getResources().getString(R.string.zzjz));
         dialog.show();
     }
 

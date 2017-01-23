@@ -1,7 +1,6 @@
 package com.example.john.ziteng.fragment;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,12 +22,14 @@ public class MoudleFragment extends Fragment{
     private WebView webView;
     private String batteryId;
     private String moduleId;
+    private String equip_id;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_moudle, container, false);
         initview(view);
         moduleId = String.valueOf(SPUtils.get(getActivity(), "moduleId", ""));
+        equip_id = getActivity().getIntent().getStringExtra("equip_id");
         checkURl();
         loadweb();
         return view;
@@ -37,11 +38,15 @@ public class MoudleFragment extends Fragment{
     private StringBuffer checkURl() {
         StringBuffer url=new StringBuffer();
         if (getResources().getConfiguration().locale.getCountry().equals("CN")){
-            url.append("http://123.57.251.129:8088/dem/phone/station/moduleDataCurve.jsp?moduleId=");
+            url.append("http://123.57.251.129/dem/phone/station/moduleDataCurve.jsp?equip_id=");
+            url.append(equip_id+"&");
+            url.append("moduleId=");
             url.append(moduleId);
             url.append("&zyw=1");
         }else {
-            url.append("http://123.57.251.129:8088/dem/phone/station/moduleDataCurve.jsp?moduleId=");
+            url.append("http://123.57.251.129/dem/phone/station/moduleDataCurve.jsp?equip_id=");
+            url.append(equip_id+"&");
+            url.append("moduleId=");
             url.append(moduleId);
             url.append("&zyw=2");
         }

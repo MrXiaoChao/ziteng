@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -69,14 +67,29 @@ public class BatteryListActivity extends BaseActivity implements View.OnClickLis
             public void onResponse(String s) {
                 batteryList = PaseJson.PaseBatteryList(s);
                 if (batteryList != null) {
-                    unitxinxi.setText("电池信息");
-                    name.setText(getResources().getString(R.string.bl)+"-"+batteryId.substring(5,7));
-                    dianliu.setText(batteryList.getCurrent() + "mA");
-                    dianya.setText(batteryList.getVoltage() + "mV");
+                    unitxinxi.setText(getResources().getString(R.string.dcxx));
+                    name.setText(getResources().getString(R.string.bl) + "-" + batteryId.substring(5, 7));
+                    dianliu.setText(batteryList.getCurrent() + " mA");
+                    dianya.setText(batteryList.getVoltage() + " mV");
                     wendu.setText(batteryList.getTemperature() + "°C");
-                    tv_zhuantai.setText(batteryList.getState());
-                    tv_soc.setText(batteryList.getSoc()+"％");
-                    tv_soh.setText(batteryList.getSoh()+"％");
+                    if (batteryList.getState().equals("null")) {
+                        tv_zhuantai.setText(getResources().getString(R.string.gza));
+                    } else {
+                        if (batteryList.getState().equals("报警")) {
+                            tv_zhuantai.setText(getResources().getString(R.string.bj));
+                        } else if (batteryList.getState().equals("超级电容充电")) {
+                            tv_zhuantai.setText(getResources().getString(R.string.cjdrcd));
+                        } else if (batteryList.getState().equals("停电前等待")) {
+                            tv_zhuantai.setText(getResources().getString(R.string.tjqdd));
+                        }else if (batteryList.getState().equals("满电压")) {
+                            tv_zhuantai.setText(getResources().getString(R.string.mdy));
+                        }else if (batteryList.getState().equals("低电压")) {
+                            tv_zhuantai.setText(getResources().getString(R.string.ddy));
+                        }
+                    }
+
+                    tv_soc.setText(batteryList.getSoc() + "％");
+                    tv_soh.setText(batteryList.getSoh() + "％");
                 }
                 scrollView.onRefreshComplete();
             }
@@ -155,7 +168,9 @@ public class BatteryListActivity extends BaseActivity implements View.OnClickLis
                 }
                 break;
             case R.id.rl_history:
-                Intent intent =new Intent(BatteryListActivity.this,BatteryActivity.class);
+                Intent intent = new Intent(BatteryListActivity.this, BatteryActivity.class);
+                intent.putExtra("number", 3);
+                intent.putExtra("checknumber", 3);
                 startActivity(intent);
                 break;
         }

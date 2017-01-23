@@ -20,11 +20,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.john.ziteng.R;
 import com.example.john.ziteng.adapter.MoudleListAdapter;
 import com.example.john.ziteng.application.MyApplication;
-import com.example.john.ziteng.domain.BatteryList;
 import com.example.john.ziteng.domain.MoudleList;
-import com.example.john.ziteng.protocol.PaseJson;
 import com.example.john.ziteng.urlpath.Path;
 import com.example.john.ziteng.utils.SPUtils;
+import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 
@@ -50,6 +49,10 @@ public class ModuleActivity extends BaseActivity implements View.OnClickListener
     private ListView listview_modul;
     private PullToRefreshScrollView scrollView;
     private TextView name;
+    private String unitId;
+    private TextView zt;
+    private RelativeLayout lssj;
+    private String equip_id;
 
 
     @Override
@@ -58,6 +61,8 @@ public class ModuleActivity extends BaseActivity implements View.OnClickListener
         setContentView(R.layout.activity_module);
         Intent intent = getIntent();
         moudleid = intent.getStringExtra("moudleid");
+        unitId = intent.getStringExtra("unitId");
+        equip_id = intent.getStringExtra("equip_id");
         initview();
         getDataFromService();
     }
@@ -66,14 +71,27 @@ public class ModuleActivity extends BaseActivity implements View.OnClickListener
         StringRequest request = new StringRequest(Request.Method.POST, Path.ModuleList, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
-                moudleList = PaseJson.PaseMoudlelist(s);
+                Gson gson=new Gson();
+                moudleList = gson.fromJson(s,MoudleList.class);
                 if (moudleList != null) {
                     listview_modul.setAdapter(new MoudleListAdapter(ModuleActivity.this, (ArrayList<MoudleList.BatterylistBean>) moudleList.getBatterylist()));
-                    unitxinxi.setText("模块信息");
+                    unitxinxi.setText(getResources().getString(R.string.mkxx));
                     name.setText(getResources().getString(R.string.ml)+"-"+moudleid.substring(5,7));
-                    dianliu.setText(moudleList.getCurrent()+"mA");
-                    dianya.setText(moudleList.getVoltage()+"mV");
-                    wendu.setText(moudleList.getTemperature()+"°C");
+                    dianliu.setText(moudleList.getCurrent()+" A");
+                    dianya.setText(moudleList.getVoltage()+" V");
+                    wendu.setText(moudleList.getTemperature()+" °C");
+                    if (moudleList.getStatus().equals("空闲")) {
+                        zt.setText(getResources().getString(R.string.kx));
+                    } else if (moudleList.getStatus().equals("放电")) {
+                        zt.setText(getResources().getString(R.string.fd));
+                    } else if (moudleList.getStatus().equals("充电")) {
+                        zt.setText(getResources().getString(R.string.cd));
+                    } else if (moudleList.getStatus().equals("告警")) {
+                        zt.setText(getResources().getString(R.string.gj));
+                    } else if (moudleList.getStatus().equals("停机")) {
+                        zt.setText(getResources().getString(R.string.tj));
+                    }
+
                 }
                 scrollView.onRefreshComplete();
 
@@ -88,6 +106,7 @@ public class ModuleActivity extends BaseActivity implements View.OnClickListener
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("moudleid",moudleid);
+                params.put("unitId",unitId);
                 return params;
             }
         };
@@ -97,6 +116,8 @@ public class ModuleActivity extends BaseActivity implements View.OnClickListener
 
 
     private void initview() {
+        lssj = (RelativeLayout) findViewById(R.id.lssj);
+        zt = (TextView) findViewById(R.id.zt);
         name = (TextView) findViewById(R.id.unit_title);
         scrollView = (PullToRefreshScrollView) findViewById(R.id.scrollView);
         back = (ImageView) findViewById(R.id.unit_fanhui);
@@ -109,7 +130,7 @@ public class ModuleActivity extends BaseActivity implements View.OnClickListener
         fx = (ImageView) findViewById(R.id.image_fx);
         fx.setImageDrawable(getResources().getDrawable(R.mipmap.down));
         listview_modul = (ListView) findViewById(R.id.listview_modul);
-
+        lssj.setOnClickListener(this);
         back.setOnClickListener(this);
         rlfx.setOnClickListener(this);
         listview_modul.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -156,6 +177,13 @@ public class ModuleActivity extends BaseActivity implements View.OnClickListener
                     llunit.setVisibility(View.VISIBLE);
                     isselect=false;
                 }
+                break;
+            case R.id.lssj:
+                Intent intent =new Intent(this,BatteryActivity.class);
+                intent.putExtra("number",2);
+                intent.putExtra("checknumber",2);
+                intent.putExtra("equip_id",equip_id);
+                startActivity(intent);
                 break;
         }
     }
