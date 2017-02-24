@@ -34,4 +34,5 @@ public class Shebeigaojing{
     public void setWarnContent(String warnContent) {
         this.warnContent = warnContent;
     }
+    //很好
 }
