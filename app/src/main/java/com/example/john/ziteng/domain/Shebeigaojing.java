@@ -11,6 +11,7 @@ public class Shebeigaojing{
     }
 
     /**
+     * 我很好啊
      * time :  2016-12-22 15:13:31
      * warnContent : 电池故障
      */
