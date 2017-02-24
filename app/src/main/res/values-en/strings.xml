@@ -65,7 +65,7 @@
 
 
 
-	<string name="keydata">Key data</string>
+	<string name="keydata">Critical data</string>
 	<string name="dpot">Daily data</string>
 	<string name="apot">Annual data</string>
 	<string name="mpot">Monthly data </string>
@@ -80,7 +80,7 @@
 	<string name="ol">Offline list</string>
 
 	<string name="clu">Clusters</string>
-	<string name="dl">Devices list</string>
+	<string name="dl">Devices</string>
 	<string name="bai">Basic information</string>
 	<string name="ds">Device status</string>
 	<string name="bp">Basic paramet</string>
@@ -127,12 +127,12 @@
 	<string name="yt">Offline times</string>
 	<string name="nt">Offline times</string>
 	<string name="ul">Unit list</string>
-	<string name="ml">Module list</string>
-	<string name="bl">Battery list</string>
+	<string name="ml">Module</string>
+	<string name="bl">Battery</string>
 	<string name="dca">Battery</string>
 	<string name="mka">Module</string>
 	<string name="dya">Unit</string>
-	<string name="lb">list</string>
+	<string name="lb">List</string>
 	<string name="lba">History data</string>
 	<string name="cp">Chang Password</string>
 	<string name="wdzc">NORMA</string>
@@ -259,6 +259,8 @@
 	<string name="gza">ERROR</string>
 	<string name="mdy">FULL_VOLTAGE</string>
 	<string name="ddy">LOW_VOLTAGE</string>
+	<string name="ygz">Followed</string>
+	<string name="wgz">No followed</string>
 
 
 </resources>

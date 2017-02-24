@@ -314,6 +314,7 @@ public class DeviceControlActivity extends Activity implements View.OnClickListe
                 break;
             case R.id.rl_gaoji:
                 Intent intent0=new Intent(this,GaojiCaozuoActivity.class);
+                intent0.putExtra("zt","1");
                 startActivity(intent0);
                 break;
             case R.id.rl_dianliu:

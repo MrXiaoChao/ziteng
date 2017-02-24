@@ -40,11 +40,7 @@
              android:orientation="horizontal"
              android:layout_width="0dp"
              android:layout_height="wrap_content">
-             <TextView
-                 android:textColor="@color/white"
-                 android:text="@string/sex"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content" />
+
              <TextView
                  android:id="@+id/tv_sx"
                  android:textColor="@color/white"
@@ -61,11 +57,7 @@
                 android:orientation="horizontal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content">
-                <TextView
-                    android:textColor="@color/white"
-                    android:text="@string/job"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+
                 <TextView
                     android:id="@+id/tv_zhiwu"
                     android:textColor="@color/white"

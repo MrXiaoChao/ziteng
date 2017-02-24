@@ -38,10 +38,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
+            android:id="@+id/tv_zt"
             android:layout_marginRight="15dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="空闲"
             android:layout_marginLeft="8dp"
             android:textSize="14dp"
             android:textColor="@color/gray"
@@ -87,6 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="1px"/>
     <RelativeLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="43dp">
 

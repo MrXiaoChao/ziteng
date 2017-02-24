@@ -29,14 +29,18 @@
                     android:textSize="@dimen/text_mid_2" />
 
                 <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center">
+                    <View
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/white"
+                        android:layout_width="5dp"
+                        android:layout_height="15dp"/>
 
                     <TextView
-                        android:drawablePadding="5dp"
-                        android:drawableLeft="@mipmap/jiben"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"

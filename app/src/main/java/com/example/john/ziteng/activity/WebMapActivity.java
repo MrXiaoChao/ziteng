@@ -332,7 +332,11 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
 //                });
 //                // 显示InfoWindow
 //                mBaiduMap.showInfoWindow(mInfoWindow);
-                    guanzhu.setText(info.getFocus());
+                    if (info.getFocus().equals("已关注")) {
+                        guanzhu.setText(getResources().getString(R.string.ygz));
+                    } else {
+                        guanzhu.setText(getResources().getString(R.string.wgz));
+                    }
                     mMarkerInfoLy.setVisibility(View.VISIBLE);
                     popupInfo(mMarkerInfoLy, info);
                     getSiteInfo();
@@ -564,11 +568,17 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
                 try {
                     JSONObject object = new JSONObject(s);
                     String focus = object.getString("focus");
-                    guanzhu.setText(focus);
+                    if (focus.equals("已关注")) {
+                        guanzhu.setText(getResources().getString(R.string.ygz));
+                    }else {
+                        guanzhu.setText(getResources().getString(R.string.wgz));
+                    }
                     info.setFocus(focus);
                     if (info.getFocus().equals("已关注")) {
+                        guanzhu.setText(getResources().getString(R.string.ygz));
                         Toast.makeText(WebMapActivity.this, getResources().getString(R.string.gz), Toast.LENGTH_SHORT).show();
                     } else {
+                        guanzhu.setText(getResources().getString(R.string.wgz));
                         Toast.makeText(WebMapActivity.this, getResources().getString(R.string.qx), Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {

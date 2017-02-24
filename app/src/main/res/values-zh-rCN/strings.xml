@@ -70,9 +70,9 @@
 
 
 	<string name="historicaldata">历史数据</string>
-	<string name="doth">年,月,日停电次数直方图</string>
-	<string name="dodh">年,月,日停电总时长直方图</string>
-	<string name="dusd">年,月,日UPS供电总时长直方图</string>
+	<string name="doth">日停电数据直方图</string>
+	<string name="dodh">月停电数据直方图</string>
+	<string name="dusd">年停电数据直方图</string>
 	<string name="ol">停电全列表</string>
 
 	<string name="clu">设备群</string>
@@ -258,5 +258,7 @@
 	<string name="gza">故障</string>
 	<string name="mdy">满电压</string>
 	<string name="ddy">低电压</string>
+	<string name="ygz">已关注</string>
+	<string name="wgz">未关注</string>
 
 </resources>

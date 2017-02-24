@@ -71,15 +71,15 @@ public class ModuleActivity extends BaseActivity implements View.OnClickListener
         StringRequest request = new StringRequest(Request.Method.POST, Path.ModuleList, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
-                Gson gson=new Gson();
-                moudleList = gson.fromJson(s,MoudleList.class);
+                Gson gson = new Gson();
+                moudleList = gson.fromJson(s, MoudleList.class);
                 if (moudleList != null) {
                     listview_modul.setAdapter(new MoudleListAdapter(ModuleActivity.this, (ArrayList<MoudleList.BatterylistBean>) moudleList.getBatterylist()));
                     unitxinxi.setText(getResources().getString(R.string.mkxx));
-                    name.setText(getResources().getString(R.string.ml)+"-"+moudleid.substring(5,7));
-                    dianliu.setText(moudleList.getCurrent()+" A");
-                    dianya.setText(moudleList.getVoltage()+" V");
-                    wendu.setText(moudleList.getTemperature()+" °C");
+                    name.setText(getResources().getString(R.string.ml) + "-" + moudleid.substring(5, 7));
+                    dianliu.setText(moudleList.getCurrent() + " A");
+                    dianya.setText(moudleList.getVoltage() + " V");
+                    wendu.setText(moudleList.getTemperature() + " °C");
                     if (moudleList.getStatus().equals("空闲")) {
                         zt.setText(getResources().getString(R.string.kx));
                     } else if (moudleList.getStatus().equals("放电")) {
@@ -90,6 +90,8 @@ public class ModuleActivity extends BaseActivity implements View.OnClickListener
                         zt.setText(getResources().getString(R.string.gj));
                     } else if (moudleList.getStatus().equals("停机")) {
                         zt.setText(getResources().getString(R.string.tj));
+                    }else {
+                        zt.setText(getResources().getString(R.string.gza));
                     }
 
                 }
@@ -105,14 +107,13 @@ public class ModuleActivity extends BaseActivity implements View.OnClickListener
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("moudleid",moudleid);
-                params.put("unitId",unitId);
-                return params;
+                params.put("moudleid", moudleid);
+                params.put("unitId", unitId);
+                 return params;
             }
         };
         MyApplication.getHttpQueue().add(request);
     }
-
 
 
     private void initview() {
@@ -160,29 +161,30 @@ public class ModuleActivity extends BaseActivity implements View.OnClickListener
     }
 
     private boolean isselect;
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.unit_fanhui:
                 finish();
                 break;
 
             case R.id.rl_fx:
-                if (!isselect){
+                if (!isselect) {
                     fx.setImageDrawable(getResources().getDrawable(R.mipmap.buleyou));
                     llunit.setVisibility(View.GONE);
-                    isselect=true;
-                }else {
+                    isselect = true;
+                } else {
                     fx.setImageDrawable(getResources().getDrawable(R.mipmap.down));
                     llunit.setVisibility(View.VISIBLE);
-                    isselect=false;
+                    isselect = false;
                 }
                 break;
             case R.id.lssj:
-                Intent intent =new Intent(this,BatteryActivity.class);
-                intent.putExtra("number",2);
-                intent.putExtra("checknumber",2);
-                intent.putExtra("equip_id",equip_id);
+                Intent intent = new Intent(this, BatteryActivity.class);
+                intent.putExtra("number", 2);
+                intent.putExtra("checknumber", 2);
+                intent.putExtra("equip_id", equip_id);
                 startActivity(intent);
                 break;
         }

@@ -72,22 +72,24 @@ public class UnitActivity extends BaseActivity implements View.OnClickListener {
                 unitList = gson.fromJson(s, UnitList.class);
                 if (unitList != null) {
                     listview_unit.setAdapter(new UnitlistAdapter(UnitActivity.this, (ArrayList<UnitList.ModulelistBean>) unitList.getModulelist()));
-                    name.setText(getResources().getString(R.string.ul) + "-" + unitId.substring(5, 7));
+                    name.setText(getResources().getString(R.string.dya) + "-" + unitId.substring(5, 7));
                     unitxinxi.setText(getResources().getString(R.string.dyxx));
                     dianliu.setText(unitList.getCurrent() + " A");
                     dianya.setText(unitList.getVoltage() + " V");
+                        if (unitList.getStatus().equals("空闲")) {
+                            zhuantai.setText(getResources().getString(R.string.kx));
+                        } else if (unitList.getStatus().equals("放电")) {
+                            zhuantai.setText(getResources().getString(R.string.fd));
+                        } else if (unitList.getStatus().equals("充电")) {
+                            zhuantai.setText(getResources().getString(R.string.cd));
+                        } else if (unitList.getStatus().equals("告警")) {
+                            zhuantai.setText(getResources().getString(R.string.gj));
+                        } else if (unitList.getStatus().equals("停机")) {
+                            zhuantai.setText(getResources().getString(R.string.tj));
+                        }else {
+                            zhuantai.setText(getResources().getString(R.string.gza));
+                        }
 
-                    if (unitList.getStatus().equals("空闲")) {
-                        zhuantai.setText(getResources().getString(R.string.kx));
-                    } else if (unitList.getStatus().equals("放电")) {
-                        zhuantai.setText(getResources().getString(R.string.fd));
-                    } else if (unitList.getStatus().equals("充电")) {
-                        zhuantai.setText(getResources().getString(R.string.cd));
-                    } else if (unitList.getStatus().equals("告警")) {
-                        zhuantai.setText(getResources().getString(R.string.gj));
-                    } else if (unitList.getStatus().equals("停机")) {
-                        zhuantai.setText(getResources().getString(R.string.tj));
-                    }
                 }
 
                 scrollView.onRefreshComplete();

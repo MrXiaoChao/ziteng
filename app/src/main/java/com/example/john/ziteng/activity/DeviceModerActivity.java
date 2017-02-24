@@ -353,6 +353,7 @@ public class DeviceModerActivity extends Activity implements View.OnClickListene
                 break;
             case R.id.rl_gaoji:
                 Intent intent1=new Intent(this,GaojiCaozuoActivity.class);
+                intent1.putExtra("zt","2");
                 startActivity(intent1);
                 break;
         }

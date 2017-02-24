@@ -187,15 +187,15 @@ public class SiteDetalFragment extends Fragment {
                         tvZhuantai.setText(getActivity().getResources().getString(R.string.hbdygd));
                     }
                     tvXchucun.setText(siteDelicInfo.getBaseInformation().getStatusTime());
-                    tvZchucun.setText(siteDelicInfo.getBaseInformation().getEnergy_storage() + "kwh" + "/" + siteDelicInfo.getBaseInformation().getStorageCapacity() + "kwh");
-                    tvGonglv.setText(siteDelicInfo.getBaseInformation().getPower() + "kw");
-                    tvZdianl.setText(siteDelicInfo.getBaseInformation().getAllUps() + " kwh");
+                    tvZchucun.setText(siteDelicInfo.getBaseInformation().getEnergy_storage() + "kWh" + "/" + siteDelicInfo.getBaseInformation().getStorageCapacity() + "kWh");
+                    tvGonglv.setText(siteDelicInfo.getBaseInformation().getPower() + "kW");
+                    tvZdianl.setText(siteDelicInfo.getBaseInformation().getAllUps() + " kWh");
                     tvShijian.setText(siteDelicInfo.getBaseInformation().getDeploytime());
                     dianjia.setText("¥ " + siteDelicInfo.getBaseInformation().getElectrovalency());
                 }
                 if (siteDelicInfo.getBenefit().getAllSaveElectricity() != null) {
-                    tvZsdl.setText(siteDelicInfo.getBenefit().getAllSaveElectricity() + "kwh");
-                    tvPsdl.setText(siteDelicInfo.getBenefit().getAveSaveElectricity() + "kwh");
+                    tvZsdl.setText(siteDelicInfo.getBenefit().getAllSaveElectricity() + "kWh");
+                    tvPsdl.setText(siteDelicInfo.getBenefit().getAveSaveElectricity() + "kWh");
                     tvZsqs.setText("¥ " + siteDelicInfo.getBenefit().getAllSaveMoney());
                     tvPsqs.setText("¥ " + siteDelicInfo.getBenefit().getAveSaveMoney());
                     tvZtjsl.setText(siteDelicInfo.getBenefit().getAllemissions() + " t");

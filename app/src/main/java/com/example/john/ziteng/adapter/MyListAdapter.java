@@ -51,7 +51,7 @@ public class MyListAdapter extends BaseAdapter {
         }else {
             holder= (Viewholder) convertView.getTag();
         }
-        holder.childTextView.setText(context.getString(R.string.ul)+"-"+list.get(position).getUnitId().substring(5,7));
+        holder.childTextView.setText(context.getString(R.string.dya)+"-"+list.get(position).getUnitId().substring(5,7));
         return convertView;
     }
     class Viewholder{

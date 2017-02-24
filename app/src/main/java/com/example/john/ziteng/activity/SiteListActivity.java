@@ -170,7 +170,11 @@ public class SiteListActivity extends BaseActivity implements View.OnClickListen
                 siteInfo.setVisibility(View.VISIBLE);
                 siteListInfo = listtotal.get(position - 1);
                 popupInfo(siteInfo, siteListInfo);
-                guanzhu.setText(siteListInfo.getFocus());
+                if (siteListInfo.getFocus().equals("已关注")) {
+                    guanzhu.setText(getResources().getString(R.string.ygz));
+                } else {
+                    guanzhu.setText(getResources().getString(R.string.wgz));
+                }
                 getSiteInfo();
             }
         });
@@ -424,12 +428,18 @@ public class SiteListActivity extends BaseActivity implements View.OnClickListen
                 try {
                     JSONObject object = new JSONObject(s);
                     String focus = object.getString("focus");
-                    guanzhu.setText(focus);
+                    if (focus.equals("已关注")) {
+                        guanzhu.setText(getResources().getString(R.string.ygz));
+                    }else {
+                        guanzhu.setText(getResources().getString(R.string.wgz));
+                    }
                     info.setFocus(focus);
                     adapter.notifyDataSetChanged();
                     if (info.getFocus().equals("已关注")) {
+                        guanzhu.setText(getResources().getString(R.string.ygz));
                         Toast.makeText(SiteListActivity.this, getResources().getString(R.string.gz), Toast.LENGTH_SHORT).show();
                     } else {
+                        guanzhu.setText(getResources().getString(R.string.wgz));
                         Toast.makeText(SiteListActivity.this, getResources().getString(R.string.qx), Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {

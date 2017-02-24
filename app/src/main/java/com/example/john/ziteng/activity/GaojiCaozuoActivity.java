@@ -27,18 +27,31 @@ public class GaojiCaozuoActivity extends BaseActivity {
     ToggleButton tbFangdian;
     @BindView(R.id.device_control_title)
     TextView deviceControlTitle;
+    @BindView(R.id.tv_zt)
+    TextView tvZt;
+    private String zt;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gaoji);
         ButterKnife.bind(this);
+        zt = getIntent().getStringExtra("zt");
         intview();
+
     }
 
     boolean flag;
     boolean flag1;
+
     private void intview() {
+        if (zt.equals("1")) {
+            tvZt.setText(getResources().getString(R.string.cd));
+        }else {
+            tvZt.setText(getResources().getString(R.string.cjdrcd));
+        }
+
         tbChongdian.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -85,7 +98,7 @@ public class GaojiCaozuoActivity extends BaseActivity {
                         if (!tbChongdian.isChecked()) {
                             flag = true;
                         } else {
-                            flag=false;
+                            flag = false;
                         }
                         dialog.dismiss();
                     }
@@ -98,7 +111,7 @@ public class GaojiCaozuoActivity extends BaseActivity {
                             flag = false;
                         } else {
                             tbChongdian.setChecked(false);
-                            flag=true;
+                            flag = true;
                         }
                         dialog.dismiss();
                     }
@@ -111,31 +124,31 @@ public class GaojiCaozuoActivity extends BaseActivity {
     private void showDialog1() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
                 .setTitle(getResources().getString(R.string.ts))
-                        .setMessage(getResources().getString(R.string.qrts))
-                        .setPositiveButton(getResources().getString(R.string.confirm), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                if (!tbFangdian.isChecked()) {
-                                    flag1 = true;
-                                } else {
-                                    flag1 = false;
-                                }
-                                dialog.dismiss();
-                            }
-                        })
-                                .setNegativeButton(getResources().getString(R.string.qx1), new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        if (!tbFangdian.isChecked()) {
-                                            tbFangdian.setChecked(true);
-                                            flag1 = false;
-                                        } else {
-                                            tbFangdian.setChecked(false);
-                                            flag1 = true;
-                                        }
-                                        dialog.dismiss();
-                                    }
-                                });
+                .setMessage(getResources().getString(R.string.qrts))
+                .setPositiveButton(getResources().getString(R.string.confirm), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (!tbFangdian.isChecked()) {
+                            flag1 = true;
+                        } else {
+                            flag1 = false;
+                        }
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton(getResources().getString(R.string.qx1), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (!tbFangdian.isChecked()) {
+                            tbFangdian.setChecked(true);
+                            flag1 = false;
+                        } else {
+                            tbFangdian.setChecked(false);
+                            flag1 = true;
+                        }
+                        dialog.dismiss();
+                    }
+                });
         builder.setCancelable(false);
         builder.show();
     }

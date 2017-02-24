@@ -66,12 +66,12 @@ public class ListFragment extends Fragment{
                 break;
             case 3:
                 if (getResources().getConfiguration().locale.getCountry().equals("CN")){
-                    url.append("http://123.57.251.129/dem/phone/station/batteryDataCurve.jsp?equip_id=");
+                    url.append("http://123.57.251.129:8088/dem/phone/station/allBatteryHistory.jsp?equip_id=");
                     url.append(equipId+"&batteryId=");
                     url.append(batteryId+"&zyw=1");
                     StringBuffer a=url;
                 }else {
-                    url.append("http://123.57.251.129/dem/phone/station/batteryDataCurve.jsp?equip_id=");
+                    url.append("http://123.57.251.129:8088/dem/phone/station/allBatteryHistory.jsp?equip_id=");
                     url.append(equipId+"&batteryId=");
                     url.append(batteryId+"&zyw=2");
                 }

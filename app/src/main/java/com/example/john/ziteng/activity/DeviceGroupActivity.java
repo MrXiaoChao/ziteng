@@ -97,6 +97,7 @@ public class DeviceGroupActivity extends BaseActivity implements DevicePassWordF
                     deviceGroupInfo = gson.fromJson(s, DeviceGroupInfo.class);
                     if (deviceGroupInfo != null) {
                         listview.setAdapter(new MyListAdapter(DeviceGroupActivity.this, (ArrayList<DeviceGroupInfo.UnitlistBean>) deviceGroupInfo.getUnitlist()));
+                        listview.setAdapter(new MyListAdapter(DeviceGroupActivity.this, (ArrayList<DeviceGroupInfo.UnitlistBean>) deviceGroupInfo.getUnitlist()));
                         groupTextView.setText(getResources().getString(R.string.sbxx));
                         name.setText(getResources().getString(R.string.dl) + "-" + equipId.substring(5, 7));
                         if (deviceGroupInfo.getState().equals("IDLE")) {

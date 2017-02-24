@@ -192,7 +192,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/btn_sitelist"
                         android:gravity="center"
-                        android:text="站点概况"
+                        android:text="@string/zdxq"
                         android:textColor="@color/white"
                         android:textSize="12dp" />
                 </LinearLayout>

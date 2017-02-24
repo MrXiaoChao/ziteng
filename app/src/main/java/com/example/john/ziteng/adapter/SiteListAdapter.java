@@ -53,7 +53,6 @@ public class SiteListAdapter extends BaseAdapter {
             holder.companyname = (TextView) convertView.findViewById(R.id.tv_sitecompany);
             holder.guanzhu = (TextView) convertView.findViewById(R.id.tv_guanzhu);
             holder.name = (TextView) convertView.findViewById(R.id.tv_sitename);
-            holder.status = (TextView) convertView.findViewById(R.id.tv_status);
             holder.kind = (TextView) convertView.findViewById(R.id.tv_kind);
             convertView.setTag(holder);
         } else {
@@ -61,9 +60,12 @@ public class SiteListAdapter extends BaseAdapter {
         }
         holder.city.setText(siteListInfo.getS_PROVNAME());
         holder.companyname.setText(siteListInfo.getCompanyName());
-        holder.guanzhu.setText(siteListInfo.getFocus());
+        if (siteListInfo.getFocus().equals("已关注")){
+            holder.guanzhu.setText(context.getResources().getString(R.string.ygz));
+        }else {
+            holder.guanzhu.setText(context.getResources().getString(R.string.wgz));
+        }
         holder.name.setText(siteListInfo.getName());
-        holder.status.setText(siteListInfo.getStatus());
         holder.kind.setText(siteListInfo.getKind());
         return convertView;
     }

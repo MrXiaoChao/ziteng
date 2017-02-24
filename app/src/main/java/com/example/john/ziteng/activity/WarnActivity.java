@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.android.volley.AuthFailureError;
@@ -108,8 +107,10 @@ public class WarnActivity extends Activity implements View.OnClickListener {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     noteStatus = 1;
+                    getDateFromService1();
                 } else {
                     noteStatus = 0;
+                    getDateFromService1();
                 }
             }
         });
@@ -118,8 +119,10 @@ public class WarnActivity extends Activity implements View.OnClickListener {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     emailStatus = 1;
+                    getDateFromService1();
                 } else {
                     emailStatus = 0;
+                    getDateFromService1();
                 }
             }
         });
@@ -132,9 +135,9 @@ public class WarnActivity extends Activity implements View.OnClickListener {
                 finish();
                 break;
             case R.id.tv_save:
-                getDateFromService1();
-                finish();
-                break;
+//                getDateFromService1();
+//                finish();
+//                break;
         }
 
     }
@@ -149,20 +152,16 @@ public class WarnActivity extends Activity implements View.OnClickListener {
                         if (warn1.getObj() == 0) {
                             email.setChecked(false);
                             duanxi.setChecked(false);
-
                             return;
                         }
-
                         if (warn1.getObj() == 1) {
                             email.setChecked(true);
                             duanxi.setChecked(false);
-
                             return;
                         }
                         if (warn1.getObj() == 2) {
                             email.setChecked(false);
                             duanxi.setChecked(true);
-
                             return;
                         }
                         if (warn1.getObj() == 3) {

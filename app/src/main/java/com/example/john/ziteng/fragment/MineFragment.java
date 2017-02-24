@@ -37,7 +37,7 @@ import java.util.Map;
 
 
 /**
- * 我的
+ * 设置
  * Created by john on 2016/3/17.
  */
 public class MineFragment extends Fragment implements View.OnClickListener {

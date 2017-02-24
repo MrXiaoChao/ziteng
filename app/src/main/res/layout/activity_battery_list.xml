@@ -167,6 +167,40 @@
                     android:layout_height="45dp">
 
                     <TextView
+                        android:id="@+id/childTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="12dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/dy"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/text_mid_2" />
+
+                    <TextView
+                        android:id="@+id/tv_dianya"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="8dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/text_mid_2" />
+
+                </RelativeLayout>
+
+
+                <View
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/gray" />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp">
+
+                    <TextView
                         android:id="@+id/childTextViw"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
@@ -190,39 +224,6 @@
 
                 </RelativeLayout>
 
-                <View
-                    android:layout_marginLeft="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:background="@color/gray" />
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp">
-
-                    <TextView
-                        android:id="@+id/childTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="12dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/dy"
-                        android:textColor="@color/gray"
-                        android:textSize="@dimen/text_mid_2" />
-
-                    <TextView
-                        android:id="@+id/tv_dianya"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="8dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/gray"
-                        android:textSize="@dimen/text_mid_2" />
-
-                </RelativeLayout>
 
                 <View
                     android:layout_marginLeft="8dp"
