@@ -11,10 +11,9 @@ public class Shebeigaojing{
     }
 
     /**
-     * time :  201 6-12-22 15:13:31
+     * time :  2016-12-22 15:13:31
      * warnContent : 电池故障
      */
-
 
     private String time;
     private String warnContent;
