@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+
 import com.example.john.ziteng.R;
 
 
@@ -27,7 +28,7 @@ public class DevicePassWordFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.fragment_devicepassword, null);
         password = (EditText) view.findViewById(R.id.device_password);
@@ -39,7 +40,15 @@ public class DevicePassWordFragment extends DialogFragment {
                                 LoginInputListener listener = (LoginInputListener) getActivity();
                                 listener.onLoginInputComplete(password.getText().toString());
                             }
-                        });
+                        })
+                .setNegativeButton(getActivity().getResources().getString(R.string.qx1),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+            }
+        });
+
         return builder.create();
     }
 

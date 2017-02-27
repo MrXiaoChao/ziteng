@@ -61,7 +61,7 @@
             android:name=".activity.MainActivity">
 
         </activity>
-        <activity android:name=".activity.RegisterActivity">
+        <activity android:name=".activity.ForgetPasswordActivity">
 
         </activity>
         <activity android:name=".activity.RegisterSuccessActivity">
@@ -144,7 +144,7 @@
         <activity android:name=".activity.SiteList2Activity">
 
         </activity>
-        <activity android:name=".activity.BatteryActivity">
+        <activity android:name=".activity.HistoricalActivity">
 
         </activity>
         <activity android:name=".activity.UnitActivity">

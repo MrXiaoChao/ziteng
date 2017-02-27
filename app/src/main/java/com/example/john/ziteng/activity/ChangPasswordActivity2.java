@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 修改设备控制密码
+ * 修改密码
  * Created by john on 2016/3/25.
  */
 public class ChangPasswordActivity2 extends BaseActivity implements View.OnClickListener {

@@ -28,7 +28,7 @@ import java.util.Map;
  * 忘记密码
  * Created by john on 2016/3/22.
  */
-public class RegisterActivity extends BaseActivity implements View.OnClickListener {
+public class ForgetPasswordActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText etEmail;
     private Button btnHuoqu;
@@ -59,12 +59,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         StringRequest request = new StringRequest(Request.Method.POST, Path.YZM, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
-                Toast.makeText(RegisterActivity.this,getResources().getString(R.string.cs), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ForgetPasswordActivity.this,getResources().getString(R.string.cs), Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Toast.makeText(RegisterActivity.this, "发送失败", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ForgetPasswordActivity.this, "发送失败", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -110,7 +110,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 if (ComUtils.isEmail(email)) {
                     GetYzmFromService();
                 } else {
-                    Toast.makeText(RegisterActivity.this, getResources().getString(R.string.zqxy), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ForgetPasswordActivity.this, getResources().getString(R.string.zqxy), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 timer.start();
@@ -121,7 +121,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             case R.id.queren:
                 yzm = etYanzm.getText().toString().trim();
                 if (yzm == null) {
-                    Toast.makeText(RegisterActivity.this, getResources().getString(R.string.qsryzm), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ForgetPasswordActivity.this, getResources().getString(R.string.qsryzm), Toast.LENGTH_SHORT).show();
                 } else {
                     ComPareYZM();
                 }
@@ -136,12 +136,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             public void onResponse(String s) {
                 CheckYzm checkYzm = PaseJson.PaseYzm(s);
                 if (!checkYzm.isSuccess()) {
-                    Intent intent = new Intent(RegisterActivity.this, PassWordActivity.class);
+                    Intent intent = new Intent(ForgetPasswordActivity.this, PassWordActivity.class);
                     intent.putExtra("email", email);
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(RegisterActivity.this, getResources().getString(R.string.adjk), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ForgetPasswordActivity.this, getResources().getString(R.string.adjk), Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {

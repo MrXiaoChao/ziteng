@@ -9,6 +9,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.example.john.ziteng.R;
 import com.example.john.ziteng.utils.SPUtils;
 
@@ -16,7 +18,7 @@ import com.example.john.ziteng.utils.SPUtils;
  * 列表
  * Created by john on 2016/5/17.
  */
-public class ListFragment extends Fragment{
+public class ListFragment extends Fragment {
     private ImageView back;
     private WebView webView;
     private String batteryId;
@@ -24,56 +26,62 @@ public class ListFragment extends Fragment{
     private String unitId;
     private String equipId;
     private int checknumber;
+    private TextView tvTitlle;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_list, container, false);
         initview(view);
         equipId = String.valueOf(SPUtils.get(getActivity(), "equipId", ""));
         unitId = String.valueOf(SPUtils.get(getActivity(), "unitId", ""));
         moduleId = String.valueOf(SPUtils.get(getActivity(), "moduleId", ""));
         batteryId = String.valueOf(SPUtils.get(getActivity(), "batteryId", ""));
-        checknumber = getActivity().getIntent().getIntExtra("checknumber",1);
+        checknumber = getActivity().getIntent().getIntExtra("checknumber", 1);
         checkURl(checknumber);
         loadweb();
         return view;
     }
+
     private StringBuffer checkURl(int checknumber) {
-        StringBuffer url=new StringBuffer();
-        switch (checknumber){
+        StringBuffer url = new StringBuffer();
+        switch (checknumber) {
             case 1:
-                if (getResources().getConfiguration().locale.getCountry().equals("CN")){
+                if (getResources().getConfiguration().locale.getCountry().equals("CN")) {
+                    tvTitlle.setText(getResources().getString(R.string.dylba));
                     url.append("http://123.57.251.129/dem/phone/station/allUnitHistory.jsp?equip_id=");
-                    url.append(equipId+"&unitId=");
-                    url.append(unitId+"&zyw=1");
-                    StringBuffer a=url;
-                }else {
+                    url.append(equipId + "&unitId=");
+                    url.append(unitId + "&zyw=1");
+                } else {
                     url.append("http://123.57.251.129/dem/phone/station/allUnitHistory.jsp?equip_id=");
-                    url.append(equipId+"&unitId=");
-                    url.append(unitId+"&zyw=2");
+                    url.append(equipId + "&unitId=");
+                    url.append(unitId + "&zyw=2");
+                    tvTitlle.setText(getResources().getString(R.string.dylba));
                 }
                 break;
             case 2:
-                if (getResources().getConfiguration().locale.getCountry().equals("CN")){
+                if (getResources().getConfiguration().locale.getCountry().equals("CN")) {
                     url.append("http://123.57.251.129/dem/phone/station/allModuleHistory.jsp?equip_id=");
-                    url.append(equipId+"&moduleId=");
-                    url.append(moduleId+"&zyw=1");
-                }else {
+                    url.append(equipId + "&moduleId=");
+                    url.append(moduleId + "&zyw=1");
+                    tvTitlle.setText(getResources().getString(R.string.mklba));
+                } else {
                     url.append("http://123.57.251.129/dem/phone/station/allUnitHistory.jsp?equip_id=");
-                    url.append(equipId+"&moduleId=");
-                    url.append(moduleId+"&zyw=2");
+                    url.append(equipId + "&moduleId=");
+                    url.append(moduleId + "&zyw=2");
+                    tvTitlle.setText(getResources().getString(R.string.mklba));
                 }
                 break;
             case 3:
-                if (getResources().getConfiguration().locale.getCountry().equals("CN")){
+                if (getResources().getConfiguration().locale.getCountry().equals("CN")) {
                     url.append("http://123.57.251.129:8088/dem/phone/station/allBatteryHistory.jsp?equip_id=");
-                    url.append(equipId+"&batteryId=");
-                    url.append(batteryId+"&zyw=1");
-                    StringBuffer a=url;
-                }else {
+                    url.append(equipId + "&batteryId=");
+                    url.append(batteryId + "&zyw=1");
+                    tvTitlle.setText(getResources().getString(R.string.dclba));
+                } else {
                     url.append("http://123.57.251.129:8088/dem/phone/station/allBatteryHistory.jsp?equip_id=");
-                    url.append(equipId+"&batteryId=");
-                    url.append(batteryId+"&zyw=2");
+                    url.append(equipId + "&batteryId=");
+                    url.append(batteryId + "&zyw=2");
+                    tvTitlle.setText(getResources().getString(R.string.dclba));
                 }
                 break;
         }
@@ -99,6 +107,7 @@ public class ListFragment extends Fragment{
     }
 
     private void initview(View view) {
+        tvTitlle = (TextView) view.findViewById(R.id.tv_title);
         back = (ImageView) view.findViewById(R.id.list1_fanhui);
         webView = (WebView) view.findViewById(R.id.list_web);
         back.setOnClickListener(new View.OnClickListener() {

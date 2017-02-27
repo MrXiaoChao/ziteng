@@ -181,7 +181,7 @@ public class ModuleActivity extends BaseActivity implements View.OnClickListener
                 }
                 break;
             case R.id.lssj:
-                Intent intent = new Intent(this, BatteryActivity.class);
+                Intent intent = new Intent(this, HistoricalActivity.class);
                 intent.putExtra("number", 2);
                 intent.putExtra("checknumber", 2);
                 intent.putExtra("equip_id", equip_id);

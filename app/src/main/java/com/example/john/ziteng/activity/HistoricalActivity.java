@@ -12,10 +12,10 @@ import com.example.john.ziteng.fragment.MoudleFragment;
 import com.example.john.ziteng.fragment.UnitFragment;
 
 /**
- * 电池列表1
+ * 历史数据
  * Created by john on 2016/5/13.
  */
-public class BatteryActivity extends BaseActivity implements View.OnClickListener {
+public class HistoricalActivity extends BaseActivity implements View.OnClickListener {
 
     private Button battery;
     private Button moudle;

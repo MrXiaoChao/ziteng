@@ -52,6 +52,40 @@
             android:hint="@string/qsryxh"
             android:layout_width="260dp"
             android:layout_height="match_parent" />
+
+    </RelativeLayout>
+    <View
+        android:background="@color/gray_bian"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <View
+        android:background="@color/gray_dan"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"/>
+    <View
+        android:background="@color/gray_bian"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <EditText
+            android:paddingLeft="14dp"
+            android:numeric="integer"
+            android:id="@+id/et_yanzm"
+            android:maxLength="15"
+            android:singleLine="true"
+            android:background="@null"
+            android:textSize="14dp"
+            android:hint="@string/qsryzm"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+        <View
+            android:background="@color/gray_bian"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
         <Button
             android:layout_centerVertical="true"
             android:singleLine="true"
@@ -68,33 +102,7 @@
             android:layout_width="100dp"
             android:layout_height="28dp" />
     </RelativeLayout>
-    <View
-        android:background="@color/gray_bian"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
-    <View
-        android:background="@color/gray_dan"
-        android:layout_width="match_parent"
-        android:layout_height="8dp"/>
-    <View
-        android:background="@color/gray_bian"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
-    <EditText
-        android:paddingLeft="14dp"
-        android:numeric="integer"
-        android:id="@+id/et_yanzm"
-        android:maxLength="15"
-        android:singleLine="true"
-        android:background="@null"
-        android:textSize="14dp"
-        android:hint="@string/qsryzm"
-        android:layout_width="match_parent"
-        android:layout_height="40dp" />
-    <View
-        android:background="@color/gray_bian"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
+
     <RelativeLayout
         android:background="@color/gray_dan"
         android:layout_width="match_parent"

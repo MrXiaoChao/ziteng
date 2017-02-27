@@ -52,6 +52,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private String msg;
     private TextView changpassword;
     private Button login;
+    private Button register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         changpassword = (TextView) findViewById(R.id.tv_password);
         changpassword.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); //下划线
         changpassword.getPaint().setAntiAlias(true);
+        register = (Button) findViewById(R.id.tv_register);
+        register.setOnClickListener(this);
         login = (Button) findViewById(R.id.tv_login);
         login.setOnClickListener(this);
         changpassword.setOnClickListener(this);
@@ -174,8 +177,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 }).start();
                 break;
             case R.id.tv_password:
-                Intent intent1 = new Intent(this, RegisterActivity.class);
+                Intent intent1 = new Intent(this, ForgetPasswordActivity.class);
                 startActivity(intent1);
+                break;
+            case R.id.tv_register:
+
                 break;
 
         }

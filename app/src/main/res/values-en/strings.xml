@@ -7,7 +7,7 @@
 	<string name="mecp">Modify control password</string>
 	<string name="suggestion">Feedback</string>
 	<string name="about">About</string>
-	<string name="logout">Logout</string>
+	<string name="logout">Sign out</string>
 	<string name="mine">Set</string>
 	<string name="site">Sites of interest</string>
 	<string name="news">News Express</string>
@@ -30,18 +30,18 @@
 	<string name="SMSAlert">Alert by text message</string>
 	<string name="EmailAlert">Alert by email</string>
 	<string name="commit">Submit</string>
-	<string name="cpw">Change Password</string>
-	<string name="PEP"> Please enter old password</string>
-	<string name="PINP">Please enter new password</string>
-	<string name="PIN">Please enter new password again</string>
+	<string name="cpw">Modify control password</string>
+	<string name="PEP"> Current password</string>
+	<string name="PINP">New password</string>
+	<string name="PIN">Enter the confirmation password</string>
 	<string name="vn">Version No:1.0</string>
 	<string name="ilv">Latest version</string>
 	<string name="vu"> Version updates</string>
 	<string name="ui">Update info</string>
 	<string name="h">Help</string>
 	<string name="sitemap">Whole energy network map</string>
-	<string name="sitelist">Sites list</string>
-	<string name="offlinelist">Offline list</string>
+	<string name="sitelist">Site list</string>
+	<string name="offlinelist">List of power outage sites</string>
 	<string name="sumofsites">Sum of sites</string>
 	<string name="totalstorage">Total storage</string>
 	<string name="currentstorage">Current storage</string>
@@ -51,13 +51,13 @@
 	<string name="industry">Industry</string>
 	<string name="sitesnews">Sites News</string>
 
-	<string name="siteoverview">Site overview</string>
+	<string name="siteoverview">Overview</string>
 	<string name="csp">Current storage/power</string>
 	<string name="tdpr">Total/daily power reduction</string>
 	<string name="tdmr">Total/daily money reduction</string>
 	<string name="tdcr">Total/daily carbon reduction</string>
 	<string name="bi">Basic information</string>
-	<string name="sn">Site name</string>
+	<string name="sn">Name</string>
 	<string name="dd">Deployment date</string>
 	<string name="s">Storage</string>
 	<string name="pp">Power Price</string>
@@ -72,7 +72,7 @@
 
 
 
-	<string name="historicaldata">History data</string>
+	<string name="historicaldata">Historical data</string>
 	<string name="doth">Offline times Histogram</string>
 	<string name="dodh">Offline duration Histogram</string>
 	<string name="dusd">Offline supply duration Histogram</string>
@@ -83,18 +83,18 @@
 	<string name="bai">Basic information</string>
 	<string name="ds">Device status</string>
 	<string name="bp">Basic paramet</string>
-	<string name="w">Warnings</string>
+	<string name="w">Warnings</string>f
 	<string name="hi">History infomation</string>
 	<string name="b">Batteries</string>
 	<string name="o">Operations</string>
-	<string name="al">Alarm list</string>
-	<string name="sl">Status list</string>
-	<string name="pl">Parameter list</string>
-	<string name="pc">Curve</string>
+	<string name="al">Warning list</string>
+	<string name="sl">State list</string>
+	<string name="pl">Parameters list</string>
+	<string name="pc">Parameter curve</string>
 	<string name="dhd">Device history data</string>
 	<string name="message">Message</string>
 	<string name="all">All</string>
-	<string name="iwi">Important warnings</string>
+	<string name="iwi">Site Alarm</string>
 	<string name="sc">Select city</string>
 	<string name="ne">News Express</string>
 
@@ -213,9 +213,9 @@
 	<string name="qx">You have to cancel the attention</string>
 	<string name="zhyy">On the last page</string>
 	<string name="zzjz">Is in loading...</string>
-	<string name="tdcst">Silent figure</string>
-	<string name="tdsct">The blackout time figure</string>
-	<string name="UPSgdt">UPS The power supply diagram</string>
+	<string name="tdcst">Offline times Histogram</string>
+	<string name="tdsct">Offline duration Histogram</string>
+	<string name="UPSgdt">Offline supply duration Histogram</string>
 	<string name="xgsjhm">change Phone</string>
 	<string name="sjhm">The new phone number</string>
 	<string name="qrsjhm">Confirm the new phone number</string>
@@ -224,11 +224,11 @@
 	<string name="bc">save</string>
 	<string name="xyx">Please enter a new email</string>
 	<string name="yxxg">change Email</string>
-	<string name="sbmm">Equipment control password</string>
+	<string name="sbmm">Please enter a control password</string>
 	<string name="srsbmm">Enter the password for equipment control</string>
 	<string name="plsz">Sampling frequency setting</string>
 	<string name="pla">sampling frequency</string>
-	<string name="zdxq">Site Info</string>
+	<string name="zdxq">Site Overview</string>
 	<string name="ts">                       Prompt</string>
 	<string name="qrts">                   Please confirm whether to modify</string>
 	<string name="qx1">cancel</string>
@@ -251,7 +251,7 @@
 	<string name="cd">CHARGING</string>
 	<string name="gj">WARNING</string>
 	<string name="tj">STOP</string>
-	<string name="zta">Stata</string>
+	<string name="zta">State</string>
 	<string name="bj">ALERT</string>
 	<string name="cjdrcd">SUPERCHARGE</string>
 	<string name="tjqdd">WAITING_TO_STOP</string>
@@ -260,5 +260,13 @@
 	<string name="ddy">LOW_VOLTAGE</string>
 	<string name="ygz">Followed</string>
 	<string name="wgz">No followed</string>
+	<string name="zdd">Site Map</string>
+
+	<string name="dclba">Module Historical data</string>
+	<string name="dylba">Unit Historical data</string>
+	<string name="mklba">Battery Historical data</string>
+	<string name="suggestions">Please enter your feedback</string>
+	<string name="zdgq">Site Info</string>
+	<string name="ab">Register</string>
 
 </resources>

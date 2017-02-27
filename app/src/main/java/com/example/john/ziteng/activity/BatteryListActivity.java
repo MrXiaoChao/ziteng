@@ -168,7 +168,7 @@ public class BatteryListActivity extends BaseActivity implements View.OnClickLis
                 }
                 break;
             case R.id.rl_history:
-                Intent intent = new Intent(BatteryListActivity.this, BatteryActivity.class);
+                Intent intent = new Intent(BatteryListActivity.this, HistoricalActivity.class);
                 intent.putExtra("number", 3);
                 intent.putExtra("checknumber", 3);
                 startActivity(intent);

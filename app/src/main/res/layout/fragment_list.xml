@@ -18,11 +18,10 @@
             android:padding="9dp" />
 
         <TextView
-            android:id="@+id/unit_title"
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/lba"
             android:textColor="@color/white"
             android:textSize="@dimen/text_big" />
     </RelativeLayout>

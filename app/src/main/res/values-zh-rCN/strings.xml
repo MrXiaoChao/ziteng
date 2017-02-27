@@ -6,6 +6,7 @@
 	<string name="language">语言选择</string>
 	<string name="mecp">修改设备控制密码</string>
 	<string name="suggestion">意见反馈</string>
+	<string name="suggestions">请输入内容</string>
 	<string name="about">关于能量监控平台</string>
 	<string name="logout">退出登录</string>
 	<string name="mine">设置</string>
@@ -33,7 +34,7 @@
 	<string name="PINP">请输入新密码</string>
 	<string name="PEP">请输入旧密码</string>
 	<string name="cpw">修改设备控制密码</string>
-	<string name="PIN">请再次输入新密码</string>
+	<string name="PIN">输入确认密码</string>
 	<string name="vn">版本号：1.0.2</string>
 	<string name="ilv">已经是最新版本</string>
 	<string name="vu">版本更新</string>
@@ -91,7 +92,7 @@
 	<string name="dhd">设备历史数据</string>
 	<string name="message">消息</string>
 	<string name="all">全国</string>
-	<string name="iwi">重要告警信息</string>
+	<string name="iwi">站点告警</string>
 	<string name="sc">城市选择</string>
 	<string name="ne">资讯快递</string>
 
@@ -129,7 +130,9 @@
 	<string name="mka">模块</string>
 	<string name="dya">单元</string>
 	<string name="lb">列表</string>
-	<string name="lba">历史数据</string>
+	<string name="dclba">电池 历史数据</string>
+	<string name="dylba">单元 历史数据</string>
+	<string name="mklba">模块 历史数据</string>
 	<string name="cp">修改密码</string>
 	<string name="wdzc">外电正常</string>
 	<string name="wdzc1">UPS或后备电源供电</string>
@@ -210,9 +213,9 @@
 	<string name="qx">你已取消关注</string>
 	<string name="zhyy">已经在最后一页了</string>
 	<string name="zzjz">正在加载中...</string>
-	<string name="tdcst">停电次数图</string>
-	<string name="tdsct">停电时长图</string>
-	<string name="UPSgdt">UPS供电图</string>
+	<string name="tdcst">日停电数据直方图</string>
+	<string name="tdsct">月停电数据直方图</string>
+	<string name="UPSgdt">年停电数据直方图</string>
 	<string name="xgsjhm">修改手机号码</string>
 	<string name="sjhm">新手机号码</string>
 	<string name="qrsjhm">确认新手机号码</string>
@@ -221,11 +224,12 @@
 	<string name="bc">保存</string>
 	<string name="xyx">请输入新的邮箱</string>
 	<string name="yxxg">邮箱修改</string>
-	<string name="sbmm">设备控制密码</string>
+	<string name="sbmm">设备控制</string>
 	<string name="srsbmm">请输入设备控制密码</string>
 	<string name="plsz">采样频率设置</string>
 	<string name="pla">采样频率</string>
-	<string name="zdxq">站点详情</string>
+	<string name="zdxq">站点概况</string>
+	<string name="zdgq">站点详情</string>
 	<string name="ts">                     提示</string>
 	<string name="qrts">                    请确认是否修改</string>
 	<string name="qx1">取消</string>
@@ -251,7 +255,7 @@
 	<string name="gj">告警</string>
 	<string name="tj">停机</string>
 	<string name="zta">状态</string>
-
+	<string name="zdd">站点地图</string>
 	<string name="bj">报警</string>
 	<string name="cjdrcd">超级电容充电</string>
 	<string name="tjqdd">停机前等待</string>
@@ -260,4 +264,5 @@
 	<string name="ddy">低电压</string>
 	<string name="ygz">已关注</string>
 	<string name="wgz">未关注</string>
+	<string name="ab">注册</string>
 </resources>

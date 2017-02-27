@@ -3,6 +3,7 @@ package com.example.john.ziteng.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.RippleDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -105,6 +106,7 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
     private String latitude;
     private String longitude;
     private boolean isClick;
+    private TextView tvTitle;
 
 
     @Override
@@ -123,6 +125,8 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
             showDialog();
             getDateFromService();
         } else {
+            //站点详情里面站点地图入口
+            tvTitle.setText(getResources().getString(R.string.zdd));
             addInfosOverlay1(latitude, longitude);
         }
 
@@ -226,7 +230,7 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
             // 构造定位数据
             MyLocationData locData = new MyLocationData.Builder()
                     .accuracy(location.getRadius())
-                            // 此处设置开发者获取到的方向信息，顺时针0-360
+                    // 此处设置开发者获取到的方向信息，顺时针0-360
                     .latitude(location.getLatitude())
                     .longitude(location.getLongitude()).build();
             mCurrentAccracy = location.getRadius();
@@ -365,6 +369,7 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
     }
 
     private void initview() {
+        tvTitle = (TextView) findViewById(R.id.personal_title);
         RelativeLayout rl_chuangkou = (RelativeLayout) findViewById(R.id.rl_chuangkou);
         rl_chuangkou.getBackground().setAlpha(180);
         mapback = (ImageView) findViewById(R.id.map_fanhui);
@@ -570,7 +575,7 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
                     String focus = object.getString("focus");
                     if (focus.equals("已关注")) {
                         guanzhu.setText(getResources().getString(R.string.ygz));
-                    }else {
+                    } else {
                         guanzhu.setText(getResources().getString(R.string.wgz));
                     }
                     info.setFocus(focus);

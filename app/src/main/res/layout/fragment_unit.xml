@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/lba"
+            android:text="@string/dylba"
             android:textColor="@color/white"
             android:textSize="@dimen/text_big" />
     </RelativeLayout>
