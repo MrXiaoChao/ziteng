@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -79,7 +78,6 @@ public class ForgetPasswordActivity extends BaseActivity implements View.OnClick
 
     private ImageView back;
     private Button queren;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
