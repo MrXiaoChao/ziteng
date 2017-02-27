@@ -23,12 +23,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <!--测试whcAA0H4FS5kY8tSwRkr0LzItFq4u1Kb-->
-        <!--上线+6
-        -->
+        <!--百度地图所需要的key,项目接手之后建议去百度地图开发者网站申请一个Key替代-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="whcAA0H4FS5kY8tSwRkr0LzItFq4u1Kb"/>
+            android:value="6hFZ75Y1LpbjAYqLa0G6clpg1Z1wVuYK"/>
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"

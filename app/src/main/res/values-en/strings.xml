@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">iBatteryCloud</string>
 	<string name="personal">Personal information</string>
 	<string name="warning">Reminder settings</string>
@@ -261,6 +260,5 @@
 	<string name="ddy">LOW_VOLTAGE</string>
 	<string name="ygz">Followed</string>
 	<string name="wgz">No followed</string>
-
 
 </resources>

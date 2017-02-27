@@ -44,4 +44,4 @@
             android:visibility="gone" />
     </LinearLayout>
 
-</merge><!-- From: file:/E:/android_works/ziteng/library_pullToRefresh/src/main/res/layout/pull_to_refresh_header.xml -->
+</merge>
