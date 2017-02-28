@@ -177,13 +177,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 }).start();
                 break;
             case R.id.tv_password:
-                Intent intent1 = new Intent(this, ForgetPasswordActivity.class);
+                Intent intent1 = new Intent(this,ForgetPasswordActivity.class);
                 startActivity(intent1);
                 break;
             case R.id.tv_register:
-
+                Intent intent =new Intent(this,RegisterActivity.class);
+                startActivity(intent);
                 break;
-
         }
     }
 

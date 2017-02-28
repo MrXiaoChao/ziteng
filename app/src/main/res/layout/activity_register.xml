@@ -10,119 +10,182 @@
         android:background="@color/blue">
 
         <ImageView
-            android:padding="9dp"
-            android:layout_marginLeft="12dp"
             android:id="@+id/phone_fanhui"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
             android:background="@mipmap/fanhui"
-            />
+            android:padding="9dp" />
 
         <TextView
-            android:id="@+id/warn_title"
+            android:id="@+id/register_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/hqyzm"
+            android:text="@string/ab"
             android:textColor="@color/white"
             android:textSize="@dimen/text_big" />
-
     </RelativeLayout>
+
     <View
-        android:background="@color/gray_dan"
         android:layout_width="match_parent"
-        android:layout_height="20dp"/>
+        android:layout_height="20dp"
+        android:background="@color/gray_dan" />
+
     <View
-        android:background="@color/gray_bian"
         android:layout_width="match_parent"
-        android:layout_height="1px"/>
+        android:layout_height="1px"
+        android:background="@color/gray_bian" />
+
     <RelativeLayout
-        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="40dp"
+        android:background="@color/white">
+
         <EditText
-            android:paddingLeft="13dp"
+            android:id="@+id/et_phone"
+            android:layout_width="260dp"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="@string/enterphone"
             android:inputType="textEmailAddress"
             android:maxLength="30"
+            android:paddingLeft="13dp"
             android:singleLine="true"
-            android:id="@+id/et_email_1"
-            android:background="@null"
-            android:textSize="14dp"
-            android:hint="@string/qsryxh"
-            android:layout_width="260dp"
-            android:layout_height="match_parent" />
+            android:textSize="14dp" />
 
-    </RelativeLayout>
-    <View
-        android:background="@color/gray_bian"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
-    <View
-        android:background="@color/gray_dan"
-        android:layout_width="match_parent"
-        android:layout_height="8dp"/>
-    <View
-        android:background="@color/gray_bian"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
-
-    <RelativeLayout
-        android:background="@color/white"
-        android:layout_width="match_parent"
-        android:layout_height="40dp">
-        <EditText
-            android:paddingLeft="14dp"
-            android:numeric="integer"
-            android:id="@+id/et_yanzm"
-            android:maxLength="15"
-            android:singleLine="true"
-            android:background="@null"
-            android:textSize="14dp"
-            android:hint="@string/qsryzm"
-            android:layout_width="match_parent"
-            android:layout_height="40dp" />
-        <View
-            android:background="@color/gray_bian"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
         <Button
+            android:id="@+id/btn_huoqu"
+            android:layout_width="100dp"
+            android:layout_height="28dp"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:singleLine="true"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/btn_yanzm_shape"
             android:gravity="center"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:background="@drawable/btn_yanzm_shape"
-            android:id="@+id/btn_huoqu"
-            android:textSize="13dp"
-            android:layout_marginRight="12dp"
+            android:singleLine="true"
             android:text="@string/hqyzm"
-            android:layout_alignParentRight="true"
             android:textColor="@color/white"
-            android:layout_width="100dp"
-            android:layout_height="28dp" />
+            android:textSize="13dp" />
+
     </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_bian" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:background="@color/gray_dan" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_bian" />
+
+        <EditText
+            android:id="@+id/et_yzm"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@null"
+            android:hint="@string/qsryzm"
+            android:maxLength="15"
+            android:numeric="integer"
+            android:paddingLeft="14dp"
+            android:singleLine="true"
+            android:textSize="14dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_bian" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:background="@color/gray_dan" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_bian" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@null"
+        android:hint="@string/qsrmm"
+        android:maxLength="15"
+        android:numeric="integer"
+        android:paddingLeft="14dp"
+        android:singleLine="true"
+        android:textSize="14dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray_bian" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@color/gray_dan" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray_bian" />
+
+    <EditText
+        android:id="@+id/et_confirmpassword"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@null"
+        android:hint="@string/PIN"
+        android:maxLength="15"
+        android:numeric="integer"
+        android:paddingLeft="14dp"
+        android:singleLine="true"
+        android:textSize="14dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray_bian" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@color/gray_dan" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray_bian" />
+
 
     <RelativeLayout
-        android:background="@color/gray_dan"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/gray_dan">
+
         <Button
+            android:id="@+id/btn_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:id="@+id/queren"
-            android:paddingLeft="80dp"
-            android:paddingRight="80dp"
             android:layout_marginTop="50dp"
             android:background="@drawable/btn_yanzm_shape"
-            android:textSize="20dp"
-            android:text="@string/xyb"
+            android:paddingLeft="80dp"
+            android:paddingRight="80dp"
+            android:text="@string/ab"
             android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+            android:textSize="20dp" />
     </RelativeLayout>
-
-
-
-
 </LinearLayout>

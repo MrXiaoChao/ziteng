@@ -82,7 +82,7 @@ public class ForgetPasswordActivity extends BaseActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_forgetpassword);
         initView();
     }
 

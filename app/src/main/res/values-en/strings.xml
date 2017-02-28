@@ -179,7 +179,8 @@
 	<string name="qsrzh">Please enter the account</string>
 	<string name="qsrmm">Please enter the password</string>
 	<string name="jzmm">Remember</string>
-	<string name="wzmm">Forget？</string>
+	<string name="wzmm">Forgot？</string>
+	<string name="wzmm1">Forgot</string>
 	<string name="abc">Sign in</string>
 	<string name="dla">Current(A)</string>
 	<string name="hqyzm">Get confirmation code</string>
@@ -268,5 +269,7 @@
 	<string name="suggestions">Please enter your feedback</string>
 	<string name="zdgq">Site Info</string>
 	<string name="ab">Register</string>
+	<string name="enterphone">Enter the phone number</string>
+	<string name="registersuccess">Register is Success</string>
 
 </resources>

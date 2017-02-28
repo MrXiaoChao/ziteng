@@ -6,6 +6,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.example.john.ziteng"
         minSdkVersion 19
         targetSdkVersion 23
@@ -18,7 +19,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    lintOptions{
+    lintOptions {
         checkReleaseBuilds false
         abortOnError false
     }

@@ -193,6 +193,9 @@
         <activity android:name=".activity.GaojiCaozuoActivity">
 
         </activity>
+        <activity android:name=".activity.RegisterActivity">
+
+        </activity>
 
     </application>
 
