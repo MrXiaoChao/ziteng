@@ -223,15 +223,6 @@
                     android:layout_height="1px"
                     android:background="@color/gray" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="@color/gray_dan" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:background="@color/gray" />
             </LinearLayout>
 
             <com.example.john.ziteng.view.MyListview

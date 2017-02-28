@@ -41,20 +41,20 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/gray" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/gray_dan" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/gray_dan" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/gray" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray" />
 
 
             <RelativeLayout
@@ -63,13 +63,13 @@
                 android:layout_height="45dp">
 
                 <TextView
-                    android:text="@string/mkxx"
                     android:id="@+id/unit_xinxi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="6dp"
                     android:gravity="center"
+                    android:text="@string/mkxx"
                     android:textColor="@color/blue"
                     android:textSize="@dimen/text_mid">
 
@@ -94,6 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="45dp">
@@ -120,10 +121,11 @@
                         android:textSize="@dimen/text_mid_2" />
 
                 </RelativeLayout>
+
                 <View
-                    android:layout_marginLeft="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="1px"
+                    android:layout_marginLeft="8dp"
                     android:background="@color/gray" />
 
                 <RelativeLayout
@@ -156,9 +158,9 @@
 
 
                 <View
-                    android:layout_marginLeft="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="1px"
+                    android:layout_marginLeft="8dp"
                     android:background="@color/gray" />
 
                 <RelativeLayout
@@ -190,9 +192,9 @@
                 </RelativeLayout>
 
                 <View
-                    android:layout_marginLeft="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="1px"
+                    android:layout_marginLeft="8dp"
                     android:background="@color/gray" />
 
                 <RelativeLayout
@@ -224,21 +226,23 @@
                 </RelativeLayout>
 
                 <View
-                    android:layout_marginLeft="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="1px"
+                    android:layout_marginLeft="8dp"
                     android:background="@color/gray" />
+
                 <RelativeLayout
                     android:id="@+id/lssj"
                     android:layout_width="wrap_content"
                     android:layout_height="45dp">
+
                     <TextView
-                        android:text="@string/lssj"
-                        android:layout_centerVertical="true"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
+                        android:layout_centerVertical="true"
                         android:layout_marginLeft="12dp"
                         android:gravity="center_vertical"
+                        android:text="@string/lssj"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/text_mid_2" />
 
@@ -251,15 +255,6 @@
                         android:layout_marginRight="8dp"
                         android:background="@mipmap/you" />
                 </RelativeLayout>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:background="@color/gray" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="@color/gray_dan" />
 
                 <View
                     android:layout_width="match_parent"

@@ -32,7 +32,7 @@
             android:textColor="@color/white"
             android:layout_marginRight="8dp"
             android:layout_alignParentRight="true"
-            android:text="@string/commit"
+            android:text="@string/bc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>

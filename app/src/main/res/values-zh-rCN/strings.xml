@@ -217,14 +217,14 @@
 	<string name="tdcst">日停电数据直方图</string>
 	<string name="tdsct">月停电数据直方图</string>
 	<string name="UPSgdt">年停电数据直方图</string>
-	<string name="xgsjhm">修改手机号码</string>
+	<string name="xgsjhm">联系电话</string>
 	<string name="sjhm">新手机号码</string>
 	<string name="qrsjhm">确认新手机号码</string>
 	<string name="qrxg">确认修改</string>
 	<string name="grxxpz">个人信息配置</string>
 	<string name="bc">保存</string>
 	<string name="xyx">请输入新的邮箱</string>
-	<string name="yxxg">邮箱修改</string>
+	<string name="yxxg">电子邮箱</string>
 	<string name="sbmm">设备控制</string>
 	<string name="srsbmm">请输入设备控制密码</string>
 	<string name="plsz">采样频率设置</string>
