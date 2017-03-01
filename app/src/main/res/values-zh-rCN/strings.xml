@@ -226,7 +226,7 @@
 	<string name="xyx">请输入新的邮箱</string>
 	<string name="yxxg">电子邮箱</string>
 	<string name="sbmm">设备控制</string>
-	<string name="srsbmm">请输入设备控制密码</string>
+	<string name="srsbmm">请输入控制密码</string>
 	<string name="plsz">采样频率设置</string>
 	<string name="pla">采样频率</string>
 	<string name="zdxq">站点概况</string>

@@ -26,7 +26,7 @@
 	<string name="job1">Job</string>
 	<string name="phone">Phone</string>
 	<string name="email">E-mail</string>
-	<string name="prempt">Prempt</string>
+	<string name="prempt">Reminder settings</string>
 	<string name="SMSAlert">Alert by text message</string>
 	<string name="EmailAlert">Alert by email</string>
 	<string name="commit">Submit</string>
@@ -198,8 +198,8 @@
 	<string name="byz1">You fill in the number of inconsistencies</string>
 	<string name="szcg">Set up the success</string>
 	<string name="srdl">Please input current</string>
-	<string name="gxsm">Updated instructions</string>
-	<string name="sybz">Usinghelp</string>
+	<string name="gxsm">Updated info</string>
+	<string name="sybz">Help</string>
 	<string name="zxbb">Is the latest version</string>
 	<string name="hmbwk">Mobile phone number can not be empty</string>
 	<string name="mmbwk">Password cant be empty</string>
@@ -225,8 +225,8 @@
 	<string name="bc">Save</string>
 	<string name="xyx">Enter the email address</string>
 	<string name="yxxg">E-mail</string>
-	<string name="sbmm">Please enter a control password</string>
-	<string name="srsbmm">Enter the password for equipment control</string>
+	<string name="sbmm">Device control</string>
+	<string name="srsbmm">Please enter a control password</string>
 	<string name="plsz">Sampling frequency setting</string>
 	<string name="pla">Sampling frequency</string>
 	<string name="zdxq">Site Overview</string>

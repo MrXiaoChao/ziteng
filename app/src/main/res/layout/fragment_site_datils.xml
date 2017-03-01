@@ -867,7 +867,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="24dp"
-                    android:text="@string/zdxq"
+                    android:text="@string/upsnd"
                     android:textColor="#1d9f69"
                     android:textSize="@dimen/text_mid_2" />
 
