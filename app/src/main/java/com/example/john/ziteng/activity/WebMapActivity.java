@@ -108,7 +108,6 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
     private boolean isClick;
     private TextView tvTitle;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -418,7 +417,7 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
                 ivDeleteText.setVisibility(View.GONE);
             } else {
                 ivDeleteText.setVisibility(View.VISIBLE);
-
+                tvSearch.setText(getResources().getString(R.string.sousuo));
             }
         }
     }
@@ -522,6 +521,7 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
             case R.id.iv_search://搜索
                 if (isfrist) {
                     rltop.setVisibility(View.VISIBLE);
+                    tvSearch.setText(getResources().getString(R.string.qx1));
                     isfrist = false;
                 } else {
                     rltop.setVisibility(View.GONE);
@@ -544,10 +544,13 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
                     issearch = false;
                 }
                 if (cityname.equals("")) {
-                    showDialog();
-                    istrue = false;
-                    issearch = true;
-                    sendCityToService(pId);
+//                    showDialog();
+//                    istrue = false;
+//                    issearch = true;
+//                    sendCityToService(pId);
+                    rltop.setVisibility(View.GONE);
+                    etSearch.setText("");
+                    isfrist = true;
                 }
                 rltop.setVisibility(View.GONE);
                 break;

@@ -57,7 +57,7 @@
             android:layout_alignParentRight="true"
             android:textSize="16sp"
             android:textColor="@color/white"
-            android:text="搜索"/>
+            android:text="@string/qx1"/>
 
         <RelativeLayout
             android:layout_marginRight="5dp"
@@ -69,6 +69,7 @@
             android:layout_toLeftOf="@id/tvSearch">
 
             <EditText
+                android:gravity="center"
                 android:textColor="@color/white"
                 android:background="@drawable/btn_search"
                 android:id="@+id/etSearch"
@@ -81,7 +82,7 @@
                 android:drawablePadding="10dp"
                 android:textSize="14dp"
                 android:paddingLeft="3dp"
-                android:hint="请输入你要查询的地区"/>
+                android:hint="@string/mapss"/>
 
             <ImageView
                 android:visibility="gone"

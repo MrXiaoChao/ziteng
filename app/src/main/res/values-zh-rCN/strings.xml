@@ -268,4 +268,6 @@
 	<string name="ab">注册</string>
 	<string name="enterphone">输入手机号码</string>
 	<string name="registersuccess">注册成功</string>
+	<string name="mapss">请输入省份名称</string>
+	<string name="sousuo">搜索</string>
 </resources>

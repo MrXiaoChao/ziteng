@@ -250,6 +250,7 @@ public class SiteListActivity extends BaseActivity implements View.OnClickListen
                     rltop.setVisibility(View.GONE);
                     etSearch.setText("");
                     isfrist = true;
+                    tvSearch.setText(getResources().getString(R.string.qx1));
                 }
 
                 break;
@@ -267,9 +268,9 @@ public class SiteListActivity extends BaseActivity implements View.OnClickListen
                     }
                 }
                 if (cityname.equals("")) {
-                    showDialog();
-                    istrue = false;
-                    sendCityToService(pId);
+                    rltop.setVisibility(View.GONE);
+                    etSearch.setText("");
+                    isfrist = true;
                 }
 
                 break;
@@ -404,7 +405,7 @@ public class SiteListActivity extends BaseActivity implements View.OnClickListen
                 ivDeleteText.setVisibility(View.GONE);
             } else {
                 ivDeleteText.setVisibility(View.VISIBLE);
-
+                tvSearch.setText(getResources().getString(R.string.sousuo));
             }
         }
     }
