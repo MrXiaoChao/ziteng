@@ -63,11 +63,13 @@
                 </LinearLayout>
             </RelativeLayout>
                 <TextView
+                    android:gravity="center"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:layout_marginTop="5dp"
                     android:layout_gravity="center"
                     android:text="@string/sumofsites"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <View
@@ -102,13 +104,17 @@
                         android:layout_height="wrap_content" />
                 </LinearLayout>
             </RelativeLayout>
+
                 <TextView
+                    android:gravity="center"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:layout_marginTop="5dp"
                     android:layout_gravity="center"
                     android:text="@string/totalstorage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2" />
             </LinearLayout>
             <View
                 android:layout_weight="1"
@@ -142,13 +148,17 @@
                         android:layout_height="wrap_content" />
                 </LinearLayout>
             </RelativeLayout>
+
                 <TextView
+                    android:gravity="center"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:layout_marginTop="5dp"
                     android:layout_gravity="center"
                     android:text="@string/currentstorage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView3" />
             </LinearLayout>
             <View
                 android:layout_weight="1"

@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -37,6 +38,7 @@ public class GaoJingInfoActivity extends BaseActivity {
     private RelativeLayout pb;
     private String siteId;
     private int number;
+    private TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +54,12 @@ public class GaoJingInfoActivity extends BaseActivity {
     private void checkSJ(int number) {
         switch (number){
             case 0:
+                title.setText(getResources().getString(R.string.snas));
                 getDateFromService();
                 break;
             case 1:
                 getDateFromService1();
                 break;
-
         }
     }
 
@@ -125,6 +127,7 @@ public class GaoJingInfoActivity extends BaseActivity {
     }
 
     private void initview() {
+        title = (TextView) findViewById(R.id.web_title);
         pb = (RelativeLayout)findViewById(R.id.rl_progress);
         gaojing_fanhui = (ImageView) findViewById(R.id.gaojing_fanhui);
         listview_warn = (ListView) findViewById(R.id.listview_warn);

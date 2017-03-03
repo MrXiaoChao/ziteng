@@ -270,4 +270,5 @@
 	<string name="registersuccess">注册成功</string>
 	<string name="mapss">请输入省份名称</string>
 	<string name="sousuo">搜索</string>
+	<string name="snas">重要告警信息</string>
 </resources>

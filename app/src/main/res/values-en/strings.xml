@@ -42,9 +42,9 @@
 	<string name="sitemap">Whole energy network map</string>
 	<string name="sitelist">Site list</string>
 	<string name="offlinelist">List of power outage sites</string>
-	<string name="sumofsites">Sum of sites</string>
-	<string name="totalstorage">Total storage</string>
-	<string name="currentstorage">Current storage</string>
+	<string name="sumofsites">Total No. of sites</string>
+	<string name="totalstorage">Total enegy storage capacity</string>
+	<string name="currentstorage">Total amount of stored energy</string>
 	<string name="summary">Summary</string>
 	<string name="focus">Focus</string>
 	<string name="politics">Politics</string>
@@ -235,11 +235,11 @@
 	<string name="qx1">Cancel</string>
 	<string name="xcn">Present/total stored energy</string>
 	<string name="zdl">Total power savings</string>
-	<string name="pjdl">Average power savings / day</string>
+	<string name="pjdl">Average power savings/day</string>
 	<string name="zgsqs">Total cost of electricity saving</string>
 	<string name="pjsqs">Average cost of electricity saving/day</string>
 	<string name="zgtpl">Total carbon emission reductions</string>
-	<string name="pjtpl">Average carbon emission reductions / day</string>
+	<string name="pjtpl">Average carbon emission reductions/day</string>
 	<string name="upsrd">Total UPS power supply duration of the day</string>
 	<string name="upsyd">Total UPS power supply duration of the month</string>
 	<string name="upsnd">Total UPS power supply duration of the year</string>
@@ -273,5 +273,6 @@
 	<string name="registersuccess">Register is Success</string>
 	<string name="mapss">Please input state/province name</string>
 	<string name="sousuo">Search</string>
+	<string name="snas">Important warnings</string>
 
 </resources>
