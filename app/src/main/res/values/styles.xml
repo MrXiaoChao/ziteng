@@ -20,7 +20,7 @@
         <item name="android:background" >@null</item>
         <item name="android:layout_weight" >1</item>
         <item name="android:layout_width" >0dp</item>
-        <item name="android:textSize" >@dimen/text_small</item>
+        <item name="android:textSize" >8dp</item>
         <item name="android:layout_height" >match_parent</item>
     </style>
 

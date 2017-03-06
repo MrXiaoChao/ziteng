@@ -271,6 +271,8 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
                     mIconMaker = BitmapDescriptorFactory.fromResource(R.mipmap.red);
                 } else if (info.getState().equals("负载部分断电")) {
                     mIconMaker = BitmapDescriptorFactory.fromResource(R.mipmap.red);
+                }else {
+                    mIconMaker = BitmapDescriptorFactory.fromResource(R.mipmap.red);
                 }
                 overlayOptions = new MarkerOptions().position(latLng).icon(mIconMaker).zIndex(5);
                 if (overlayOptions != null) {
@@ -309,7 +311,7 @@ public class WebMapActivity extends BaseActivity implements View.OnClickListener
     private void initMarkerClickEvent() {
         if (!isClick) {
             // 对Marker的点击
-            mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
+            mBaiduMap.setOnMarkerClickListener( new BaiduMap.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(final Marker marker) {
                     // 获得marker中的数据
